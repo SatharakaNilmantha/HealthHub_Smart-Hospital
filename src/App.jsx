@@ -12,8 +12,6 @@ function App() {
   return (
     <>
      <HeaderContent/>
- 
-     
     </>
   )
 }

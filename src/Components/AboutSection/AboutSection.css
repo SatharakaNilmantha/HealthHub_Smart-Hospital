@@ -45,6 +45,63 @@
     color: #27a6ae;
 }
 
+/* ------------------------- About Us Section 2 --------------------------------------------------- */
+
+.cont2 {
+    margin-top: 70px;
+    background-color: #bbf5fa5a;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* Individual card styling */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: grid;
+    grid-template-columns: auto auto;
+    border: none;
+    padding: 20px;
+    width: 300px;
+  }
+ 
+
+  
+  
+  /* Icon styling */
+  .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: 28px;
+    margin-right: 10px;
+    margin-left: 30px;
+    background-color: #27a6ae;
+    color: #ffffff;
+  }
+  
+  
+
+  .card-value {
+    font-size: 38px; 
+    color: #333333;
+    font-weight: 500;
+  }
+  
+  .card-subtitle {
+    font-size: 14px;
+    color: #aaaaaa;
+  }
+  
 
 
 
