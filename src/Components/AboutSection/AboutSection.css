@@ -1,0 +1,69 @@
+.text-with-underline1 {
+    text-align: center;
+    position: relative;
+    font-size: 54px;
+    color: #5B8689;
+    margin-top: 40px;
+    
+  }
+
+/* ------------------------- General Styles --------------------------------------------------- */
+
+.cont1 {
+    margin: 60px;
+}
+
+.pp{
+    color: #444444;
+}
+/* ------------------------- About Us Section 1 --------------------------------------------------- */
+.aboutimg {
+    width: 600px;
+    padding-right: 40px;
+}
+
+.aboutpart1 {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.aboutpart2 {
+    display: grid;
+    grid-template-columns: 50px auto;
+    margin-top: 10px;
+}
+
+.b {
+    border-bottom: none;
+}
+
+.icon2 {
+    font-size: 25px;
+    color: #27a6ae;
+}
+
+
+
+
+@media (max-width: 1500px) {
+    .aboutimgs {
+        text-align: center;
+    }
+
+    .aboutpart1 {
+        display: block;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .cont2 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+
+

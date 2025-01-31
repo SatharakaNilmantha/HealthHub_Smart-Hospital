@@ -7,3 +7,46 @@
   font-family: "Roboto", sans-serif;
 
 }
+
+
+/* ------------------------- Scroll Animation --------------------------------------------------- */
+
+/* Base style for all animated divs */
+.scroll-animation {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Initially moved 50px down */
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* When the element is in the viewport, apply animation */
+.scroll-up {
+  animation: scrollUpAnimation 0.5s forwards; /* Apply scrollUpAnimation and don't repeat */
+}
+
+/* Keyframes for the scroll-up animation */
+@keyframes scrollUpAnimation {
+  0% {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+/* Specific classes for different durations */
+.duration-1 {
+  animation-duration: 1s;
+}
+.duration-2 {
+  animation-duration: 1.5s;
+}
+.duration-3 {
+  animation-duration: 2s;
+}
+.duration-4 {
+  animation-duration: 2.5s;
+}
+
+
