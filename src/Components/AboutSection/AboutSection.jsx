@@ -1,6 +1,10 @@
 import React, { useEffect, useState ,useRef } from 'react';
 
 import { LiaCheckDoubleSolid } from "react-icons/lia";
+import { FaPumpMedical ,FaHeartCirclePlus,FaUserDoctor  } from "react-icons/fa6";
+import { FaHospitalUser,FaAward } from "react-icons/fa";
+import { ImLab } from "react-icons/im";
+
 
 
 
@@ -11,6 +15,75 @@ import './AboutSection.css'
 
 function AboutSection() {
 
+  // State to store the current progress and whether animation should run 
+  const [progressValues, setProgressValues] = useState([0, 0, 0, 0]);  // Single array state for all progress values
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Target values for each section
+  const targetValues = [85, 15, 12, 160];
+
+  // Reference for the component
+  const progressDialRef = useRef(null); 
+
+   
+  // useEffect to handle the progress animation
+  useEffect(() => {
+    if (isAnimating) {
+      const interval = setInterval(() => {
+          setProgressValues((prevValues) => {
+              // Check and update each progress value individually
+              return prevValues.map((value, index) => {
+                  if (value >= targetValues[index]) {
+                      return targetValues[index]; // Stop at the target value for each section
+                  }
+
+                  // Corrected conditions for progress values between different ranges
+                  if (targetValues[index] >= 100) {
+                      return value + 11; // Increase progress by 5% for target values >= 100
+                  } else if (targetValues[index] >= 50 && targetValues[index] < 100) {
+                      return value + 5; // Increase progress by 5% for target values between 50 and 100
+                  } else {
+                      return value + 1; // Increase progress by 0.5% for target values < 50
+                  }
+              });
+          });
+      }, 30); // Update every 20ms
+
+
+          // Cleanup interval when animation stops
+          return () => clearInterval(interval);
+      }
+  }, [isAnimating, targetValues]);
+
+
+   // Handle scroll event with IntersectionObserver to trigger animation
+   useEffect(() => {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            // If the component is in view, start the animation
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setProgressValues([0, 0, 0, 0]); // Reset progress; // Reset progress to 0
+                    setIsAnimating(true); // Start animation
+                } else {
+                    setIsAnimating(false); // Stop animation if out of view
+                }
+            });
+        },
+        { threshold: 0.5 } // Trigger when 50% of the component is in view
+    );
+
+    if (progressDialRef.current) {
+        observer.observe(progressDialRef.current);
+    }
+
+    // Cleanup observer on component unmount
+    return () => {
+        if (progressDialRef.current) {
+            observer.unobserve(progressDialRef.current);
+        }
+    };
+    }, []);
 
 
 //----------------------------------scroll direction code ------------------------------------//
@@ -85,7 +158,58 @@ return (
             </div>
           </div>
       </div>
+      
+      {/* -------------------------About us section2 --------------------------------------------------- */}
+          
+      <div className='cont2' ref={progressDialRef}>
+            <div className='scroll-animation duration-2'>
+                <div className="card">
+                    <div className="card-icon ">
+                        <FaUserDoctor />
+                    </div>
+                    <div className="card-content">
+                        <h2 className="card-value">{progressValues[0]}</h2>
+                        <p className="card-subtitle">Doctors</p>
+                    </div>
+                </div>
+            </div>
 
+            <div className='scroll-animation duration-1'>
+                <div className="card">
+                    <div className="card-icon blue">
+                        <FaHospitalUser />
+                    </div>
+                    <div className="card-content">
+                        <h2 className="card-value">{progressValues[1]}</h2>
+                        <p className="card-subtitle">Departments</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className='scroll-animation duration-1'>
+                <div className="card">
+                    <div className="card-icon ">
+                        <ImLab />
+                    </div>
+                    <div className="card-content">
+                        <h2 className="card-value">{progressValues[2]}</h2>
+                        <p className="card-subtitle">Research Labs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className='scroll-animation duration-2'>
+                <div className="card">
+                    <div className="card-icon">
+                        <FaAward />
+                    </div>
+                    <div className="card-content">
+                        <h2 className="card-value">{progressValues[3]}</h2>
+                        <p className="card-subtitle">Awards</p>
+                    </div>
+                </div>
+            </div>
+      </div>
 
     </>
   );
