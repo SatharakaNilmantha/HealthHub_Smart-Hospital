@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button } from 'react-bootstrap'; 
-import './DoctorSection.css'; 
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import './DoctorSection.css';
 
 import doctor1 from "../../Images/doctor/doctor1.jpg";
 import doctor2 from "../../Images/doctor/doctor2.jpg";
@@ -48,6 +48,16 @@ function DoctorSection() {
   ];
 
 
+  const [activeDepartment, setActiveDepartment] = useState("All");
+
+
+  const departments = ["All", ...new Set(doctors.map(doctor => doctor.department))];
+
+  const filteredDoctors = activeDepartment === "All" 
+    ? doctors 
+    : doctors.filter(doctor => doctor.department === activeDepartment);
+
+
   const handleConsultationAppointment = (doctorName) => {
     alert(`Consultation Appointment booked for ${doctorName}`);
   };
@@ -59,25 +69,40 @@ function DoctorSection() {
   return (
     <>
       <h1 className="text-3xl font-bold text-center mb-8">Doctors</h1>
+
+ 
+      <div className="department-tabs text-center mb-8">
+        {departments.map((department, index) => (
+          <Button
+            key={index}
+            variant={activeDepartment === department ? "primary" : "outline-primary"} // Highlight active tab
+            className="m-2"
+            onClick={() => setActiveDepartment(department)}
+          >
+            {department}
+          </Button>
+        ))}
+      </div>
+
+  
       <div className="doctors-container">
-        {doctors.map((doctor, index) => (
+        {filteredDoctors.map((doctor, index) => (
           <div key={index} className="doctor-card">
             <img src={doctor.imgSrc} alt={doctor.name} className="doctor-image" />
             <h3 className="doctor-name">{doctor.name}</h3>
             <p className="doctor-role">{doctor.title}</p>
             <p className="text-blue-500 font-medium">{doctor.department}</p>
-           
             <div className="button-container mt-4">
               <Button
-                variant="primary" 
-                className="w-100 mb-2" 
+                variant="primary"
+                className="w-100 mb-2"
                 onClick={() => handleConsultationAppointment(doctor.name)}
               >
                 Consultation Appointment
               </Button>
               <Button
-                variant="success" 
-                className="w-100" 
+                variant="success"
+                className="w-100"
                 onClick={() => handleTreatmentAppointment(doctor.name)}
               >
                 Treatment Appointment
