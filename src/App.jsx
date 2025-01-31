@@ -12,6 +12,7 @@ function App() {
   return (
     <>
      <HeaderContent/>
+     <div style={{marginTop:"200px"}}></div><AboutSection/>
     </>
   )
 }
