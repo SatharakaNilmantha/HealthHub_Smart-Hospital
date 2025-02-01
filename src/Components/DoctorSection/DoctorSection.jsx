@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './DoctorSection.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 import doctor1 from "../../Images/doctor/doctor1.jpg";
 import doctor2 from "../../Images/doctor/doctor2.jpg";
@@ -50,6 +51,8 @@ function DoctorSection() {
 
   const [activeDepartment, setActiveDepartment] = useState("All");
 
+  const navigate = useNavigate(); // Initialize navigate function
+
 
   const departments = ["All", ...new Set(doctors.map(doctor => doctor.department))];
 
@@ -58,12 +61,14 @@ function DoctorSection() {
     : doctors.filter(doctor => doctor.department === activeDepartment);
 
 
+  // Navigate to Consultation Appointment Page
   const handleConsultationAppointment = (doctorName) => {
-    alert(`Consultation Appointment booked for ${doctorName}`);
+    navigate(`/consultation-appointment`, { state: { doctor: doctorName } });
   };
 
+  // Navigate to Treatment Appointment Page
   const handleTreatmentAppointment = (doctorName) => {
-    alert(`Treatment Appointment booked for ${doctorName}`);
+    navigate(`/treatment-appointment`, { state: { doctor: doctorName } });
   };
 
   return (

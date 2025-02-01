@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+import CAppointment from './Pages/DoctorAppointmentpage/ConsultationAppointmentPage.jsx';
+import TAppointment from './Pages/DoctorAppointmentpage/TreatmentAppoitmentPage.jsx';
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,6 +15,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+  },
+  {
+    path: "/consultation-appointment",
+    element: <CAppointment/>,
+  },
+  {
+    path: "/treatment-appointment",
+    element: <TAppointment/>,
   },
 
 ]);
