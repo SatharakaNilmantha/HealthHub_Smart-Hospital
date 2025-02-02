@@ -29,6 +29,21 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.image-button-container {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  margin-bottom: 15px; 
+}
+
+.doctor-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
 .view-profile-btn {
   background-color: #17a2b8; 
   color: white;
@@ -41,13 +56,7 @@
   white-space: nowrap; 
 }
 
-.doctor-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  margin-bottom: 15px;
-  border-radius: 10px;
-}
+
 
 .doctor-name {
   font-size: 1.5rem;
@@ -72,4 +81,36 @@
   flex-wrap: wrap;
   gap: 10px; 
   margin-bottom: 20px;
+}
+
+.doctor-details {
+  text-align: left;
+}
+
+.doctor-info {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column; 
+  gap: 5px; 
+}
+
+.doctor-info p {
+  margin: 0; 
+  padding: 3px 0; 
+  font-weight: bold; 
+}
+.social-media-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  color: #17a2b8;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #138496;
 }
