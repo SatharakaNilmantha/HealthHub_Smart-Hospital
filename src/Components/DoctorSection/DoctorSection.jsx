@@ -95,15 +95,24 @@ function DoctorSection() {
         name: doctor.name,
         imgSrc: doctor.imgSrc,
         specialization: doctor.department,  
-        years: doctor.yearsOfExperience || "10+", 
-        fee: doctor.fee || "$50" 
+        years: doctor.yearsOfExperience , 
+        fee: doctor.fee 
       } 
     });
   };
 
-  const handleTreatmentAppointment = (doctorName) => {
-    navigate(`/treatment-appointment`, { state: { doctor: doctorName } });
+  const handleTreatmentAppointment = (doctor) => {
+    navigate(`/treatment-appointment`, { 
+      state: { 
+        name: doctor.name,
+        imgSrc: doctor.imgSrc,
+        specialization: doctor.department,  
+        years: doctor.yearsOfExperience , 
+        fee: doctor.fee  
+      } 
+    });
   };
+  
 
   const handleViewProfile = (doctor) => {
     if (expandedDoctor && expandedDoctor.name === doctor.name) {
@@ -193,7 +202,7 @@ function DoctorSection() {
                   <Button
                     variant="success"
                     className="w-100"
-                    onClick={() => handleTreatmentAppointment(doctor.name)}
+                    onClick={() => handleTreatmentAppointment(doctor)}
                   >
                     Treatment Appointment
                   </Button>

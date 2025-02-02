@@ -57,7 +57,7 @@ function ConsultationAppointmentPage() {
         <div className="body">
             <div className="appointment-container">
                 <header className="header">
-                    <h1>Appointment Booking</h1>
+                    <h1>Consultation Appointment Booking</h1>
                 </header>
 
                 
