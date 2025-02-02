@@ -3,8 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-import CAppointment from './Pages/DoctorAppointmentpage/ConsultationAppointmentPage.jsx';
-import TAppointment from './Pages/DoctorAppointmentpage/TreatmentAppoitmentPage.jsx';
+
+
+import LoginPage from './Pages/LoginPage/LoginPage.jsx';
+
+
+
 
 import {
   createBrowserRouter,
@@ -17,13 +21,10 @@ const router = createBrowserRouter([
     element: <App/>,
   },
   {
-    path: "/consultation-appointment",
-    element: <CAppointment/>,
+    path: "/login",
+    element: <LoginPage/>,
   },
-  {
-    path: "/treatment-appointment",
-    element: <TAppointment/>,
-  },
+  
 
 ]);
 
