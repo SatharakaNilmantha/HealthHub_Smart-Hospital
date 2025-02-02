@@ -26,29 +26,25 @@
 
 /* Custom styles for the DropdownButton */
 .custom-dropdown {
-  background-color: #0074cc; /* Change background color */
-  color: white; /* Text color */
-  border-radius: 20px;
+  border-radius: 8px;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-  transition: opacity 0.3s ease; /* Smooth transition on hover */
-  
 }
 
+/* Custom styles for dropdown items */
 .custom-dropdown-item {
-  color: #007bff; /* Text color for items */
   text-decoration: none;
 }
 
 .custom-dropdown-item:hover {
-  background-color: #dee2fb9a; /* Light background on hover */
-  color: #0056b3; /* Change text color on hover */
+  background-color: #dee2fb9a !important; /* Light background on hover */
 }
 
 .custom-dropdown-item:active {
-  background-color: #e9ecef; /* Active item background */
+  background-color: #e9ecef !important; /* Active item background */
 }
+
 
 
 

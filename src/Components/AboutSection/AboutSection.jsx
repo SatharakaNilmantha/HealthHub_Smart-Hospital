@@ -123,7 +123,7 @@ return (
    <> 
 
     {/*--------------------------------------title section -------------------------------------------------*/ }
-     <div className='scroll-animation'>
+     <div className='scroll-animation duration-2'>
         <h1  className='text-with-underline1'>About Us</h1>
         <p style={{textAlign:'center',marginTop:'30px'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aspernatur qui molestiae minus at soluta quaerat, officiis minima placeat nisi voluptatibus </p>
      </div>
@@ -218,7 +218,7 @@ return (
       </div>
 
 
-      {/* -------------------------About us section1 --------------------------------------------------- */}
+      {/* -------------------------About us section3 --------------------------------------------------- */}
       <div className='cont3 '>
          <div className='aboutpart4 '>
           
