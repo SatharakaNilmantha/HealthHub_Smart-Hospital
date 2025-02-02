@@ -6,7 +6,7 @@ import App from './App.jsx'
 
 
 import LoginPage from './Pages/LoginPage/LoginPage.jsx';
-
+import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 
 
 
@@ -25,6 +25,11 @@ const router = createBrowserRouter([
     element: <LoginPage/>,
   },
   
+  {
+    path: "/register",
+    element: <RegisterPage/>,
+  },
+ 
 
 ]);
 
