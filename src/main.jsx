@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+
 import CAppointment from './Pages/DoctorAppointmentpage/ConsultationAppointmentPage.jsx';
 import TAppointment from './Pages/DoctorAppointmentpage/TreatmentAppoitmentPage.jsx';
 

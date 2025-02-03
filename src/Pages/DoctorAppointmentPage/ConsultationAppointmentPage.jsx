@@ -5,6 +5,7 @@ import { FaAnglesLeft } from "react-icons/fa6";
 import 'react-calendar/dist/Calendar.css';
 import './AppointmentPage.css';
 
+
 function ConsultationAppointmentPage() {
     const location = useLocation();
     const doctor = location.state || {};

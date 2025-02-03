@@ -9,6 +9,7 @@ import doctor2 from "../../Images/doctor/doctor2.jpg";
 import doctor3 from "../../Images/doctor/doctor3.jpg";
 import doctor4 from "../../Images/doctor/doctor4.jpg";
 
+
 function DoctorSection() {
   const doctors = [
     { 
@@ -77,6 +78,7 @@ function DoctorSection() {
       languages: "English",
       fee: 50
     },
+    
   ];
 
   const [activeDepartment, setActiveDepartment] = useState("All");
