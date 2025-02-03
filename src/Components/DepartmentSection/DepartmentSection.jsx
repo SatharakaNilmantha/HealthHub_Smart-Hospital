@@ -1,65 +1,85 @@
-import React, { useState } from 'react'
-import './DepartmentSection.css'; // Import the CSS file for styling
+import React, { useState } from "react";
+import "./DepartmentSection.css"; // Import CSS file
 
-// Import images for each department
-import departmentImage1 from '../../Images/department/1.jpg';
-import departmentImage2 from '../../images/department/2.jpg';
-import departmentImage3 from '../../images/department/3.jpg';
-import departmentImage4 from '../../images/department/4.jpg';
-import departmentImage5 from '../../images/department/5.jpg';
-import departmentImage6 from '../../images/department/6.jpg';
+// Import icons for each department
+import { TbDental } from "react-icons/tb"; // Dentistry icon
+import { PiHandHeartBold } from "react-icons/pi"; // Cardiology icon
+import { MdHearing } from "react-icons/md"; // ENT Specialist icon
+import { LuBrain } from "react-icons/lu"; // Neurology icon
+import { TbStethoscope } from "react-icons/tb";; // Psychiatry & Radiology icon
+
+// Import department images
+import departmentImage1 from "../../Images/department/1.jpg";
+import departmentImage2 from "../../Images/department/2.jpg";
+import departmentImage3 from "../../Images/department/3.jpg";
+import departmentImage4 from "../../Images/department/4.jpg";
+import departmentImage5 from "../../Images/department/5.jpg";
+import departmentImage6 from "../../Images/department/6.jpg";
 
 function DepartmentSection() {
-  // State to track the selected department
-  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  // Set default department to Dentistry
+  const [selectedDepartment, setSelectedDepartment] = useState({
+    id: 1,
+    name: "Dentistry",
+    description:
+      "Dentistry is the branch of medicine that deals with the diagnosis, prevention, and treatment of conditions related to the teeth and gums. Our dental department is equipped with state-of-the-art technology to provide the best care.",
+    image: departmentImage1,
+    icon: <TbDental />,
+  });
 
-  // Department data
+  // Department data with icons
   const departments = [
     {
       id: 1,
-      name: 'Dentistry',
+      name: "Dentistry",
       description:
-        'Dentistry is the branch of medicine that deals with the diagnosis, prevention, and treatment of conditions related to the teeth and gums. Our dental department is equipped with state-of-the-art technology to provide the best care.',
+        "Dentistry is the branch of medicine that deals with the diagnosis, prevention, and treatment of conditions related to the teeth and gums. Our dental department is equipped with state-of-the-art technology to provide the best care.",
       image: departmentImage1,
+      icon: <TbDental />,
     },
     {
       id: 2,
-      name: 'Cardiology',
+      name: "Cardiology",
       description:
-        'Cardiology focuses on diagnosing and treating heart-related conditions. Our cardiology department offers comprehensive care with advanced diagnostic and therapeutic techniques.',
-      image: departmentImage2, // Same image for all departments
+        "Cardiology focuses on diagnosing and treating heart-related conditions. Our cardiology department offers comprehensive care with advanced diagnostic and therapeutic techniques.",
+      image: departmentImage2,
+      icon: <PiHandHeartBold />,
     },
     {
       id: 3,
-      name: 'ENT Specialists',
+      name: "ENT Specialists",
       description:
-        'Our ENT specialists treat disorders related to the ears, nose, and throat. We offer specialized care for a wide range of conditions affecting these vital organs.',
-      image: departmentImage3, // Same image for all departments
+        "Our ENT specialists treat disorders related to the ears, nose, and throat. We offer specialized care for a wide range of conditions affecting these vital organs.",
+      image: departmentImage3,
+      icon: <MdHearing />,
     },
     {
       id: 4,
-      name: 'Psychiatry',
+      name: "Psychiatry",
       description:
-        'Astrology is the study of celestial bodies’ movements and positions. Our astrology department offers insights based on astrological readings and predictions.',
-      image: departmentImage4, // Same image for all departments
+        "Psychiatry focuses on diagnosing and treating mental health conditions. Our psychiatry department offers expert counseling and medical treatments to support mental well-being.",
+      image: departmentImage4,
+      icon: <TbStethoscope />,
     },
     {
       id: 5,
-      name: 'Neurology',
+      name: "Neurology",
       description:
-        'Neuroanatomy is the study of the structure of the nervous system. Our neuroanatomy department provides detailed education and research opportunities in the field of brain and nervous system anatomy.',
-      image: departmentImage5, // Same image for all departments
+        "Neurology is the study of the nervous system and its disorders. Our neurology department specializes in treating brain and nervous system conditions.",
+      image: departmentImage5,
+      icon: <LuBrain />,
     },
     {
       id: 6,
-      name: 'Radiology',
+      name: "Radiology",
       description:
-        'Our blood screening department offers a wide range of diagnostic tests to detect and monitor various health conditions, ensuring timely and accurate results.',
-      image: departmentImage6, // Same image for all departments
+        "Radiology is the medical discipline that uses imaging techniques to diagnose and treat diseases. Our radiology department is equipped with modern imaging technology.",
+      image: departmentImage6,
+      icon: <TbStethoscope />,
     },
   ];
 
-  // Handle department click
+  // Handle department selection
   const handleDepartmentClick = (department) => {
     setSelectedDepartment(department);
   };
@@ -68,9 +88,10 @@ function DepartmentSection() {
     <div className="department-container">
       <h1>Departments</h1>
       <p className="department-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+        Explore our specialized medical departments, each dedicated to providing top-quality healthcare.
       </p>
 
+      {/* Department List */}
       <div className="department-list">
         {departments.map((department) => (
           <div
@@ -79,11 +100,12 @@ function DepartmentSection() {
             onClick={() => handleDepartmentClick(department)}
           >
             {department.name}
+            <div className="department-icon">{department.icon}</div> {/* Display icon below name */}
           </div>
         ))}
       </div>
 
-      {/* Display selected department details */}
+      {/* Selected Department Details */}
       {selectedDepartment && (
         <div className="department-details">
           <div className="department-description-section">
@@ -93,10 +115,8 @@ function DepartmentSection() {
               className="department-image"
             />
             <div className="department-text">
-              <h2>Dentist with surgical mask holding scaler near patient</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
-              </p>
+              <h2>{selectedDepartment.name}</h2>
+              <p>{selectedDepartment.description}</p>
               <button className="appointment-button">Make An Appointment</button>
             </div>
           </div>
@@ -104,7 +124,6 @@ function DepartmentSection() {
       )}
     </div>
   );
-
 }
 
-export default DepartmentSection
+export default DepartmentSection;
