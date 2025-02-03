@@ -5,9 +5,13 @@ import App from './App.jsx'
 
 
 
+
 import LoginPage from './Pages/LoginPage/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 
+
+import CAppointment from './Pages/DoctorAppointmentpage/ConsultationAppointmentPage.jsx';
+import TAppointment from './Pages/DoctorAppointmentpage/TreatmentAppoitmentPage.jsx';
 
 
 import {
