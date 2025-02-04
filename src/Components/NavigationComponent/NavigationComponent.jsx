@@ -59,9 +59,9 @@ function NavigationComponent() {
             {/* Display Log Out button and dropdown if the user is logged in */}
             {isLoggedIn ? (
               <>
-                <DropdownButton title="My Profile" className="custom-dropdown" >
-                  <Dropdown.Item as="div" className="custom-dropdown-item"><Link to="/myProfile" style={{ textDecoration: 'none' }} onClick={handleClick}>My profile</Link></Dropdown.Item>
-                  <Dropdown.Item as="div" className="custom-dropdown-item"><Link to="/myAppointment" style={{ textDecoration: 'none' }} onClick={handleClick}>My Appointments</Link></Dropdown.Item>
+                <DropdownButton title="My Profile" variant="#28a745" style={{ backgroundColor: '#27a8b0', color: 'white', Width: '300px' }}   className="custom-dropdown" >
+                  <Dropdown.Item as="div" className="custom-dropdown-item"><Link to="/myProfile" style={{ textDecoration: 'none', color: '#27a8b0' }} onClick={handleClick}>My profile</Link></Dropdown.Item>
+                  <Dropdown.Item as="div" className="custom-dropdown-item"><Link to="/myAppointment" style={{ textDecoration: 'none', color: '#27a8b0' }} onClick={handleClick}>My Appointments</Link></Dropdown.Item>
                   <Dropdown.Item as="div" onClick={handleLogout} className="custom-dropdown-item" style={{ color: 'red' }} >Log Out <span style={{ fontSize: '20px' }}><IoLogOutOutline /></span></Dropdown.Item>
                 </DropdownButton>
               </>
