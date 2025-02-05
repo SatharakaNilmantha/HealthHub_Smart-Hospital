@@ -1,0 +1,98 @@
+.text3 {
+    text-align: center;
+    position: relative;
+    font-size: 54px;
+    color: #5B8689;
+    margin-top: 60px;
+    
+  }
+
+
+/*----------------------------------------------------------------------*/
+
+.contactSection {
+  display: grid;
+  grid-template-columns: 500px auto;
+  margin: 80px 70px 0px;
+  align-items:baseline baseline;
+  gap: 30px;
+}
+
+.cardsection1{
+  display: grid;
+  grid-template-rows: auto;
+  gap: 20px;
+  
+}
+.cardsection2{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+/* Section layout */
+.section1 {
+  display: grid;
+  grid-template-rows: 50px auto;
+  align-items: center;
+  box-shadow: 0.1px 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+}
+.section2{
+   text-align: center;
+}
+.messagesection{
+  padding: 20px;
+  box-shadow: 0.1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.con_icon {
+  font-size: 30px;
+  text-align: center;
+  color: #27a6ae;
+  border-radius: 50%;
+  border: 2px solid #27a6ae;
+  width :50px ;
+  position: relative;
+  left: 35%;
+}
+
+/* Form control styling */
+.form-control {
+  border-radius: 2px;
+}
+
+.form-control:focus {
+  outline: 0.1px solid #114268; /* Blue outline when focused */
+  box-shadow: none; /* Removes the default box-shadow */
+}
+
+/* Button styling */
+.send-button {
+  position: relative;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #27a6ae;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.3s ease; /* Smooth transition on hover */
+}
+
+.send-button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 1000px) {
+  .contactSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
