@@ -1,15 +1,21 @@
 import React, { useEffect, useState ,useRef } from 'react';
 
 import { LiaCheckDoubleSolid } from "react-icons/lia";
-import { FaPumpMedical ,FaHeartCirclePlus,FaUserDoctor  } from "react-icons/fa6";
+import {FaUserDoctor  } from "react-icons/fa6";
 import { FaHospitalUser,FaAward } from "react-icons/fa";
 import { ImLab } from "react-icons/im";
+
+import { FaHandHoldingHeart } from "react-icons/fa6";
+import { FaKitMedical } from "react-icons/fa6";
+import { FaStaffSnake } from "react-icons/fa6";
+import { FaLungs } from "react-icons/fa";
 
 
 
 
 import Row from 'react-bootstrap/Row';
 import AboutImg from '../../images/about/about.jpg'
+import featurImg from '../../Images/about/features.jpg'
 import './AboutSection.css'
 
 
@@ -117,7 +123,7 @@ return (
    <> 
 
     {/*--------------------------------------title section -------------------------------------------------*/ }
-     <div className='scroll-animation'>
+     <div className='scroll-animation duration-2'>
         <h1  className='text-with-underline1'>About Us</h1>
         <p style={{textAlign:'center',marginTop:'30px'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aspernatur qui molestiae minus at soluta quaerat, officiis minima placeat nisi voluptatibus </p>
      </div>
@@ -210,6 +216,54 @@ return (
                 </div>
             </div>
       </div>
+
+
+      {/* -------------------------About us section3 --------------------------------------------------- */}
+      <div className='cont3 '>
+         <div className='aboutpart4 '>
+          
+            <p className='aboutimgs scroll-animation duration-1 ' ><img className='featurImg' src={featurImg} alt="" /></p>
+
+            <div className='scroll-animation duration-3 ' >
+              <h3 style={{color:'#2c4964', fontWeight:'800'}}>Enim quis est voluptatibus aliquid <br />consequatur fugiat </h3>
+              <p style={{textAlign:'justify',color:'#444444',marginTop:"20px"}}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Beatae alias rem libero numquam dolorum magni natus possimus. Dolorem facilis nulla blanditiis qui,
+                placeat deserunt quas maxime iusto quos dignissimos ex. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Sunt incidunt possimus quibusdam, </p>
+
+                  <Row className='aboutpart5'>
+                    <div className='icon3'><FaHandHoldingHeart /></div>
+                    <div>
+                      <h4 style={{color:'#2c4964', fontWeight:'800'}}>Lorem Ipsum </h4>
+                      <p style={{textAlign:'justify',color:'#444444'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio atque deserunt eos </p>
+                    </div>
+                  </Row>
+                  <Row className='aboutpart5'>
+                    <div className='icon3'><FaKitMedical /></div>
+                    <div>
+                    <h4 style={{color:'#2c4964', fontWeight:'800'}}>Nemo Enim  </h4>
+                      <p style={{textAlign:'justify',color:'#444444'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio atque deserunt eos  </p>
+                    </div>
+                  </Row>
+                  <Row className='aboutpart5'>
+                    <div className='icon3'><FaStaffSnake /></div>
+                    <div>  
+                      <h4 style={{color:'#2c4964', fontWeight:'800'}}>Dine Pad  </h4> 
+                      <p style={{textAlign:'justify',color:'#444444'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio atque deserunt eos  </p>
+                      </div>
+                  </Row> 
+                  <Row className='aboutpart5 b'>
+                    <div className='icon3'><FaLungs /></div>
+                    <div>  
+                      <h4 style={{color:'#2c4964', fontWeight:'800'}}>Tride clov  </h4> 
+                      <p style={{textAlign:'justify',color:'#444444'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odio atque deserunt eos  </p>
+                      </div>
+                  </Row> 
+
+            </div>
+          </div>
+      </div>
+
 
     </>
   );
