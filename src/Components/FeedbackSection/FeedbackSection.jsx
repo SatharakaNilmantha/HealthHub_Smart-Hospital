@@ -1,10 +1,9 @@
 
-import React from 'react'
+import React, { useEffect} from 'react';
 import './FeedbackSection.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
 import Card from 'react-bootstrap/Card';
 import { CardTitle } from 'react-bootstrap';
 
@@ -60,15 +59,42 @@ function FeedbackSection() {
            
      
       ];
+
+
+      //----------------------------------scroll direction code ------------------------------------//
+      
+      // IntersectionObserver to trigger animation when elements come into the viewport
+         useEffect(() => {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('scroll-up');
+              observer.unobserve(entry.target); // Stop observing after animation
+            }
+          });
+        }, {
+          threshold: 0.1 // Trigger when 10% of the element is in the viewport
+        });
+      
+        // Observe all the elements with the 'scroll-animation' class
+        const animatedDivs = document.querySelectorAll('.scroll-animation');
+      
+        animatedDivs.forEach(div => {observer.observe(div);});
+        
+        return () => {
+          observer.disconnect(); // Clean up observer on component unmount
+        };
+         }, []);
+      
   return (
     <>
      <div className='Testimonialsection'>
-        <div style={{ textAlign:"justify" ,paddingRight:"20px" }}>
+        <div style={{ textAlign:"justify" ,paddingRight:"20px" }} className='scroll-animation duration-2'>
            <h2 style={{ color: "#2c4964",fontWeight: 800 }}>Testimonials</h2>
            <p style={{   fontSize: "18px", color: "#444444",marginTop:"10px"}}>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
         </div>
 
-        <div className="slidesection ">
+        <div className="slidesections scroll-animation duration-2">
         <Slider {...settings}>
 
             {Comments.map( Comment =>(

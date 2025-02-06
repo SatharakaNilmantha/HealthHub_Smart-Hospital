@@ -9,7 +9,7 @@ function MyProfilePage() {
 
     // State to hold user profile data
     const [userData, setUserData] = useState({
-        name: "Satharaka Nilmanta",  // Default user name
+        name: "wiliyam james",  // Default user name
         dob: "9/12/2000",  // Default date of birth
         country: "Sri Lanka",  // Default country
         gender: "Male",  // Default gender
