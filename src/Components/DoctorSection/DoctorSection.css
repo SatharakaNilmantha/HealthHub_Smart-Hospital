@@ -1,14 +1,20 @@
+/* Title styling */
+.text {
+  text-align: center;
+  position: relative;
+  font-size: 54px;
+  color: #5B8689;
+  margin-top: 20px;
+}
 
 .doctors-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  gap: 20px;
-  padding: 20px;
-  margin-top: 20px;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: repeat(4, 1fr); /* Ensures exactly 3 columns per row */
+  row-gap: 30px;
+  text-align: right;
+  margin-left: 10px;
 }
+
 
 .doctor-card {
   text-align: center;
@@ -74,6 +80,26 @@
   display: flex;
   flex-direction: column;
   gap: 10px; 
+
+}
+
+.custom-button {
+  width: 160px; /* Adjust width */
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.custom-button.active {
+  background-color: #27a8b0; /* Active color */
+  color: white;
+}
+
+.custom-button.inactive {
+  background-color: #fff;
+  color: #27a8b0;
+  border: 1px  #27a8b0 solid;
 }
 
 .department-tabs {
@@ -81,6 +107,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px; 
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 

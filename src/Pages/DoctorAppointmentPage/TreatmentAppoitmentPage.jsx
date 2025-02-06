@@ -51,8 +51,13 @@ function TreatmentAppointmentPage() {
         }
     };
 
-    const navigate = useNavigate();
-    const handleBackClick = () => navigate(-1);
+//---------------------------------------------handle back link using navigate hook---------------------------------//
+
+const navigate = useNavigate(); // Initialize the navigate function
+
+const handleBackClick = () => {
+    navigate(-1); // This will navigate to the previous page in the history stack
+};
 
     return (
         <div className="body">
