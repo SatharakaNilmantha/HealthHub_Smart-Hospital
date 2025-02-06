@@ -9,11 +9,12 @@ import './AppointmentPage.css';
 function TreatmentAppointmentPage() {
     const location = useLocation();
     const doctor = location.state || {};
-    const today = new Date();
+    const tommorow = new Date();
+    tommorow.setDate(tommorow.getDate() + 1); // Ensuring the starting date is tomorrow
     const twoMonthsLater = new Date();
-    twoMonthsLater.setMonth(today.getMonth() + 2);
+    twoMonthsLater.setMonth(tommorow.getMonth() + 2);
 
-    const [selectedDate, setSelectedDate] = useState(today);
+    const [selectedDate, setSelectedDate] = useState(tommorow);
     const [selectedTime, setSelectedTime] = useState(null);
     const [bookingConfirmation, setBookingConfirmation] = useState("");
 
@@ -81,7 +82,7 @@ const handleBackClick = () => {
                         <Calendar
                             onChange={handleDateClick}
                             value={selectedDate}
-                            minDate={today}
+                            minDate={tommorow}
                             maxDate={twoMonthsLater}
                         />
 

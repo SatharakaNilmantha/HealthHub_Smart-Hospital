@@ -34,9 +34,8 @@ function AboveDepartmentSection() {
       <div className='abovedsection '>
          
           <h1 className='scroll-animation duration-2'>Your Health is Our Priority</h1>
-          <p className='scroll-animation duration-2'>We can manage your dream building A small river named Duden flows by their place </p>
-          
-          <div style={{textAlign:"center",marginTop:'50px'}}> <a href="#" className="Sbutton scroll-animation duration-2">Search Places</a></div>
+          <p className='scroll-animation duration-2'>We can manage your dream building A small river named Duden flows by their place </p> 
+          <div className='scroll-animation duration-2'  style={{textAlign:"center",marginTop:'50px'}}> <a href="#" className="Sbutton ">Search Places</a></div>
       </div>
     </>
   )

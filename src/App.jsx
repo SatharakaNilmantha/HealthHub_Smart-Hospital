@@ -30,7 +30,7 @@ function App() {
        <div style={{marginTop:'135px'}}><HeroSection/></div>
        <div style={{marginTop:'80px'}}><AboutSection/></div>
        <div style={{marginTop:'55px'}}><ServiceSection/></div>
-       <AboveDepartmentSection/>
+       <div style={{marginTop:'50px'}}><AboveDepartmentSection/></div>
        <div style={{marginTop:'100px'}}><DepartmentSection/></div>
        <div style={{marginTop:'80px'}}><DoctorSection/></div>
        <div style={{marginTop:'80px'}}><FeedbackSection/></div>

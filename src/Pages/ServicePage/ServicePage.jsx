@@ -3,6 +3,7 @@ import HeaderContent from '../../Components/HeaderContent/HeaderContent'
 import BodyContent from '../../Components/BoadyContent/BodyContent'
 import FooterContent from '../../Components/FooterContent/FooterContent'
 import ServiceSection from '../../Components/ServiceSection/ServiceSection'
+import AboveDepartmentSection from '../../Components/AboveDepartmentSection/AboveDepartmentSection'
 
 function ServicePage() {
   return (
