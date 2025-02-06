@@ -11,7 +11,7 @@
 }
 
 /* ------ Slide section --------- */
-.slidesection {
+.slidesections {
   width: 700px;
   height: inherit;
   box-shadow: 0.1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -20,9 +20,9 @@
 }
 
 .slidecard {
-  display: grid;
-  grid-template-rows: auto;
   width: auto;
+  display: flex;
+  box-shadow: none;
 }
 
 .cardtitle {
@@ -50,14 +50,14 @@
   height: 14px;
   content: "•";
   text-align: center;
-  color: #0074cc !important; /* Set default (inactive) dot color to blue */
+  color: #27a6ae !important; /* Set default (inactive) dot color to blue */
   opacity: 0.5; /* Adjust the opacity of inactive dots */
   transition: color 0.3s, opacity 0.3s, font-size 0.1s; /* Smooth transition for changes */
 }
 
 .slick-dots li.slick-active button:before {
   font-size: 14px; /* Increase size for the active dot */
-  color: #0074cc; /* Keep the active dot blue */
+  color: #27a6ae; /* Keep the active dot blue */
   opacity: 1; /* Fully visible for the active dot */
 }
 

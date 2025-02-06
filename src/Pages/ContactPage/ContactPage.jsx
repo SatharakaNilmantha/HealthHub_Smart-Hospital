@@ -1,21 +1,19 @@
 import React from 'react'
 import HeaderContent from '../../Components/HeaderContent/HeaderContent'
-import AboutSection  from '../../Components/AboutSection/AboutSection'
-
 import BodyContent from '../../Components/BoadyContent/BodyContent'
+import ContactSection from '../../Components/ContactSection/ContactSection'
 import FooterContent from '../../Components/FooterContent/FooterContent'
 
-function AboutPage() {
+function ContactPage() {
   return (
     <>
      <HeaderContent/>
      <BodyContent>
-       <div style={{marginTop:'175px'}}><AboutSection/></div>
-       
-       </BodyContent>
+        <div style={{marginTop:'180px'}}><ContactSection/></div>
+     </BodyContent>
      <FooterContent/>
     </>
   )
 }
 
-export default AboutPage
+export default ContactPage
