@@ -150,6 +150,9 @@ function DoctorSection() {
       observer.disconnect(); // Clean up observer on component unmount
     };
      }, []);
+
+
+  
   
 
   return (
@@ -232,20 +235,8 @@ function DoctorSection() {
                 <p className="doctor-role">{doctor.title}</p>
                 <p className="text-blue-500 font-medium">{doctor.department}</p>
                 <div className="button-container mt-4">
-                  <Button
-                    variant="primary"
-                    className="w-100 mb-2"
-                    onClick={() => handleConsultationAppointment(doctor)}
-                  >
-                    Consultation Appointment
-                  </Button>
-                  <Button
-                    variant="success"
-                    className="w-100"
-                    onClick={() => handleTreatmentAppointment(doctor)}
-                  >
-                    Treatment Appointment
-                  </Button>
+                  <Button variant="primary"className="w-100 mb-2"onClick={() => handleConsultationAppointment(doctor)} >Consultation Appointment</Button>
+                  <Button variant="success" className="w-100"onClick={() => handleTreatmentAppointment(doctor)}>Treatment Appointment</Button>
                 </div>
               </>
             )}
