@@ -6,7 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import './AppointmentPage.css';
 
 
-function ConsultationAppointmentPage() {
+function TreatmentAppointmentPage() {
     const location = useLocation();
     const doctor = location.state || {};
     const today = new Date();
@@ -45,29 +45,32 @@ function ConsultationAppointmentPage() {
     const handleBooking = () => {
         if (selectedDate && selectedTime) {
             const formattedDate = selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-            setBookingConfirmation({ message: `Appointment booked on ${formattedDate} at ${selectedTime}`, color: 'green' });
+            setBookingConfirmation({ message: `Treatment appointment booked on ${formattedDate} at ${selectedTime}`, color: 'green' });
         } else {
             setBookingConfirmation({ message: "Please select both a date and time.", color: 'red' });
         }
     };
 
-    const navigate = useNavigate();
-    const handleBackClick = () => navigate(-1);
+//---------------------------------------------handle back link using navigate hook---------------------------------//
 
+const navigate = useNavigate(); // Initialize the navigate function
+
+const handleBackClick = () => {
+    navigate(-1); // This will navigate to the previous page in the history stack
+};
     return (
         <div className="body">
             <div className="appointment-container">
                 <header className="header">
-                    <h1>Consultation Appointment Booking</h1>
+                    <h1>Treatment Appointment Booking</h1>
                 </header>
 
-                
                 <div className="doctor-info">
                     <img src={doctor.imgSrc} alt={doctor.name} className="doctor-image" />
                     <div className="doctor-details">
                         <h2>{doctor.name} <span className="verified-badge">✔</span></h2>
                         <p>{doctor.specialization} | {doctor.years} Years</p>
-                        <p className="fee">Appointment Fee: <strong>{doctor.fee}</strong></p>
+                        <p className="fee">Treatment Fee: <strong>{doctor.fee}</strong></p>
                     </div>
                 </div>
 
@@ -89,7 +92,7 @@ function ConsultationAppointmentPage() {
                             ))}
                         </div>
 
-                        <button className="booking-button" onClick={handleBooking}>Book an appointment</button>
+                        <button className="booking-button" onClick={handleBooking}>Book a treatment appointment</button>
                         <div className="confirmation-message" style={{ color: bookingConfirmation.color }}>{bookingConfirmation.message}</div>
                     </div>
                 </div>
@@ -100,4 +103,4 @@ function ConsultationAppointmentPage() {
     );
 }
 
-export default ConsultationAppointmentPage;
+export default TreatmentAppointmentPage;

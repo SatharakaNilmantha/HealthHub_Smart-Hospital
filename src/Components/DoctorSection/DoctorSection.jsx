@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './DoctorSection.css';
 import { useNavigate } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
-import doctor1 from "../../Images/doctor/doctor1.jpg";
-import doctor2 from "../../Images/doctor/doctor2.jpg";
-import doctor3 from "../../Images/doctor/doctor3.jpg";
-import doctor4 from "../../Images/doctor/doctor4.jpg";
+import doctor1 from "../../Images/doctors/doctors-1.jpg";
+import doctor2 from "../../Images/doctors/doctors-2.jpg";
+import doctor3 from "../../Images/doctors/doctors-3.jpg";
+import doctor4 from "../../Images/doctors/doctors-4.jpg";
 
 
 function DoctorSection() {
@@ -79,6 +79,7 @@ function DoctorSection() {
       fee: 50
     },
     
+    
   ];
 
   const [activeDepartment, setActiveDepartment] = useState("All");
@@ -124,48 +125,85 @@ function DoctorSection() {
     }
   };
 
+
+  //----------------------------------scroll direction code ------------------------------------//
+  
+  // IntersectionObserver to trigger animation when elements come into the viewport
+     useEffect(() => {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-up');
+          observer.unobserve(entry.target); // Stop observing after animation
+        }
+      });
+    }, {
+      threshold: 0.1 // Trigger when 10% of the element is in the viewport
+    });
+  
+    // Observe all the elements with the 'scroll-animation' class
+    const animatedDivs = document.querySelectorAll('.scroll-animation');
+  
+    animatedDivs.forEach(div => {observer.observe(div);});
+    
+    return () => {
+      observer.disconnect(); // Clean up observer on component unmount
+    };
+     }, []);
+  
+
   return (
     <>
-      <h1 className="text-3xl font-bold text-center mb-8">Doctors</h1>
-      <div className="department-tabs text-center mb-8">
+
+      {/*--------------------------------------title section -------------------------------------------------*/}
+      <div className="scroll-animation duration-2">
+        <h1 className="text  ">Doctors</h1>
+        <p style={{ textAlign: "center", marginTop: "20px" }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          aspernatur qui molestiae minus at soluta quaerat, officiis minima
+          placeat nisi voluptatibus
+        </p>
+      </div>
+
+      <div className="department-tabs text-center mb-8  scroll-animation duration-2">
         {departments.map((department, index) => (
           <Button
             key={index}
-            variant={activeDepartment === department ? "primary" : "outline-primary"} 
-            className="m-2"
+            className={`custom-button ${activeDepartment === department ? "active" : "inactive"}`}
             onClick={() => setActiveDepartment(department)}
           >
             {department}
           </Button>
+
         ))}
       </div>
 
-      <div className="doctors-container">
-        {filteredDoctors.map((doctor, index) => (
-          <div key={index} className="doctor-card">
+      <div className='doctors-container scroll-animation duration-2' >
+        {filteredDoctors.map((doctor, index) => (  
+          <div key={index} className='doctor-card ' >
             {expandedDoctor && expandedDoctor.name === doctor.name ? (
-              <div className="doctor-details">
-                <div className="image-button-container">
-                  <img src={doctor.imgSrc} alt={doctor.name} className="doctor-image" />
+              <div className='doctor-details '>
+                <div className='image-button-container'>
+                  <img src={doctor.imgSrc} alt={doctor.name} className='doctor-image' />
                   <Button
                     variant="info"
-                    className="view-profile-btn"
+                    className='view-profile-btn'
                     onClick={() => handleViewProfile(doctor)}
                   >
                     Back
                   </Button>
                 </div>
-                <h3 className="doctor-name">{doctor.name}</h3>
-                <p className="doctor-role">{doctor.title}</p>
-                <p className="text-blue-500 font-medium">{doctor.department}</p>
-                <div className="doctor-info">
+                <h3 className='doctor-name'>{doctor.name}</h3>
+                <p className='doctor-role'>{doctor.title}</p>
+                <p className='text-blue-500 font-medium'>{doctor.department}</p>
+                <div className='doctor-info'>
                   <p><strong>Years of Experience:</strong> {doctor.yearsOfExperience}</p>
                   <p><strong>Consultation Fee:</strong> ${doctor.fee}</p>
                   <p><strong>Qualifications:</strong> {doctor.qualification}</p>
                   <p><strong>Medical License Number:</strong> {doctor.medicalLicenceNo}</p>
                   <p><strong>Languages Spoken:</strong> {doctor.languages}</p>
                 </div>
-                <div className="social-media-icons">
+                <div className='social-media-icons'>
                   <a href="#" className="social-icon">
                     <FaFacebook />
                   </a>
@@ -180,7 +218,7 @@ function DoctorSection() {
             ) : (
 
               <>
-                <div className="image-button-container">
+                <div className="image-button-container ">
                   <img src={doctor.imgSrc} alt={doctor.name} className="doctor-image" />
                   <Button
                     variant="info"
@@ -212,6 +250,7 @@ function DoctorSection() {
               </>
             )}
           </div>
+          
         ))}
       </div>
     </>
