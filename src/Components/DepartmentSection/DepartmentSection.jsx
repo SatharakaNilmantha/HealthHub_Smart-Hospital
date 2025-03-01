@@ -115,7 +115,7 @@ function DepartmentSection() {
       {/*--------------------------------------title section -------------------------------------------------*/}
       <div className="scroll-animation">
         <h1 className="text  ">Department</h1>
-        <p style={{ textAlign: "center", marginTop: "20px" }}>
+        <p style={{ textAlign: "center", marginTop: "20px",color:"#333"}}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
           aspernatur qui molestiae minus at soluta quaerat, officiis minima
           placeat nisi voluptatibus
