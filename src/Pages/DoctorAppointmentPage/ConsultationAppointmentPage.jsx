@@ -63,7 +63,7 @@ const handleBackClick = () => {
         <div className="body">
             <div className="appointment-container">
                 <header className="header">
-                    <h1>Treatment Appointment Booking</h1>
+                    <h1>consultation Appointment Booking</h1>
                 </header>
 
                 <div className="doctor-info">
@@ -93,7 +93,7 @@ const handleBackClick = () => {
                             ))}
                         </div>
 
-                        <button className="booking-button" onClick={handleBooking}>Book a treatment appointment</button>
+                        <button className="booking-button" onClick={handleBooking}>Book a consultation appointment</button>
                         <div className="confirmation-message" style={{ color: bookingConfirmation.color }}>{bookingConfirmation.message}</div>
                     </div>
                 </div>

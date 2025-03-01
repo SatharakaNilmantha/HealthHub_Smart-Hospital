@@ -7,7 +7,7 @@ import App from './App.jsx'
 
 
 import LoginPage from './Pages/LoginPage/LoginPage.jsx';
-import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
+import RegisterPage from './Pages/RegisterPage/RegisterPage.jsx';
 import MyProfile from './Pages/MyProfilePage/MyProfilePage.jsx';
 import MyAppointment from './Pages/MyAppointmentPage/MyAppointmentPage.jsx'
 

@@ -68,7 +68,7 @@ function DoctorSection() {
       fee: 50
     },
     { 
-      department: "Orthopedics",
+      department: "Orthopedic",
       name: "Pumudi Wijerathne",
       title: "Orthopedic Specialist",
       imgSrc: doctor4,
@@ -161,7 +161,7 @@ function DoctorSection() {
       {/*--------------------------------------title section -------------------------------------------------*/}
       <div className="scroll-animation duration-2">
         <h1 className="text  ">Doctors</h1>
-        <p style={{ textAlign: "center", marginTop: "20px" }}>
+        <p style={{ textAlign: "center", marginTop: "20px" ,color:"#333"}}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
           aspernatur qui molestiae minus at soluta quaerat, officiis minima
           placeat nisi voluptatibus

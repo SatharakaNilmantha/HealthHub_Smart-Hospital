@@ -47,7 +47,7 @@ function ServiceSection() {
       <div className="services-top text-center scroll-animation duration-2">
         <h2>What We Offer</h2>
         <h2 className="services-title">Our Services</h2>
-        <p>
+        <p style={{color:"#212529"}}>
           Our <span className="highlight">experienced</span> and{" "}
           <span className="highlight">dedicated</span> staff provide these services with a smile.
         </p>
