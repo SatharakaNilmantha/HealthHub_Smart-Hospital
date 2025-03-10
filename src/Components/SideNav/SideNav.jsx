@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTachometerAlt, faUserMd, faEnvelope, faBuilding, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "react-bootstrap";
@@ -8,6 +8,7 @@ import "./SideNav.css";
 
 function SideNav() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
 
   function handleClick() {
@@ -19,6 +20,15 @@ function SideNav() {
     setOpenDropdown((prev) => (prev === toggleKey ? null : toggleKey));
   }
 
+  // ✅ Prevents page reload when clicking on the Dashboard link
+  function handleDashboardClick(e) {
+    if (location.pathname === "/dashboard") {
+      e.preventDefault(); // Prevent reloading the same page
+    } else {
+      navigate("/dashboard");
+    }
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
@@ -27,7 +37,11 @@ function SideNav() {
 
       <ul className="sidebar-links">
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} onClick={handleClick}>
+          <NavLink 
+            to="/dashboard" 
+            className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} 
+            onClick={handleDashboardClick} // ✅ Updated event handler
+          >
             <FontAwesomeIcon icon={faTachometerAlt} className="sidebar-icon" />
             <span>Dashboard</span>
           </NavLink>
@@ -36,7 +50,7 @@ function SideNav() {
         {/* Doctors Dropdown */}
         <li>
           <Dropdown show={openDropdown === "doctors"} onToggle={() => handleDropdown("doctors")}>
-          <Dropdown.Toggle variant="light"className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/doctors") || location.pathname.startsWith("/adddoctor") ? "active" : "" }`}>
+            <Dropdown.Toggle variant="light" className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/doctors") || location.pathname.startsWith("/adddoctor") ? "active" : "" }`}>
               <div className="dropdown-content">
                 <FontAwesomeIcon icon={faUserMd} className="sidebar-icon" />
                 <span className="dropdown-text">Doctors</span>
@@ -53,7 +67,7 @@ function SideNav() {
         {/* Department Dropdown */}
         <li>
           <Dropdown show={openDropdown === "department"} onToggle={() => handleDropdown("department")}>
-          <Dropdown.Toggle variant="light"className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/departments") || location.pathname.startsWith("/adddepartment") ? "active" : "" }`}>
+            <Dropdown.Toggle variant="light" className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/departments") || location.pathname.startsWith("/adddepartment") ? "active" : "" }`}>
               <div className="dropdown-content">
                 <FontAwesomeIcon icon={faBuilding} className="sidebar-icon" />
                 <span className="dropdown-text">Department</span>
@@ -70,7 +84,7 @@ function SideNav() {
         {/* Employees Dropdown */}
         <li>
           <Dropdown show={openDropdown === "employees"} onToggle={() => handleDropdown("employees")}>
-          <Dropdown.Toggle variant="light"className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/employees") || location.pathname.startsWith("/addemployee") ? "active" : "" }`}>
+            <Dropdown.Toggle variant="light" className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/employees") || location.pathname.startsWith("/addemployee") ? "active" : "" }`}>
               <div className="dropdown-content">
                 <FontAwesomeIcon icon={faUsers} className="sidebar-icon" />
                 <span className="dropdown-text">Employees</span>
