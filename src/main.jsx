@@ -7,9 +7,6 @@ import App from './App.jsx'
 import Login from './Pages/LoginPage/Login'; // Import Login component
 import Signup from './Pages/RegisterPage/Signup'; // Import Signup component
 
-
-
-
 import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
 
 
