@@ -5,12 +5,19 @@ import './index.css'
 
 import App from './App.jsx'
 
+import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <div><App/></div>,
   },
+  {
+    path: "/",
+    element: <ViewDoctors/>,
+  },
+  
 
 ]);
 

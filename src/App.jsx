@@ -1,6 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import SideNav from "./Components/SideNav/SideNav";
+import ViewDoctors from "./Pages/ViewDoctorsPage/ViewDoctors.jsx"; // Import ViewDoctors page
+
 
 function App() {
 
@@ -25,6 +28,10 @@ function App() {
       <div className="app-container">
         <SideNav />
         <div className="content">
+        <Routes>
+            <Route path="/doctors" element={<ViewDoctors />} />
+            
+          </Routes>
          <div>
           <h1 className="dashboard-title">Welcome to HealthHub Medial Center </h1>
           <p className="dashboard-description">Manage your Departmens, Doctors, and Employees seamlessly</p>
@@ -59,6 +66,9 @@ function App() {
         </div>
         </div>
       </div>
+
+      <div className="min-h-screen flex items-center justify-center bg-teal-100">
+    </div>
     </>
   );
 }
