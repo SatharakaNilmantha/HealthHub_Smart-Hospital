@@ -1,3 +1,4 @@
+
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -5,6 +6,17 @@ import './index.css';
 import App from './App';
 import Login from './Pages/LoginPage/Login'; // Import Login component
 import Signup from './Pages/RegisterPage/Signup'; // Import Signup component
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import {createBrowserRouter,RouterProvider,} from "react-router-dom";
+import './index.css'
+
+import App from './App.jsx'
+
+import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
+
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +35,15 @@ const router = createBrowserRouter([
     path: '/dashboard', // Route for the dashboard (App component)
     element: <App />,
   },
+
+
+  {
+    path: "/",
+    element: <ViewDoctors/>,
+  },
+  
+
+
 ]);
 
 createRoot(document.getElementById('root')).render(
