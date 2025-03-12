@@ -1,12 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
+import VDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
+import DoctorsList from './Pages/DoctorsListPage/DoctorsListPage.jsx';
+
 import './index.css'
-
 import App from './App.jsx'
-
-import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
-
 
 const router = createBrowserRouter([
   {
@@ -14,8 +13,12 @@ const router = createBrowserRouter([
     element: <div><App/></div>,
   },
   {
-    path: "/",
-    element: <ViewDoctors/>,
+    path: "/view-doctor-profile",
+    element: <VDoctors/>,
+  },
+  {
+    path: "/doctors",
+    element: <DoctorsList/>,
   },
   
 
