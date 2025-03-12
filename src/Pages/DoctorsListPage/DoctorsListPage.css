@@ -1,0 +1,94 @@
+/* Page Layout */
+.doctors-page {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Department Tabs */
+.department-tabs {
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    margin: 5px;
+}
+
+/* Doctors Grid */
+.doctors-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Doctor Card */
+.doctor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Doctor Image */
+.doctor-image {
+    width: 100%; /* Ensures the image fills the container */
+    height: 200px; /* Adjust height for consistency */
+    object-fit: cover; /* Ensures image maintains proportions */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Doctor Details */
+.doctor-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.doctor-role {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.doctor-department {
+    font-size: 0.9rem;
+    color: #17a2b8;
+    font-weight: bold;
+}
+
+/* View Profile Button */
+.view-profile-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-profile-btn:hover {
+    background-color: #138496;
+}
