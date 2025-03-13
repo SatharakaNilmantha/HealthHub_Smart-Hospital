@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import SideNav from "./Components/SideNav/SideNav";
+import SideNav from "./Components/SideNav/SideNav.jsx";
 import { FaCalendarCheck, FaUserMd, FaUserInjured, FaStethoscope } from "react-icons/fa"; // Import React Icons
 
 function App() {
