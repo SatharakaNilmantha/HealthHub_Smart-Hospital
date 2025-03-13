@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import './ViewEmployee.css';
 
+import SideNav from "../../components/SideNav/SideNav";
+
 function ViewEmployee() {
   // State to manage the selected department
   const [selectedDepartment, setSelectedDepartment] = useState("");
@@ -20,8 +22,12 @@ function ViewEmployee() {
     : employees;
 
   return (
-    <div className="view-employee-container">
-      {/* Header with Dropdown */}
+   <>
+
+<div className="app-container">
+        <SideNav />
+        <div className="content">
+    {/* Header with Dropdown */}
       <div className="header">
         <h1 className="dashboard-title">HealthHub Medical Center</h1>
         <div className="department-dropdown">
@@ -41,6 +47,7 @@ function ViewEmployee() {
 
       {/* Employee Table */}
       <div className="employee-table">
+       <div> 
         <h2>Employee List</h2>
         <table>
           <thead>
@@ -67,8 +74,13 @@ function ViewEmployee() {
             ))}
           </tbody>
         </table>
+       </div>
       </div>
-    </div>
+        </div>
+      </div>
+
+
+      </>
   );
 }
 

@@ -10,6 +10,8 @@ import './index.css';
 import App from './App.jsx';
 import Login from './Pages/LoginPage/Login';
 import Signup from './Pages/RegisterPage/Signup';
+import ViewEmployee from './Pages/ViewEmployee/ViewEmployee.jsx';
+import AddEmployeePage from './Pages/AddEmployeePage/AddEmployeePage.jsx';
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -19,6 +21,9 @@ const router = createBrowserRouter([
   { path: "/doctors", element: <DoctorsList /> },
   { path: "/adddoctor", element: <AddDoctor /> },
   { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Correct route with :id
+  { path: "/employees", element: <ViewEmployee/> },
+  { path: "/addemployee", element: <AddEmployeePage/> },
+
 ]);
 
 createRoot(document.getElementById('root')).render(
