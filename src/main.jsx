@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import VDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
 import DoctorsList from './Pages/DoctorsListPage/DoctorsListPage.jsx';
+import AddDoctor from './Pages/AddDoctorsPage/AddDoctors.jsx';
 
 import './index.css'
 import App from './App.jsx'
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
     element: <DoctorsList/>,
   },
   {
-    
+
+    path: "/adddoctor",
+    element: <AddDoctor/>,
+  },
+  {
     
     path: '/dashboard', // Route for the dashboard (App component)
     element: <App />,
