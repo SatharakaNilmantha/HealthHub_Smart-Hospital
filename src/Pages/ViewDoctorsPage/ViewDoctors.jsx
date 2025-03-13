@@ -7,8 +7,10 @@ function ViewDoctorsPage() {
   const navigate = useNavigate();
   const doctor = location.state;
 
+  // Redirect if no doctor data is available
   if (!doctor) {
-    return <p>No doctor data available.</p>;
+    navigate("/doctors");
+    return null;
   }
 
   return (
@@ -17,7 +19,7 @@ function ViewDoctorsPage() {
       <div className="card shadow-sm p-4">
         <div className="text-center">
           <img 
-            src={doctor.imgSrc} 
+            src={doctor.imgSrc || "https://via.placeholder.com/120"} 
             alt={doctor.name} 
             className="rounded-circle border border-2" 
             width="120" 
@@ -42,7 +44,7 @@ function ViewDoctorsPage() {
             <tr><th>Gender</th><td>{doctor.gender || "N/A"}</td></tr>
             <tr><th>Address</th><td>{doctor.address || "N/A"}</td></tr>
             <tr><th>Phone Number</th><td>{doctor.phone || "N/A"}</td></tr>
-            <tr><th>Fees</th><td>${doctor.fee}</td></tr>
+            <tr><th>Fees</th><td>${doctor.fee ?? "N/A"}</td></tr>
           </tbody>
         </table>
         
@@ -56,3 +58,4 @@ function ViewDoctorsPage() {
 }
 
 export default ViewDoctorsPage;
+

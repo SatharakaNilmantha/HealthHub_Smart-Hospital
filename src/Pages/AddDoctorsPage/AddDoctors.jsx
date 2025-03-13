@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AddDoctors.css";
+import SideNav from "../../components/SideNav/SideNav";
 
 const ProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,11 @@ const ProfileForm = () => {
   };
 
   return (
-    <div className="profile-container">
+    <>
+      <div className="app-container1">
+        <SideNav />
+        <div className="content">
+        <div className="profile-container">
       <div className="profile-header">
         <div className="profile-placeholder">+Profile Placeholder</div>
         <div className="profile-info">
@@ -68,7 +73,11 @@ const ProfileForm = () => {
 
         <button type="submit" className="save-btn">Save</button>
       </form>
-    </div>
+      </div>
+        </div>
+      </div>
+    </>
+  
   );
 };
 

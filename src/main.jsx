@@ -1,56 +1,24 @@
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import {createBrowserRouter,RouterProvider,} from "react-router-dom";
-import VDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
 import DoctorsList from './Pages/DoctorsListPage/DoctorsListPage.jsx';
+import AddDoctor from './Pages/AddDoctorsPage/AddDoctors.jsx'
+import DoctorProfile from './Pages/ViewDoctorsPage/ViewDoctors.jsx'
 
-import './index.css'
-import App from './App.jsx'
-import Login from './Pages/LoginPage/Login'; // Import Login component
-import Signup from './Pages/RegisterPage/Signup'; // Import Signup component
-
-import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
-import EditDepartmentPage from './Pages/EditDepartmentPage/EditDepartmentPage.jsx';
+import './index.css';
+import App from './App.jsx';
+import Login from './Pages/LoginPage/Login';
+import Signup from './Pages/RegisterPage/Signup';
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Login />, // Default route to Login page
-  },
-  {
-    path: '/login', // Route for the Login page
-    element: <Login />,
-  },
-  {
-    path: '/signup', // Route for the Signup page
-    element: <Signup />,
-  },
-  {
-
-    path: "/view-doctor-profile",
-    element: <VDoctors/>,
-  },
-  {
-    path: "/doctors",
-    element: <DoctorsList/>,
-    
-    path: '/dashboard', // Route for the dashboard (App component)
-    element: <App />,
-  },
-
-
-  {
-    path: "/",
-    element: <ViewDoctors/>,
-  },
-  {
-    path: "/edit-department",
-    element: <EditDepartmentPage/>,
-  },
-  
-
-
+  { path: "/", element: <Login /> },
+  { path: "/login", element: <Login /> },
+  { path: "/signup", element: <Signup /> },
+  { path: "/dashboard", element: <App /> },
+  { path: "/doctors", element: <DoctorsList /> },
+  { path: "/adddoctor", element: <AddDoctor /> },
+  { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Correct route with :id
 ]);
 
 createRoot(document.getElementById('root')).render(
