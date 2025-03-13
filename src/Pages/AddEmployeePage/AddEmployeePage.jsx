@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AddEmployeePage.css';
 
 function AddEmployeePage() {
+  const [photo, setPhoto] = useState(null); // State to handle photo upload
+
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPhoto(URL.createObjectURL(file)); // Create a preview of the uploaded photo
+    }
+  };
+
   return (
     <div className="add-employee-container">
+      {/* Header Section */}
       <div className="add-employee-header">
         <h2>Add Employee</h2>
         <p>Fill in the details below to add a new employee.</p>
       </div>
 
+      {/* Photo Upload Section */}
+      <div className="profile-header-card">
+        <div className="profile-header">
+          {/* Display uploaded photo */}
+          {photo ? (
+            <img className="profile-photo" src={photo} alt="Profile" />
+          ) : (
+            <img className="profile-photo" src="https://via.placeholder.com/100" alt="Profile Placeholder" />
+          )}
+          <div className="profile-info">
+            <h3>Employee Photo</h3>
+            <p>Upload a photo for the employee profile.</p>
+            <label className="upload-btn">
+              Add Photo
+              <input type="file" id="photo" accept="image/*" onChange={handlePhotoUpload} style={{ display: 'none' }} />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      {/* Employee Details Form */}
       <form className="add-employee-form">
         {/* Full Name */}
         <div className="form-row">
@@ -34,6 +65,7 @@ function AddEmployeePage() {
           <select className="editable-input">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
