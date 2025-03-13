@@ -11,6 +11,7 @@ import Login from './Pages/LoginPage/Login'; // Import Login component
 import Signup from './Pages/RegisterPage/Signup'; // Import Signup component
 
 import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
+import EditDepartmentPage from './Pages/EditDepartmentPage/EditDepartmentPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <ViewDoctors/>,
+  },
+  {
+    path: "/edit-department",
+    element: <EditDepartmentPage/>,
   },
   
 
