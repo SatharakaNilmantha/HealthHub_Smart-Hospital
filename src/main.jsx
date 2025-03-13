@@ -14,6 +14,7 @@ import ViewEmployee from './Pages/ViewEmployee/ViewEmployee.jsx';
 import AddEmployeePage from './Pages/AddEmployeePage/AddEmployeePage.jsx';
 
 const router = createBrowserRouter([
+
   { path: "/", element: <Login /> },
   { path: "/login", element: <Login /> },
   { path: "/signup", element: <Signup /> },
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Correct route with :id
   { path: "/employees", element: <ViewEmployee/> },
   { path: "/addemployee", element: <AddEmployeePage/> },
+
 
 ]);
 
