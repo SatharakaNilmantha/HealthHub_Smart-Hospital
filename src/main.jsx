@@ -32,8 +32,12 @@ const router = createBrowserRouter([
     element: <VDoctors/>,
   },
   {
+
     path: "/doctors",
     element: <DoctorsList/>,
+  },
+  {
+    
     
     path: '/dashboard', // Route for the dashboard (App component)
     element: <App />,
