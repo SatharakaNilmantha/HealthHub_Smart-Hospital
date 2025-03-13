@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import "./DoctorsListPage.css";
+import SideNav from "../../components/SideNav/SideNav.jsx"; 
+
 
 import doctor1 from "../../Images/doctor/doctor1.jpg";
 import doctor2 from "../../Images/doctor/doctor2.jpg";
@@ -84,7 +86,11 @@ function DoctorsListPage() {
   };
 
   return (
+    <div className="doctors-page-container">
     <div className="doctors-page">
+      <div className="side-nav">
+        <SideNav />
+      </div>
       <h1 className="page-title">Doctors</h1>
       <div className="department-tabs">
         {departments.map((department, index) => (
@@ -116,6 +122,7 @@ function DoctorsListPage() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }
