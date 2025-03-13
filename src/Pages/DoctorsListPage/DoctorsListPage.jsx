@@ -73,7 +73,7 @@ function DoctorsListPage() {
   return (
     <>
 
-<div className="app-container">
+<div className="app-container1">
         <SideNav />
         <div className="content">
           <div className="doctors-page">
