@@ -3,11 +3,20 @@
     font-family: Arial, sans-serif;
   }
   
-  .view-department-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #27a8b0;
-  }
+  .view-department-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 100px; /* Adds space from the top */
+    margin-left: 400px;
+    margin-right: 100px; 
+}
+.view-department-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #27a8b0; /* Change this to your desired color */
+}
+
+
   
   .search-bar {
     margin-bottom: 20px;
@@ -40,7 +49,7 @@
   .department-card h3 {
     margin-bottom: 10px;
     font-size: 20px;
-    color: #555;
+    color: #27a8b0;
   }
   
   .department-card p {
@@ -82,4 +91,25 @@
       width: 100%; /* One card per row on very small screens */
     }
   }
+  @keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.department-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; /* Fixed size for each card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInScale 0.5s ease-in-out;
+}
+
   

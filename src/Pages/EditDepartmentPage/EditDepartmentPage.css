@@ -1,0 +1,90 @@
+/* Edit Department Page Styling */
+.edit-department-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 30px;
+    background-color: #ffffff; /* Light background */
+    color: #333; /* Text color */
+    max-width: 100%;
+    margin-top: 150px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+/* Form styling */
+.edit-department-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.286);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    animation: scale-up 0.5s ease-in-out;
+}
+
+.edit-department-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Save Changes Button */
+.submit-btn {
+    background-color: #27a8b0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #27a8b0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .edit-department-form {
+        width: 90%;
+    }
+}
+
+/* Animation */
+@keyframes scale-up {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

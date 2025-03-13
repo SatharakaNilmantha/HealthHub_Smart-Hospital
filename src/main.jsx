@@ -6,6 +6,7 @@ import './index.css'
 import App from './App.jsx'
 
 import ViewDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
+import EditDepartmentPage from './Pages/EditDepartmentPage/EditDepartmentPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <ViewDoctors/>,
+  },
+  {
+    path: "/edit-department",
+    element: <EditDepartmentPage/>,
   },
   
 
