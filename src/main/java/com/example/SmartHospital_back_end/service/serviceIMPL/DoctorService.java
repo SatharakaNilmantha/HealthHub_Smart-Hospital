@@ -1,5 +1,6 @@
 package com.example.SmartHospital_back_end.service.serviceIMPL;
 
+import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.DoctorDto;
 import com.example.SmartHospital_back_end.entity.Doctor;
@@ -32,6 +33,10 @@ public class DoctorService implements DoctorServices {
         if (exists) {
             return "Doctor with the same details already exists.";
         }
+        if (doctorRepository.existsByEmail(doctorDto.getEmail())) {
+            throw new DuplicateException("An Doctor with this email already exists.");
+        }
+
 
         // Save the doctor if not already exists
         doctorRepository.save(modelMapper.map(doctorDto, Doctor.class));

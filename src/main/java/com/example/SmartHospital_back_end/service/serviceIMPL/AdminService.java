@@ -45,40 +45,6 @@ public class AdminService implements AdminServices {
     }
 
 
-    public String updateAdmin(long adminId, AdminDto adminDto) {
-
-        if (adminDto.getFullName() == null || adminDto.getFullName().isEmpty()) {
-            throw new IllegalArgumentException("Full name is required.");
-        }
-
-        if (adminDto.getPhoneNumber() == null || adminDto.getPhoneNumber().isEmpty()) {
-            throw new IllegalArgumentException("Phone number is required.");
-        }
-
-
-        // Check if the patient exists in the repository
-        if (adminRepository.existsById(adminId)) {
-            // Perform the update using the repository method
-            int updatedRows = adminRepository.updateAdminById(
-                    adminId,
-                    adminDto.getFullName(),
-                    adminDto.getPhoneNumber()
-
-            );
-
-            // Check if any rows were updated
-            if (updatedRows > 0) {
-                return "Admin updated successfully with ID " + adminId;
-            } else {
-                throw new RuntimeException("Failed to update Admin with ID " + adminId);
-            }
-        } else {
-            // If the patient does not exist, throw an exception
-            throw new RuntimeException("Admin not found with ID " + adminId);
-        }
-    }
-
-
 
     public String deleteAdminById(long adminId) {
 
