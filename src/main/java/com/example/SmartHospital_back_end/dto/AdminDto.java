@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AdminDto {
     private Long adminId;
-
     private String email;
     private String password;
 }
