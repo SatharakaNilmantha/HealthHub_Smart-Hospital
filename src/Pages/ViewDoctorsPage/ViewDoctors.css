@@ -8,7 +8,7 @@
 }
 
 .doctor-profile-card {
-  width: 60%;
+  width: 40%;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -24,8 +24,8 @@
 }
 
 .doctor-profile-image {
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
 
