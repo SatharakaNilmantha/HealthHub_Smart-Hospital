@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService implements AdminServices {
@@ -44,26 +45,27 @@ public class AdminService implements AdminServices {
         return modelMapper.map(adminList, new TypeToken<List<AdminDto>>(){}.getType());
     }
 
-
     public String updateAdmin(long adminId, AdminDto adminDto) {
 
-        if (adminDto.getFullName() == null || adminDto.getFullName().isEmpty()) {
-            throw new IllegalArgumentException("Full name is required.");
+        if (adminDto.getPassword() == null || adminDto.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("Password is required.");
         }
 
-        if (adminDto.getPhoneNumber() == null || adminDto.getPhoneNumber().isEmpty()) {
-            throw new IllegalArgumentException("Phone number is required.");
-        }
+        // Check if the admin exists in the repository
+        Optional<Admin> existingAdmin = adminRepository.findById(adminId);
 
+        if (existingAdmin.isPresent()) {
+            Admin admin = existingAdmin.get();
 
-        // Check if the patient exists in the repository
-        if (adminRepository.existsById(adminId)) {
+            // Check if the new password is the same as the old password
+            if (admin.getPassword().equals(adminDto.getPassword())) {
+                throw new IllegalArgumentException("New password cannot be the same as the current password.");
+            }
+
             // Perform the update using the repository method
             int updatedRows = adminRepository.updateAdminById(
                     adminId,
-                    adminDto.getFullName(),
-                    adminDto.getPhoneNumber()
-
+                    adminDto.getPassword()
             );
 
             // Check if any rows were updated
@@ -73,11 +75,10 @@ public class AdminService implements AdminServices {
                 throw new RuntimeException("Failed to update Admin with ID " + adminId);
             }
         } else {
-            // If the patient does not exist, throw an exception
+            // If the admin does not exist, throw an exception
             throw new RuntimeException("Admin not found with ID " + adminId);
         }
     }
-
 
 
     public String deleteAdminById(long adminId) {

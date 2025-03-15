@@ -61,6 +61,50 @@
 			<artifactId>modelmapper</artifactId>
 			<version>2.4.4</version>
 		</dependency>
+
+
+
+
+			<!-- Spring Boot Starter Test (includes Mockito & TestNG) -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.junit.vintage</groupId>
+						<artifactId>junit-vintage-engine</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- TestNG for unit testing -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>7.4.0</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Mockito for mocking -->
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>4.5.1</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ModelMapper for DTO conversion -->
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>3.1.1</version>
+			</dependency>
+
+
+
+
+
 	</dependencies>
 
 	<build>

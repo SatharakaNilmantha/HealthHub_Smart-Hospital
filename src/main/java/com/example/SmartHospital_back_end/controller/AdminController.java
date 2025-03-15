@@ -50,8 +50,6 @@ public class AdminController {
         }
     }
 
-
-
     @PutMapping("{adminId}")
     public ResponseEntity<?> updateAdmin(@PathVariable long adminId, @RequestBody AdminDto adminDto) {
         try {
@@ -65,8 +63,6 @@ public class AdminController {
             return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
 
     @DeleteMapping("{adminId}")
     public ResponseEntity<String> deleteAdminById(@PathVariable long adminId)
