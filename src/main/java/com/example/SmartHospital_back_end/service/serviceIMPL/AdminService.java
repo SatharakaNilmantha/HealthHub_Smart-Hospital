@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminService implements AdminServices {
@@ -45,6 +46,40 @@ public class AdminService implements AdminServices {
     }
 
 
+    public String updateAdmin(long adminId, AdminDto adminDto) {
+
+        if (adminDto.getPassword() == null || adminDto.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("Password is required.");
+        }
+
+        // Check if the admin exists in the repository
+        Optional<Admin> existingAdmin = adminRepository.findById(adminId);
+
+        if (existingAdmin.isPresent()) {
+            Admin admin = existingAdmin.get();
+
+            // Check if the new password is the same as the old password
+            if (admin.getPassword().equals(adminDto.getPassword())) {
+                throw new IllegalArgumentException("New password cannot be the same as the current password.");
+            }
+
+            // Perform the update using the repository method
+            int updatedRows = adminRepository.updateAdminById(
+                    adminId,
+                    adminDto.getPassword()
+            );
+
+            // Check if any rows were updated
+            if (updatedRows > 0) {
+                return "Admin updated successfully with ID " + adminId;
+            } else {
+                throw new RuntimeException("Failed to update Admin with ID " + adminId);
+            }
+        } else {
+            // If the admin does not exist, throw an exception
+            throw new RuntimeException("Admin not found with ID " + adminId);
+        }
+    }
 
     public String deleteAdminById(long adminId) {
 

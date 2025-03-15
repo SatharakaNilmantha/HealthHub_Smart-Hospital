@@ -50,8 +50,19 @@ public class AdminController {
         }
     }
 
-
-
+    @PutMapping("{adminId}")
+    public ResponseEntity<?> updateAdmin(@PathVariable long adminId, @RequestBody AdminDto adminDto) {
+        try {
+            String updateResponse = adminServices.updateAdmin(adminId ,adminDto);
+            return new ResponseEntity<>(updateResponse, HttpStatus.OK); // Changed status to OK
+        } catch (RuntimeException e) {
+            // If the admin is not found, return a 404 Not Found status
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            // For any unexpected errors, return a 500 Internal Server Error
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @DeleteMapping("{adminId}")
     public ResponseEntity<String> deleteAdminById(@PathVariable long adminId)
