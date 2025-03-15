@@ -28,6 +28,7 @@ const router = createBrowserRouter([
   { path: "/addDepartment", element: <AddDepartmentPage/> },
   { path: "/DepartmentList", element: <DepartmentListPage/> },
   { path: "/view-department", element: <ViewDepartmentPage /> },
+  
 
 ]);
 
