@@ -102,4 +102,22 @@ public class PatientService implements PatientServices {
         }
     }
 
-}   
+    public String loginPatient(String email, String password) {
+        // Check if patient with the given email exists
+        Patient patient = patientRepository.findByEmail(email);
+        if (patient == null) {
+            throw new NotFoundException("No patient found with this email.");
+        }
+
+        // Validate password
+        if (!patient.getPassword().equals(password)) {
+            throw new RuntimeException("Incorrect password.");
+        }
+
+        // If email and password match
+        return "Login successful!";
+    }
+
+
+
+}

@@ -1,6 +1,7 @@
 package com.example.SmartHospital_back_end.controller;
 
 
+import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.DoctorDto;
 import com.example.SmartHospital_back_end.service.DoctorServices;
@@ -19,23 +20,29 @@ public class DoctorController {
 
     @PostMapping("saveDoctor")
     public ResponseEntity<String> saveDoctor (@RequestBody DoctorDto doctorDto){
-        String response = doctorServices.savedDoctor(doctorDto);
-        return ResponseEntity.ok(response);
+        try {
+            // Call the service method to save the admin details
+            String response = doctorServices.savedDoctor(doctorDto);
+            return ResponseEntity.ok(response);  // Return 200 OK with success message
+        } catch (DuplicateException e) {
+            // If a duplicate email is found, return a 400 Bad Request with the error message
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }catch (Exception e) {
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 
     @GetMapping("getDoctor")
-    public ResponseEntity<?> getAllDoctor(){
+    public ResponseEntity<?> getAllDoctor() {
 
         try {
             List<DoctorDto> doctorlist = doctorServices.AllDoctor();
             return ResponseEntity.ok(doctorlist);
-        }catch (NotFoundException e) {
+        } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-
     }
-
 
     @GetMapping("{doctorId}")
     public ResponseEntity<?> getDoctorById(@PathVariable long doctorId){
@@ -45,7 +52,7 @@ public class DoctorController {
             return new ResponseEntity<>(doctorFromId, HttpStatus.CREATED);
         } catch (NotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        } catch (Exception e) {
+        }catch (Exception e) {
             return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
