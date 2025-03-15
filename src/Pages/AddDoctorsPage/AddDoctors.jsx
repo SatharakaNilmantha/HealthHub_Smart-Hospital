@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AddDoctors.css";
 
-const ProfileForm = () => {
+function  ProfileForm () {
   const [formData, setFormData] = useState({
     fullName: "",
     department: "",

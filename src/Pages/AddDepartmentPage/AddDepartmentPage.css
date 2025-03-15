@@ -1,0 +1,132 @@
+.add-department-container1 {
+    max-width: 750px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-department-container h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #011417;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #444;
+    flex: 1;
+    text-align: left;
+    min-width: 150px;
+    font-size: 16px;
+}
+
+.form-group input {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Ensuring Lab List is aligned downward */
+.lab-group {
+    align-items: flex-start; /* Align label at the top */
+}
+
+.lab-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .lab-item input {
+    flex-grow: 1;
+  }
+
+.lab-list {
+    display: grid;
+    flex-direction: column column;
+    gap: 10px;
+    flex: 2;
+}
+.remove-lab-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .remove-lab-btn {
+    background-color: #83b9d2;
+  }
+  
+
+  .remove-lab-btn:hover {
+    background-color: #83a3d2;
+  }
+  
+  .remove-lab-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+/* Add Lab Button */
+.add-lab-btn {
+    background-color: #f39c12;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.add-lab-btn:hover {
+    background-color: #e67e22;
+}
+
+/* Buttons container */
+.button-group1 {
+    
+    margin-top: 25px;
+    display: grid;
+    grid-row: auto;
+
+}
+
+
+/* Edit Button (also functions as Save button) */
+.save-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.edit-save-btn:hover {
+    background-color: #45a049;
+}
+
+

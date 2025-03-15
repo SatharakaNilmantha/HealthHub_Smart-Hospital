@@ -46,6 +46,7 @@
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scale-up 0.5s ease-in-out;
 }
 
 .doctor-card:hover {
