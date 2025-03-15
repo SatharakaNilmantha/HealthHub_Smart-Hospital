@@ -67,7 +67,7 @@ function SideNav() {
         {/* Department Dropdown */}
         <li>
           <Dropdown show={openDropdown === "department"} onToggle={() => handleDropdown("department")}>
-            <Dropdown.Toggle variant="light" className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/departments") || location.pathname.startsWith("/adddepartment") ? "active" : "" }`}>
+            <Dropdown.Toggle variant="light" className={`sidebar-link dropdown-toggle ${location.pathname.startsWith("/DepartmentList") || location.pathname.startsWith("/addDepartment") ? "active" : "" }`}>
               <div className="dropdown-content">
                 <FontAwesomeIcon icon={faBuilding} className="sidebar-icon" />
                 <span className="dropdown-text">Department</span>
@@ -75,8 +75,8 @@ function SideNav() {
             </Dropdown.Toggle>
             
             <Dropdown.Menu>
-              <Dropdown.Item as={NavLink} to="/departments" onClick={handleClick}>Department List</Dropdown.Item>
-              <Dropdown.Item as={NavLink} to="/adddepartment" onClick={handleClick}>Add Department</Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="/DepartmentList" onClick={handleClick}>Department List</Dropdown.Item>
+              <Dropdown.Item as={NavLink} to="/addDepartment" onClick={handleClick}>Add Department</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </li>

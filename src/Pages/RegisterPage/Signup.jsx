@@ -63,11 +63,6 @@ const Signup = () => {
             <input type="password" id="confirmPassword" className="input" placeholder="Re-enter your password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required  />
           </div>
 
-          <div className="input-group">
-            <label htmlFor="photo" className="label">Upload Photo</label>
-            <input type="file" id="photo" className="input" onChange={handlePhotoChange} accept="image/*" />
-          </div>
-
           <button type="submit" className="button">Register</button>
         </form>
 

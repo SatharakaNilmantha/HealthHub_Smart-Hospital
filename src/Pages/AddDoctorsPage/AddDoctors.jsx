@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AddDoctors.css";
 import SideNav from "../../components/SideNav/SideNav";
 
-const ProfileForm = () => {
+function  ProfileForm () {
   const [formData, setFormData] = useState({
     fullName: "",
     department: "",

@@ -12,6 +12,9 @@ import Login from './Pages/LoginPage/Login';
 import Signup from './Pages/RegisterPage/Signup';
 import ViewEmployee from './Pages/ViewEmployee/ViewEmployee.jsx';
 import AddEmployeePage from './Pages/AddEmployeePage/AddEmployeePage.jsx';
+import AddDepartmentPage from './Pages/AddDepartmentPage/AddDepartmentPage.jsx';
+import DepartmentListPage from './Pages/DepartmentListPage/DepartmentListPage.jsx';
+import ViewDepartmentPage from './Pages/ViewDepartmentPage/ViewDepartmentPage.jsx';
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -23,6 +26,9 @@ const router = createBrowserRouter([
   { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Correct route with :id
   { path: "/employees", element: <ViewEmployee/> },
   { path: "/addemployee", element: <AddEmployeePage/> },
+  { path: "/addDepartment", element: <AddDepartmentPage/> },
+  { path: "/DepartmentList", element: <DepartmentListPage/> },
+  { path: "/view-department", element: <ViewDepartmentPage /> },
 
 ]);
 
