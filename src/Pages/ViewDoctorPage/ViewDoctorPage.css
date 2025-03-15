@@ -1,0 +1,97 @@
+.doctor-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .doctor-profile-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .doctor-profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #007bff;
+  }
+  
+  .profile-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .profile-row strong {
+    flex: 1;
+    color: #555;
+  }
+  
+  .profile-row span {
+    flex: 2;
+    text-align: left;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  .profile-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .profile-buttons .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .doctor-profile-card {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .profile-row {
+      flex-direction: column;
+      text-align: left;
+    }
+  
+    .profile-row strong {
+      margin-bottom: 5px;
+    }
+  }
+  
