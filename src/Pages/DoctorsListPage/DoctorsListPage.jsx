@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./DoctorsListPage.css";
-import SideNav from "../../components/SideNav/SideNav";
+import SideNav from "../../Components/SideNav/SideNav";
 
 import doctor1 from "../../Images/doctor/doctor1.jpg";
 import doctor2 from "../../Images/doctor/doctor2.jpg";
