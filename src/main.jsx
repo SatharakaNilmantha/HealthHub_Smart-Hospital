@@ -1,19 +1,20 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import {createBrowserRouter,RouterProvider,} from "react-router-dom";
-import VDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
-import DoctorsList from './Pages/DoctorsListPage/DoctorsListPage.jsx';
-import AddDoctor from './Pages/AddDoctorsPage/AddDoctors.jsx';
-import './index.css';
-import App from './App.jsx';
-import Login from './Pages/LoginPage/Login';
-import Signup from './Pages/RegisterPage/Signup';
-import ViewEmployee from './Pages/ViewEmployee/ViewEmployee.jsx';
-import AddEmployeePage from './Pages/AddEmployeePage/AddEmployeePage.jsx';
-import AddDepartmentPage from './Pages/AddDepartmentPage/AddDepartmentPage.jsx';
-import DepartmentListPage from './Pages/DepartmentListPage/DepartmentListPage.jsx';
-import ViewDepartmentPage from './Pages/ViewDepartmentPage/ViewDepartmentPage.jsx';
+import App from "./App.jsx";
+import Login from "./Pages/LoginPage/Login";
+import Signup from "./Pages/RegisterPage/Signup";
+import DoctorsList from "./Pages/DoctorsListPage/DoctorsListPage.jsx";
+import AddDoctor from "./Pages/AddDoctorsPage/AddDoctors.jsx";
+import DoctorProfile from "./Pages/ViewDoctorsPage/ViewDoctorsPage.jsx";
+import EmployeeListPage from "./Pages/EmployeeListPage/EmployeeListPage.jsx";
+import AddEmployeePage from "./Pages/AddEmployeePage/AddEmployeePage.jsx";
+import AddDepartmentPage from "./Pages/AddDepartmentPage/AddDepartmentPage.jsx";
+import DepartmentListPage from "./Pages/DepartmentListPage/DepartmentListPage.jsx";
+import ViewDepartmentPage from "./Pages/ViewDepartmentPage/ViewDepartmentPage.jsx";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -22,18 +23,15 @@ const router = createBrowserRouter([
   { path: "/dashboard", element: <App /> },
   { path: "/doctors", element: <DoctorsList /> },
   { path: "/adddoctor", element: <AddDoctor /> },
-  { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Correct route with :id
-  { path: "/employees", element: <ViewEmployee/> },
-  { path: "/addemployee", element: <AddEmployeePage/> },
-  { path: "/addDepartment", element: <AddDepartmentPage/> },
-  { path: "/DepartmentList", element: <DepartmentListPage/> },
-
-  
-  { path: "/view-department", element: <ViewDepartmentPage /> },
-  
+  { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Dynamic ID
+  { path: "/employees", element: <EmployeeListPage /> },
+  { path: "/addemployee", element: <AddEmployeePage /> },
+  { path: "/addDepartment", element: <AddDepartmentPage /> },
+  { path: "/DepartmentList", element: <DepartmentListPage /> },
+  { path: "/view-department/:id", element: <ViewDepartmentPage /> }, // Optional Dynamic ID for departments
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>

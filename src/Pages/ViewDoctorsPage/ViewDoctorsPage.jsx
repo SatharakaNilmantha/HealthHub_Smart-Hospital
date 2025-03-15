@@ -1,31 +1,38 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-import "./ViewDoctors.css";
+import { FaAnglesLeft } from "react-icons/fa6";
+import "./ViewDoctorsPage.css";
 
-function ViewDoctors() {
+function ViewDoctorsPage() {
+  const { id } = useParams(); // Get doctor ID from URL
   const location = useLocation();
   const navigate = useNavigate();
-  const [doctor, setDoctor] = useState(location.state);
+  
+  const [doctor, setDoctor] = useState(location.state || {}); // Ensure safe initialization
   const [isEditing, setIsEditing] = useState(false);
 
-  if (!doctor) {
+  if (!doctor || Object.keys(doctor).length === 0) {
     return <h2 className="error-message">No doctor details available.</h2>;
   }
 
-  const handleEdit = () => setIsEditing(true);
-  const handleSave = () => setIsEditing(false);
+  const handleEditSave = () => {
+    setIsEditing((prev) => !prev);
+  };
+
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back
+  };
 
   const handleChange = (e) => {
     setDoctor({ ...doctor, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="doctor-profile-container">
+    <div className="doctor-profile-container1">
       <div className="doctor-profile-card">
         <div className="profile-header">
           <img src={doctor.imgSrc} alt={doctor.name} className="doctor-profile-image" />
-          
           <Button variant="primary">Change Photo</Button>
         </div>
 
@@ -45,12 +52,7 @@ function ViewDoctors() {
             <div className="profile-row" key={key}>
               <strong>{label}</strong>
               {isEditing ? (
-                <Form.Control
-                  type="text"
-                  name={key}
-                  value={doctor[key] || ""}
-                  onChange={handleChange}
-                />
+                <Form.Control type="text" name={key} value={doctor[key] || ""} onChange={handleChange} />
               ) : (
                 <span>{doctor[key]}</span>
               )}
@@ -58,17 +60,21 @@ function ViewDoctors() {
           ))}
         </div>
 
-        <div className="profile-buttons">
-          <Button variant="secondary" onClick={() => navigate(-1)}>Back</Button>
-          {isEditing ? (
-            <Button variant="success" onClick={handleSave}>Save</Button>
-          ) : (
-            <Button variant="warning" onClick={handleEdit}>Edit</Button>
-          )}
+        <div className="button-group">
+          <button className="back-button" onClick={handleBackClick}>
+            <FaAnglesLeft /> Back
+          </button>
+
+          <button
+            className={`edit-update-btn ${isEditing ? "update-btn" : "edit-btn"}`}
+            onClick={handleEditSave}
+          >
+            {isEditing ? "Update" : "Edit"}
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default ViewDoctors;
+export default ViewDoctorsPage;

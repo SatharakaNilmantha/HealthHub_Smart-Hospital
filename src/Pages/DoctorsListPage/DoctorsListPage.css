@@ -5,9 +5,10 @@
   }
   
   /* Content section */
-  .content {
+  .content1 {
     flex-grow: 1;
     margin-left: 250px; /* Sidebar width */
+    margin-bottom: 0px !important;
     padding: 30px;
     background-color: #f0f0f0; /* Light background */
     color: #333;
