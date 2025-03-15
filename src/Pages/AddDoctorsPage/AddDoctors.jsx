@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./AddDoctors.css";
-import SideNav from "../../components/SideNav/SideNav";
 
 const ProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -25,16 +24,11 @@ const ProfileForm = () => {
   };
 
   return (
-    <>
-      <div className="app-container1">
-        <SideNav />
-        <div className="content">
-        <div className="profile-container">
+    <div className="profile-container">
       <div className="profile-header">
         <div className="profile-placeholder">+Profile Placeholder</div>
         <div className="profile-info">
           <h2>Personalize Your Account</h2>
-          <p>Your profile photo will appear on apps and devices that use your account.</p>
           <button className="btn">Add Photo</button>
         </div>
       </div>
@@ -73,11 +67,7 @@ const ProfileForm = () => {
 
         <button type="submit" className="save-btn">Save</button>
       </form>
-      </div>
-        </div>
-      </div>
-    </>
-  
+    </div>
   );
 };
 
