@@ -1,0 +1,141 @@
+/* Body and layout */
+body {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0;
+    margin: 0;
+    padding-left: 250px; /* Space for side navigation */
+  }
+  
+  @media (max-width: 1024px) {
+    body {
+      padding-left: 200px; /* Adjust side nav space */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      padding-left: 0; /* Remove side nav space on smaller screens */
+    }
+  
+    .account-card {
+      width: 95%;
+      max-width: 100%; /* Allow it to shrink */
+    }
+  }
+  
+  /* Account Card Styling */
+  .account-card {
+    width: 100%; /* Make it flexible */
+    max-width: 1000px; /* Maintain a readable size */
+    min-height: 600px; /* Set a minimum height for the card */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensure padding doesn't affect overall size */
+  }
+  
+  .account-card.fixed-height {
+
+    height: 450px; /* Adjust the fixed height as needed */
+    
+  }
+  
+  /* Profile Photo Section */
+  .profile-photo-section {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    justify-content: center; /* Centers content */
+    gap: 100px; /* Adds space between the image and button */
+  }
+  
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .change-photo-btn {
+    background-color: #27a6ae;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap; /* Prevents button text from wrapping */
+  }
+  
+  .change-photo-btn:hover {
+    background-color: #218d95;
+  }
+  
+  /* Profile Info Section */
+  .profile-info {
+    background-color: #f9f9f9;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .profile-info h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #27a6ae; /* Change this to your desired color */
+  }
+  
+  /* Display labels and values in a row */
+  .info-item {
+    display: flex;
+    justify-content: space-between; /* Space out the label and value */
+    margin-bottom: 10px;
+  }
+  
+  .info-item label {
+    font-weight: bold;
+    margin-right: 10px;
+    flex-basis: 150px; /* Ensure the labels have enough width */
+  }
+  
+  .info-item .editable-text {
+    color: #333;
+    font-size: 14px;
+    flex-grow: 1; /* Allow the value text to grow and fill the space */
+  }
+  
+  /* Inline Edit Styling */
+  .editable-text {
+    border-bottom: 1px solid #ccc;
+    padding: 2px 0;
+    font-size: 14px;
+    color: #333;
+    min-width: 150px; /* Minimum width to prevent text from becoming too small */
+  }
+  
+  .editable-text:focus {
+    outline: none;
+    border-bottom: 2px solid #27a6ae;
+    background-color: #f0f0f0; /* Optional: To highlight the field when editing */
+  }
+  
+  /* Edit Button Styling */
+  .edit-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #218838;
+  }
+  
