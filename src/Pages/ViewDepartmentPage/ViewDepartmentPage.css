@@ -1,0 +1,160 @@
+.add-department-container {
+    max-width: 750px;
+    margin: 140px auto auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-department-container h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #011417;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #444;
+    flex: 1;
+    text-align: left;
+    min-width: 150px;
+    font-size: 16px;
+}
+
+.form-group input {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Ensuring Lab List is aligned downward */
+.lab-group {
+    align-items: flex-start; /* Align label at the top */
+}
+
+.lab-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .lab-item input {
+    flex-grow: 1;
+  }
+
+.lab-list {
+    display: grid;
+    flex-direction: column column;
+    gap: 10px;
+    flex: 2;
+}
+.remove-lab-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .remove-lab-btn {
+    background-color: #83b9d2;
+  }
+  
+
+  .remove-lab-btn:hover {
+    background-color: #83a3d2;
+  }
+  
+  .remove-lab-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+/* Add Lab Button */
+.add-lab-btn {
+    background-color: #f39c12;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.add-lab-btn:hover {
+    background-color: #e67e22;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 100px auto;
+    margin-top: 20px;
+    gap: 150px;
+  }
+ 
+  
+/* Style for the back button */
+.back-button {
+  color: rgb(3, 22, 162);
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: underline;
+  background-color:white ;
+  text-align: center;
+}
+
+.back-button:hover {
+  color: #007bff;
+  background-color:white ;
+}
+
+/* Common styles for the edit-save button */
+.edit-update-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Style for Edit button */
+.edit-btn {
+  background-color: #4caf50; /* Green for Edit */
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #4caf4fdb; /* Blue for Update */
+  color: white;
+}
+
+/* Style for Update button */
+.update-btn {
+  background-color: #007bff; /* Blue for Update */
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: #007bffe2; /* Blue for Update */
+  color: white;
+}
+
