@@ -1,11 +1,10 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import {createBrowserRouter,RouterProvider,} from "react-router-dom";
+import VDoctors from './Pages/ViewDoctorsPage/ViewDoctors.jsx';
 import DoctorsList from './Pages/DoctorsListPage/DoctorsListPage.jsx';
-import AddDoctor from './Pages/AddDoctorsPage/AddDoctors.jsx'
-import DoctorProfile from './Pages/ViewDoctorsPage/ViewDoctors.jsx'
-
+import AddDoctor from './Pages/AddDoctorsPage/AddDoctors.jsx';
 import './index.css';
 import App from './App.jsx';
 import Login from './Pages/LoginPage/Login';

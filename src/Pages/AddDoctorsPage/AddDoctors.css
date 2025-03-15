@@ -1,22 +1,5 @@
-/* App container styling */
-.app-container1 {
-  display: flex;
-  width: 100%;
-}
-
-/* Content section */
-.content {
-  flex-grow: 1;
-  margin-left: 250px; /* Sidebar width */
-  padding: 30px;
-  background-color: #f0f0f0; /* Light background */
-  color: #333;
-  max-width: 100%;
-}
-
-
 .profile-container {
-  width: 70%;
+  width: 50%;
   margin: auto;
   background: #fff;
   padding: 20px;
