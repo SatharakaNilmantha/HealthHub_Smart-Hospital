@@ -27,9 +27,10 @@ const router = createBrowserRouter([
   { path: "/addemployee", element: <AddEmployeePage/> },
   { path: "/addDepartment", element: <AddDepartmentPage/> },
   { path: "/DepartmentList", element: <DepartmentListPage/> },
+
+  
   { path: "/view-department", element: <ViewDepartmentPage /> },
   
-
 ]);
 
 createRoot(document.getElementById('root')).render(
