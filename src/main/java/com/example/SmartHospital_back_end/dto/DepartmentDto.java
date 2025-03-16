@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterDoctorDto {
-    private Long doctorId;
-    private String email;
-    private String password;
+public class DepartmentDto {
+    private Long departmentId;
+    private String name;
+    private String labList;
+    private int noOfDoctors;
+    private int noOfRooms;
 }
