@@ -10,15 +10,21 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterDoctor {
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long doctorId;
+    private Long departmentId;
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String name;
 
     @Column(nullable = false)
-    private String password;
+    private String labList;
+
+    @Column(nullable = false)
+    private int noOfDoctors;
+
+    @Column(nullable = false)
+    private int noOfRooms;
 }
