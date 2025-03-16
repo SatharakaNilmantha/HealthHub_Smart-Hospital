@@ -23,6 +23,7 @@ public class FrontDeskRegisterService implements FrontDeskRegisterServices {
     @Autowired
     private ModelMapper modelMapper;
 
+
     public String savedFrontDeskRegister(FrontDeskRegisterDto frontDeskRegisterDto) {
         // Check for duplicate email
         if (frontDeskRegisterRepository.existsByEmail(frontDeskRegisterDto.getEmail())) {

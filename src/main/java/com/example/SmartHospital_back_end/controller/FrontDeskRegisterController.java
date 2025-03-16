@@ -52,6 +52,7 @@ public class FrontDeskRegisterController {
         }
     }
 
+
     @DeleteMapping("{frontDeskId}")
     public ResponseEntity<String> deleteFrontDeskRegisterById(@PathVariable long frontDeskId) {
         try {

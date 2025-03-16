@@ -12,5 +12,6 @@ public interface FrontDeskRegisterServices {
 
     String updateFrontDeskRegister(long frontDeskId, FrontDeskRegisterDto frontDeskRegisterDto);
 
+
     String deleteFrontDeskRegisterById(long frontDeskId);
 }

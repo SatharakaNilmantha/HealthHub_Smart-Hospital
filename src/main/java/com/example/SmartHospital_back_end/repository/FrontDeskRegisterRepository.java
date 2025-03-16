@@ -22,6 +22,7 @@ public interface FrontDeskRegisterRepository extends JpaRepository<FrontDeskRegi
     @Query(value = "UPDATE front_desk_register SET password = ?2 WHERE front_desk_id = ?1", nativeQuery = true)
     int updateFrontDeskRegisterById(long frontDeskId, String password);
 
+
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM front_desk_register WHERE front_desk_id = ?1", nativeQuery = true)
