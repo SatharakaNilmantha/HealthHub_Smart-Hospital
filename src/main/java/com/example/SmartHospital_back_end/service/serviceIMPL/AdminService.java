@@ -45,6 +45,7 @@ public class AdminService implements AdminServices {
         return modelMapper.map(adminList, new TypeToken<List<AdminDto>>(){}.getType());
     }
 
+
     public String updateAdmin(long adminId, AdminDto adminDto) {
 
         if (adminDto.getPassword() == null || adminDto.getPassword().isEmpty()) {
@@ -79,7 +80,6 @@ public class AdminService implements AdminServices {
             throw new RuntimeException("Admin not found with ID " + adminId);
         }
     }
-
 
     public String deleteAdminById(long adminId) {
 

@@ -11,6 +11,9 @@ import javax.transaction.Transactional;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor,Long> {
 
+
+    boolean existsByEmail(String email);   // Check if an Admin with the given email exists
+
     // Custom query to check if a doctor with the same details exists
     boolean existsByFullNameAndPhoneNumberAndDepartmentAndTitle(String fullName, String phoneNumber, String department, String title);
 

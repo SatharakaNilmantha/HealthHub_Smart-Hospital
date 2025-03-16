@@ -9,4 +9,6 @@ public interface PatientServices {
     public List<PatientDto> AllPatient();
     public PatientDto getPatientById(long patientId);
     public String updatePatient(long patientId, PatientDto patientDto);
+
+    String loginPatient(String email, String password);
 }

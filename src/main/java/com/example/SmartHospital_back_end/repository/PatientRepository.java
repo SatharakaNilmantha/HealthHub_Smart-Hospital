@@ -14,6 +14,7 @@ public interface PatientRepository extends JpaRepository<Patient , Long> {
 
     boolean existsByEmail(String email);// Check if a patient with the given email exists
 
+    Patient findByEmail(String email);  // Find a patient by email
 
     @Query(value="SELECT* FROM patient WHERE patient_id=?1 " ,nativeQuery = true)
     Patient getPatientById(long patientId);

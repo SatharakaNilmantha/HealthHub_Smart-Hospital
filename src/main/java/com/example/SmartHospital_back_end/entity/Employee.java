@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Doctor {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long doctorId;
+    private long employeeId;
 
     @Lob
     private byte[] image; // To store images as byte array
@@ -34,16 +34,10 @@ public class Doctor {
     private String department;
 
     @Column(nullable = false)
-    private String title;
+    private String role;
 
     @Column(nullable = false)
-    private String degree;
-
-    @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
-    private double fees;
+    private double salary;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
