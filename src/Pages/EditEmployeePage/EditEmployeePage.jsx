@@ -1,189 +1,105 @@
-import React, { useState } from "react";
-import "./EditEmployeePage.css"; // Ensure this path is correct
-import SideNav from "../../components/SideNav/SideNav"; // Import the sidebar component
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; 
+import './EditEmployeePage.css';
+import { FaAnglesLeft } from "react-icons/fa6";
 
 function EditEmployeePage() {
-  const [photo, setPhoto] = useState("https://via.placeholder.com/100");
-  const [isEditing, setIsEditing] = useState(false); // State to toggle edit mode
-  const [employee, setEmployee] = useState({
-    fullName: "John Doe",
-    department: "Cardiology",
-    role: "Doctor",
-    gender: "Male",
-    address: "123 Main St, City, Country",
-    salary: "$5000",
-    shift: "Day Shift",
-  });
+    const { state: employee } = useLocation();
+    const [userData, setUserData] = useState(employee || {});
+    const [profilePhoto, setProfilePhoto] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
+    
+    const navigate = useNavigate();
 
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPhoto(URL.createObjectURL(file));
-    }
-  };
+    useEffect(() => {
+        if (employee?.profilePhoto) {
+            setProfilePhoto(employee.profilePhoto);
+        }
+    }, [employee]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEmployee((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+    const handleFieldChange = (field, value) => {
+        setUserData((prevData) => ({ ...prevData, [field]: value }));
+    };
 
-  const handleEditSave = () => {
-    if (isEditing) {
-      // Save logic (e.g., update employee data via API)
-      console.log("Updated Employee Data:", employee);
-    }
-    setIsEditing(!isEditing); // Toggle edit mode
-  };
+    const handleEditSave = () => {
+        if (isEditing) {
+            const confirmed = window.confirm("Do you want to save the changes?");
+            if (confirmed) {
+                setIsEditing(false);
+            }
+        } else {
+            setIsEditing(true);
+        }
+    };
 
-  return (
-    <div className="app-container">
-      {/* Sidebar */}
-      <SideNav />
+    const handlePhotoUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setProfilePhoto(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
-      {/* Main Content */}
-      <div className="main-content">
-        <div className="edit-employee-container">
-          {/* Header Section */}
-          <div className="edit-employee-header">
-            <h2>Edit Employee Profile</h2>
-            <p>Update the details below to edit the employee profile.</p>
-          </div>
+    const handleBackClick = () => {
+        navigate(-1); // Navigates to the previous page dynamically
+    };
 
-          {/* Photo Upload Section */}
-          <div className="profile-header-card">
-            <div className="profile-header">
-              <img className="profile-photo" src={photo} alt="Profile" />
-              <div className="profile-info">
-                <h3>Employee Photo</h3>
-                <p>Upload a new photo for the employee profile.</p>
-                {isEditing && (
-                  <label className="upload-btn">
-                    Change Photo
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handlePhotoUpload}
-                      style={{ display: "none" }}
-                    />
-                  </label>
-                )}
-              </div>
+    return (
+        <div className="profile-details-card">
+            <div className="profile-page">
+                {/* Profile Header */}
+                <div className="profile-header-card">
+                    <div className="profile-header">
+                        <img className="profile-photo" src={profilePhoto} alt="Profile" />
+                        <div className="profile-info">
+                            <h2>Personalize Your Account</h2>
+                            <p>Your profile photo will appear on apps and devices that use your account.</p>
+                            <label className="upload-btn">
+                                Change Photo
+                                <input type="file" accept="image/*" onChange={handlePhotoUpload} style={{ display: "none" }} />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Profile Information */}
+                <h3>Profile Information</h3>
+                {Object.keys(userData).map((key) => (
+                    <div key={key} className="profile-row">
+                        <label className="field-label">{key}</label>
+                        {isEditing ? (
+                            <input
+                                type="text"
+                                className="editable-input"
+                                value={userData[key]}
+                                onChange={(e) => handleFieldChange(key, e.target.value)}
+                                required
+                            />
+                        ) : (
+                            <span className="field-value">{userData[key]}</span>
+                        )}
+                    </div>
+                ))}
+
+                {/* Button Group */}
+                <div className="button-group">
+                    <button className="back-button" onClick={handleBackClick}>
+                        <FaAnglesLeft /> Back
+                    </button>
+
+                    <button
+                        className={`edit-update-btn ${isEditing ? "update-btn" : "edit-btn"}`}
+                        onClick={handleEditSave}
+                    >
+                        {isEditing ? "Update" : "Edit"}
+                    </button>
+                </div>
             </div>
-          </div>
-
-          {/* Employee Details Form */}
-          <form className="edit-employee-form">
-            {/* Full Name */}
-            <div className="form-row">
-              <label className="field-label">Full Name</label>
-              <input
-                type="text"
-                className="editable-input"
-                name="fullName"
-                value={employee.fullName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            {/* Department */}
-            <div className="form-row">
-              <label className="field-label">Department</label>
-              <input
-                type="text"
-                className="editable-input"
-                name="department"
-                value={employee.department}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            {/* Role */}
-            <div className="form-row">
-              <label className="field-label">Role</label>
-              <input
-                type="text"
-                className="editable-input"
-                name="role"
-                value={employee.role}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            {/* Gender */}
-            <div className="form-row">
-              <label className="field-label">Gender</label>
-              <select
-                className="editable-input"
-                name="gender"
-                value={employee.gender}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            {/* Address */}
-            <div className="form-row">
-              <label className="field-label">Address</label>
-              <textarea
-                className="editable-input"
-                name="address"
-                value={employee.address}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            {/* Salary */}
-            <div className="form-row">
-              <label className="field-label">Salary</label>
-              <input
-                type="text"
-                className="editable-input"
-                name="salary"
-                value={employee.salary}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            {/* Shift */}
-            <div className="form-row">
-              <label className="field-label">Shift</label>
-              <input
-                type="text"
-                className="editable-input"
-                name="shift"
-                value={employee.shift}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-              />
-            </div>
-
-            {/* Buttons */}
-            <div className="form-buttons">
-              <button
-                type="button"
-                className={isEditing ? "save-button" : "edit-button"}
-                onClick={handleEditSave}
-              >
-                {isEditing ? "Save" : "Edit"}
-              </button>
-            </div>
-          </form>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default EditEmployeePage;
