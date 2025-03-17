@@ -1,0 +1,158 @@
+/* General Styling */
+.prescription-page {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 680px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: #27a6ae;
+    margin: 0;
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0;
+  }
+  
+  /* Page Title */
+  .page-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .page-title h2 {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .form-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  /* Prescription Form */
+  .prescription-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #27a6ae;
+    outline: none;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* Gender Options */
+  .gender-options {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .gender-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Date Picker Container */
+.date-picker-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Date Picker Input */
+  .date-picker-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  .date-picker-input:focus {
+    border-color: #27a6ae;
+    outline: none;
+  }
+  
+  /* Form Date Display */
+  .form-date {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    padding: 12px 20px;
+    background-color: #27a6ae;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #1f8a8f;
+  }
+  /* Contact Number Field */
+.form-group input[type="tel"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="tel"]:focus {
+  border-color: #27a6ae;
+  outline: none;
+}
