@@ -65,4 +65,17 @@ public class FrontDeskRegisterController {
                     .body("An unexpected error occurred: " + e.getMessage());
         }
     }
+
+    @DeleteMapping("deleteByEmail/{email}")
+    public ResponseEntity<String> deleteFrontDeskByEmail(@PathVariable String email) {
+        try {
+            String confirmResponse = frontDeskRegisterServices.deleteFrontDeskByEmail(email);
+            return ResponseEntity.ok(confirmResponse);
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error occurred: " + e.getMessage());
+        }
+    }
 }

@@ -3,6 +3,7 @@ package com.example.SmartHospital_back_end.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class DepartmentDto {
     private Long departmentId;
     private String name;
-    private String labList;
+    private List<String> labList; // Changed to List<String>
     private int noOfDoctors;
     private int noOfRooms;
 }

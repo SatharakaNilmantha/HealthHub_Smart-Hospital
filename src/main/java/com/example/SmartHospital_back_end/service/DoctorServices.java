@@ -1,21 +1,22 @@
 package com.example.SmartHospital_back_end.service;
 
 import com.example.SmartHospital_back_end.dto.DoctorDto;
-import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
-
 
 public interface DoctorServices {
 
-    public String savedDoctor(DoctorDto doctorDto);
+    String saveDoctor(DoctorDto doctorDto, MultipartFile image) throws IOException;
 
-    public List<DoctorDto> AllDoctor();
+    List<DoctorDto> getAllDoctors();
 
-    public DoctorDto getDoctorById(long doctorId);
+    DoctorDto getDoctorById(long doctorId);
 
-    public String updateDoctor(long doctorId, DoctorDto doctorDto);
+    String updateDoctor(long doctorId, DoctorDto doctorDto, MultipartFile image) throws IOException;
 
-    public String deleteDoctorById(long doctorId);
+    String deleteDoctorById(long doctorId);
 
+    String deleteDoctorByEmail(String email);
 }

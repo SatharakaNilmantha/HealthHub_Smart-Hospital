@@ -10,7 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -27,44 +26,51 @@ public class DepartmentService implements DepartmentServices {
         if (departmentRepository.existsByName(departmentDto.getName())) {
             throw new DuplicateException("A Department with this name already exists.");
         }
-        departmentRepository.save(modelMapper.map(departmentDto, Department.class));
+        Department department = modelMapper.map(departmentDto, Department.class);
+        departmentRepository.save(department);
         return "Department Details Saved Successfully";
     }
 
     public List<DepartmentDto> getAllDepartments() {
-        List departmentList = departmentRepository.findAll();
+        List<Department> departmentList = departmentRepository.findAll();
         if (departmentList.isEmpty()) {
             throw new NotFoundException("No departments found in the database.");
         }
         return modelMapper.map(departmentList, new TypeToken<List<DepartmentDto>>() {}.getType());
     }
 
+    public DepartmentDto getDepartmentById(long departmentId) {
+        Department department = departmentRepository.findById(departmentId);
+        if (department == null) {
+            throw new NotFoundException("Employee with ID " + departmentId + " not found.");
+        }
+        return modelMapper.map(department, DepartmentDto.class);
+    }
+
     public String updateDepartment(long departmentId, DepartmentDto departmentDto) {
-
-        Optional<Department> existingDepartment = departmentRepository.findById(departmentId);
+        Optional<Department> existingDepartment = Optional.ofNullable(departmentRepository.findById(departmentId));
         if (existingDepartment.isPresent()) {
-            int updatedRows = departmentRepository.updateDepartmentById(
-                    departmentId,
-                    departmentDto.getLabList(),
-                    departmentDto.getNoOfDoctors(),
-                    departmentDto.getNoOfRooms()
-            );
+            Department department = existingDepartment.get();
+            // Update department details
+            department.setLabList(departmentDto.getLabList());
+            department.setNoOfDoctors(departmentDto.getNoOfDoctors());
+            department.setNoOfRooms(departmentDto.getNoOfRooms());
 
-            if (updatedRows > 0) {
-                return "Department updated successfully with ID " + departmentId;
-            } else {
-                throw new RuntimeException("Failed to update Department with ID " + departmentId);
-            }
+            departmentRepository.save(department); // Save updated department
+            return "Department updated successfully with ID " + departmentId;
         } else {
-            throw new RuntimeException("Department not found with ID " + departmentId);
+            throw new NotFoundException("Department not found with ID " + departmentId);
         }
     }
+
 
     public String deleteDepartmentById(long departmentId) {
-        int deletedRows = departmentRepository.deleteDepartmentById(departmentId);
-        if (deletedRows == 0) {
-            throw new NotFoundException("Department with ID " + departmentId + " not found or couldn't be deleted.");
+        if (departmentRepository.existsById(departmentId)) {
+            departmentRepository.deleteById(departmentId); // Directly delete by ID
+            return "Deleted successfully department with ID " + departmentId;
+        } else {
+            throw new NotFoundException("Department with ID " + departmentId + " not found.");
         }
-        return "Deleted successfully " + departmentId;
     }
+
 }

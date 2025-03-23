@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/admins")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AdminController {
 
     @Autowired
@@ -82,5 +83,68 @@ public class AdminController {
         }
 
     }
+
+    @DeleteMapping("deleteByEmail/{email}")
+    public ResponseEntity<String> deleteAdminByEmail(@PathVariable String email) {
+        try {
+            String confirmResponse = adminServices.deleteAdminByEmail(email);
+            return ResponseEntity.ok(confirmResponse);
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginAdmin(@RequestBody LoginRequest loginRequest) {
+        String loginMessage = adminServices.loginAdmin(loginRequest.getEmail(), loginRequest.getPassword());
+
+        // Return the login message as JSON
+        return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse(loginMessage));
+    }
+
+    // DTO for the login request
+    public static class LoginRequest {
+        private String email;
+        private String password;
+
+        // Getters and setters
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+    }
+
+    // DTO for the response message
+    public static class MessageResponse {
+        private String message;
+
+        public MessageResponse(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+
 }
 

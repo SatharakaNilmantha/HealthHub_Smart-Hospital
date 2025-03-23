@@ -87,4 +87,16 @@ public class FrontDeskRegisterService implements FrontDeskRegisterServices {
 
         return "Deleted successfully " + frontDeskId;
     }
+
+    public String deleteFrontDeskByEmail(String email) {
+        try {
+            int deletedRows = frontDeskRegisterRepository.deleteFrontDeskByEmail(email);
+            if (deletedRows == 0) {
+                throw new NotFoundException("FrontDesk with email " + email + " not found or couldn't be deleted.");
+            }
+            return "Deleted successfully: " + email;
+        } catch (NotFoundException e) {
+            throw e;
+        }
+    }
 }

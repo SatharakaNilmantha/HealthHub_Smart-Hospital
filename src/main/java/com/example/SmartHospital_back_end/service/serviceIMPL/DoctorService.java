@@ -3,148 +3,156 @@ package com.example.SmartHospital_back_end.service.serviceIMPL;
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.DoctorDto;
+import com.example.SmartHospital_back_end.entity.Appointment;
 import com.example.SmartHospital_back_end.entity.Doctor;
+import com.example.SmartHospital_back_end.repository.AppointmentRepository;
 import com.example.SmartHospital_back_end.repository.DoctorRepository;
 import com.example.SmartHospital_back_end.service.DoctorServices;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
 public class DoctorService implements DoctorServices {
 
     @Autowired
-    private ModelMapper modelMapper ;
+    private ModelMapper modelMapper;
+
     @Autowired
-    private DoctorRepository doctorRepository ;
+    private DoctorRepository doctorRepository;
 
-    public String savedDoctor(DoctorDto doctorDto){
-        // Check if doctor with the same full_name, phone_number, department, and title already exists
-        boolean exists = doctorRepository.existsByFullNameAndPhoneNumberAndDepartmentAndTitle(
-                doctorDto.getFullName(),
-                doctorDto.getPhoneNumber(),
-                doctorDto.getDepartment(),
-                doctorDto.getTitle()
-        );
+    @Autowired
+    private AppointmentRepository appointmentRepository; // Add appointment repository for checking appointments
 
-        if (exists) {
-            return "Doctor with the same details already exists.";
-        }
+
+    public String saveDoctor(DoctorDto doctorDto, MultipartFile imageFile) throws IOException {
         if (doctorRepository.existsByEmail(doctorDto.getEmail())) {
-            throw new DuplicateException("An Doctor with this email already exists.");
+            throw new DuplicateException("A Doctor with this email already exists.");
         }
 
+        // Map DTO to Entity
+        Doctor doctor = modelMapper.map(doctorDto, Doctor.class);
 
-        // Save the doctor if not already exists
-        doctorRepository.save(modelMapper.map(doctorDto, Doctor.class));
-        return "Doctor saved successfully  ";
+        // Upload image if provided
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String imageUrl = saveImageToOneDrive(imageFile);
+            doctor.setImageUrl(imageUrl);
+        }
+
+        // Save doctor to database
+        doctorRepository.save(doctor);
+        return "Doctor saved successfully";
     }
 
-
-    public List<DoctorDto> AllDoctor(){
-        List doctorList = doctorRepository.findAll();
+    public List<DoctorDto> getAllDoctors() {
+        List<Doctor> doctorList = doctorRepository.findAll();
         if (doctorList.isEmpty()) {
             throw new NotFoundException("No Doctors found in the database.");
         }
-        return modelMapper.map(doctorList , new TypeToken<List<DoctorDto>>(){}.getType());
+        List<DoctorDto> doctorDtos = modelMapper.map(doctorList, new TypeToken<List<DoctorDto>>() {}.getType());
+
+        // Ensure the image paths are correctly formatted
+        doctorDtos.forEach(doctorDto -> {
+            if (doctorDto.getImageUrl() != null) {
+                doctorDto.setImageUrl("/uploads/" + doctorDto.getImageUrl());
+            }
+        });
+
+        return doctorDtos;
     }
 
-
-    public DoctorDto getDoctorById(long doctorId){
-
-        try {
-            Doctor doctor = doctorRepository.getDoctorById(doctorId);
-            return  modelMapper.map(doctor, DoctorDto.class);
-        }catch (Exception e){
-            throw  new NotFoundException("Doctor with ID " + doctorId + " not found or couldn't be getten.");
+    public DoctorDto getDoctorById(long doctorId) {
+        Doctor doctor = doctorRepository.getDoctorById(doctorId);
+        if (doctor == null) {
+            throw new NotFoundException("Doctor with ID " + doctorId + " not found.");
         }
+        DoctorDto doctorDto = modelMapper.map(doctor, DoctorDto.class);
+
+        if (doctorDto.getImageUrl() != null) {
+            doctorDto.setImageUrl("/uploads/" + doctorDto.getImageUrl());
+        }
+
+        return doctorDto;
     }
 
-
-    public String updateDoctor(long doctorId, DoctorDto doctorDto) {
-        // Validate that the DoctorDto and all required fields are not null or empty
-        if (doctorDto == null) {
-            throw new IllegalArgumentException("Doctor details cannot be null.");
-        }
-        if (doctorDto.getFullName() == null || doctorDto.getFullName().trim().isEmpty()) {
-            throw new IllegalArgumentException("Full name is required.");
-        }
-        if (doctorDto.getAddress() == null || doctorDto.getAddress().trim().isEmpty()) {
-            throw new IllegalArgumentException("Address is required.");
-        }
-        if (doctorDto.getGender() == null || doctorDto.getGender().trim().isEmpty()) {
-            throw new IllegalArgumentException("Gender is required.");
-        }
-        if (doctorDto.getPhoneNumber() == null || doctorDto.getPhoneNumber().trim().isEmpty()) {
-            throw new IllegalArgumentException("Phone number is required.");
-        }
-        if (doctorDto.getDegree() == null || doctorDto.getDegree().trim().isEmpty()) {
-            throw new IllegalArgumentException("Degree is required.");
-        }
-        if (doctorDto.getDepartment() == null || doctorDto.getDepartment().trim().isEmpty()) {
-            throw new IllegalArgumentException("Department is required.");
-        }
-        if (doctorDto.getTitle() == null || doctorDto.getTitle().trim().isEmpty()) {
-            throw new IllegalArgumentException("Title is required.");
-        }
-        if (doctorDto.getDescription() == null || doctorDto.getDescription().trim().isEmpty()) {
-            throw new IllegalArgumentException("Description is required.");
-        }
-
-
-        // Check if the doctor exists in the repository
+    public String updateDoctor(long doctorId, DoctorDto doctorDto, MultipartFile imageFile) throws IOException {
         if (!doctorRepository.existsById(doctorId)) {
-            throw new RuntimeException("Doctor not found with ID " + doctorId);
+            throw new NotFoundException("Doctor not found with ID " + doctorId);
         }
 
-        // Perform the update using the repository method
-        int updatedRows = doctorRepository.updateDoctorById(
-                doctorId,
-                doctorDto.getFullName(),
-                doctorDto.getAddress(),
-                doctorDto.getGender(),
-                doctorDto.getImage(),
-                doctorDto.getPhoneNumber(),
-                doctorDto.getDegree(),
-                doctorDto.getDepartment(),
-                doctorDto.getTitle(),
-                doctorDto.getDescription(),
-                doctorDto.getFees()
-        );
+        Doctor doctor = doctorRepository.getDoctorById(doctorId);
 
-        // Check if any rows were updated
-        if (updatedRows > 0) {
-            return "Doctor updated successfully with ID " + doctorId;
-        } else {
-            throw new RuntimeException("Failed to update doctor with ID " + doctorId);
+        // Update doctor details
+        doctor.setFullName(doctorDto.getFullName());
+        doctor.setAddress(doctorDto.getAddress());
+        doctor.setGender(Doctor.Gender.valueOf(doctorDto.getGender()));
+        doctor.setPhoneNumber(doctorDto.getPhoneNumber());
+        doctor.setDegree(doctorDto.getDegree());
+        doctor.setDepartment(doctorDto.getDepartment());
+        doctor.setTitle(doctorDto.getTitle());
+        doctor.setDescription(doctorDto.getDescription());
+        doctor.setFees(doctorDto.getFees());
+
+        // Upload new image if provided
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String imageUrl = saveImageToOneDrive(imageFile);
+            doctor.setImageUrl(imageUrl);
+        } else if (doctorDto.getImageUrl() != null) {
+            doctor.setImageUrl(doctorDto.getImageUrl()); // Preserve existing image if no new one is uploaded
         }
+
+        // Save updated doctor details
+        doctorRepository.save(doctor);
+
+        return "Doctor updated successfully.";
     }
-
-
 
     public String deleteDoctorById(long doctorId) {
-
-        try {
-            // Assuming `bookRepository.deleteBookByIdBook(bookId)` returns the number of affected rows
-            int deletedRows = doctorRepository.deleteDoctorById(doctorId);
-
-            if (deletedRows == 0) {
-                // If no rows were deleted, throw custom exception
-                throw new NotFoundException("Doctor with ID " + doctorId + " not found or couldn't be deleted.");
-            }
-
-            return "Deleted successfully " + doctorId;
-
-        } catch (NotFoundException e) {
-            throw e;
+        // Check if doctor exists
+        if (!doctorRepository.existsById(doctorId)) {
+            throw new NotFoundException("Doctor with ID " + doctorId + " not found.");
         }
 
+        // Check if there are any appointments associated with this doctor
+        List<Appointment> appointments = appointmentRepository.findByDoctor_DoctorId(doctorId);
+        if (!appointments.isEmpty()) {
+            throw new DuplicateException("Doctor has associated appointments and cannot be deleted.");
+        }
+
+        // Proceed with doctor deletion if no appointments are found
+        doctorRepository.deleteById(doctorId);
+        return "Doctor deleted successfully.";
     }
 
 
+    public String deleteDoctorByEmail(String email) {
+        // Check if doctor exists by email
+        Doctor doctor = doctorRepository.findByEmail(email);
+        if (doctor == null) {
+            throw new NotFoundException("Doctor with email " + email + " not found.");
+        }
+
+        // Check if there are any appointments associated with this doctor
+        List<Appointment> appointments = appointmentRepository.findByDoctor_DoctorId(doctor.getDoctorId());
+        if (!appointments.isEmpty()) {
+            throw new DuplicateException("Doctor has associated appointments and cannot be deleted.");
+        }
+
+        // Proceed with doctor deletion if no appointments are found
+        doctorRepository.deleteById(doctor.getDoctorId());
+        return "Doctor deleted successfully.";
+    }
 
 
+    private String saveImageToOneDrive(MultipartFile image) throws IOException {
+        // Implement logic to save image to OneDrive and return the file path (simulated)
+        String oneDriveFilePath = "onedrive/uploaded_images/" + image.getOriginalFilename();
+        // Code to upload image to OneDrive (for this example, it's a placeholder)
+        return oneDriveFilePath;
+    }
 }

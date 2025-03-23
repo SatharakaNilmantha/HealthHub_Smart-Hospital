@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/departments")
+@CrossOrigin(origins = "http://localhost:5173")  // Adjust the port as per your frontend
 public class DepartmentController {
 
     @Autowired
@@ -40,14 +41,24 @@ public class DepartmentController {
         }
     }
 
+    @GetMapping("/{departmentId}")
+    public ResponseEntity<?> getDepartmentById(@PathVariable long departmentId) {
+        try {
+            DepartmentDto department = departmentServices.getDepartmentById(departmentId);
+            return ResponseEntity.ok(department);
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
+    }
+
     @PutMapping("{departmentId}")
     public ResponseEntity<?> updateDepartment(@PathVariable long departmentId, @RequestBody DepartmentDto departmentDto) {
         try {
             String updateResponse = departmentServices.updateDepartment(departmentId, departmentDto);
             return new ResponseEntity<>(updateResponse, HttpStatus.OK);
-        } catch (DuplicateException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        } catch (RuntimeException e) {
+        } catch (NotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -62,8 +73,7 @@ public class DepartmentController {
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An unexpected error occurred: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: " + e.getMessage());
         }
     }
 }

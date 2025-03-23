@@ -1,97 +1,93 @@
 package com.example.SmartHospital_back_end.controller;
 
-
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.DoctorDto;
 import com.example.SmartHospital_back_end.service.DoctorServices;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/doctors")
+@RequestMapping("/api/doctors")
+@CrossOrigin(origins = "http://localhost:3000")
 public class DoctorController {
+
     @Autowired
-    private DoctorServices doctorServices ;
+    private DoctorServices doctorServices;
 
+    // Save Doctor with Image
     @PostMapping("saveDoctor")
-    public ResponseEntity<String> saveDoctor (@RequestBody DoctorDto doctorDto){
+    public ResponseEntity<String> saveDoctor(@RequestParam("doctor") String doctorDtoJson,
+                                             @RequestParam("image") MultipartFile imageFile) {
         try {
-            // Call the service method to save the admin details
-            String response = doctorServices.savedDoctor(doctorDto);
-            return ResponseEntity.ok(response);  // Return 200 OK with success message
+            DoctorDto doctorDto = new ObjectMapper().readValue(doctorDtoJson, DoctorDto.class);
+            return ResponseEntity.ok(doctorServices.saveDoctor(doctorDto, imageFile));
         } catch (DuplicateException e) {
-            // If a duplicate email is found, return a 400 Bad Request with the error message
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }catch (Exception e) {
-            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
         }
     }
 
-
-    @GetMapping("getDoctor")
-    public ResponseEntity<?> getAllDoctor() {
-
-        try {
-            List<DoctorDto> doctorlist = doctorServices.AllDoctor();
-            return ResponseEntity.ok(doctorlist);
-        } catch (NotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+    // Get All Doctors
+    @GetMapping("getAllDoctors")
+    public ResponseEntity<List<DoctorDto>> getAllDoctors() {
+        return ResponseEntity.ok(doctorServices.getAllDoctors());
     }
 
+    // Get Doctor by ID
     @GetMapping("{doctorId}")
-    public ResponseEntity<?> getDoctorById(@PathVariable long doctorId){
-
+    public ResponseEntity<?> getDoctorById(@PathVariable long doctorId) {
         try {
-            DoctorDto doctorFromId = doctorServices.getDoctorById(doctorId);
-            return new ResponseEntity<>(doctorFromId, HttpStatus.CREATED);
+            DoctorDto doctor = doctorServices.getDoctorById(doctorId);
+            return ResponseEntity.ok(doctor);
         } catch (NotFoundException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        }catch (Exception e) {
-            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
-
-    @PutMapping("{doctorId}")
-    public ResponseEntity<?> updateDoctor(@PathVariable long doctorId, @RequestBody DoctorDto doctorDto) {
-        try {
-            String updateResponse = doctorServices.updateDoctor(doctorId ,doctorDto);
-            return new ResponseEntity<>(updateResponse, HttpStatus.OK); // Changed status to OK
-        } catch (RuntimeException e) {
-            // If the patient is not found, return a 404 Not Found status
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            // For any unexpected errors, return a 500 Internal Server Error
-            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-
-    @DeleteMapping("{doctorId}")
-    public ResponseEntity<String> deleteDoctorById(@PathVariable long doctorId)
-    {
-
-        try {
-
-            String confirmResponse = doctorServices.deleteDoctorById(doctorId);
-            return ResponseEntity.ok(confirmResponse);
-        } catch (NotFoundException e) {
-            // Handle NotFoundException and return HTTP 404 Not Found
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         } catch (Exception e) {
-            // Handle any other exceptions and return HTTP 500 Internal Server Error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("An unexpected error occurred: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
         }
-
     }
 
+    // Update Doctor with Image
+    @PutMapping("{doctorId}")
+    public ResponseEntity<?> updateDoctor(@PathVariable long doctorId,
+                                          @RequestParam("doctor") String doctorDtoJson,
+                                          @RequestParam(value = "image", required = false) MultipartFile imageFile) {
+        try {
+            DoctorDto doctorDto = new ObjectMapper().readValue(doctorDtoJson, DoctorDto.class);
+            String updateResponse = doctorServices.updateDoctor(doctorId, doctorDto, imageFile);
+            return ResponseEntity.ok(updateResponse);
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
+    }
 
+    // Delete Doctor by ID
+    @DeleteMapping("{doctorId}")
+    public ResponseEntity<String> deleteDoctor(@PathVariable long doctorId) {
+        return ResponseEntity.ok(doctorServices.deleteDoctorById(doctorId));
+    }
+
+    // Delete Doctor by Email
+    @DeleteMapping("deleteByEmail/{email}")
+    public ResponseEntity<String> deleteDoctorByEmail(@PathVariable String email) {
+        try {
+            return ResponseEntity.ok(doctorServices.deleteDoctorByEmail(email));
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (DuplicateException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
+    }
 
 }
