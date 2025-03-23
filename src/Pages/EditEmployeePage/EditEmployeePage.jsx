@@ -1,37 +1,46 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; 
+import { useLocation, useNavigate } from "react-router-dom";
 import './EditEmployeePage.css';
 import { FaAnglesLeft } from "react-icons/fa6";
+import PopupMessage from "../../Components/PopupMessage/popupMessage.jsx";  // Import the PopupMessage component
 
 function EditEmployeePage() {
     const { state: employee } = useLocation();
     const [userData, setUserData] = useState(employee || {});
-    const [profilePhoto, setProfilePhoto] = useState("");
+    const [profilePhoto, setProfilePhoto] = useState(employee?.profilePhoto || "default-profile-photo.jpg");
     const [isEditing, setIsEditing] = useState(false);
-    
+    const [departments, setDepartments] = useState([]);
+    const [popupMessage, setPopupMessage] = useState({ type: "", message: "" });
     const navigate = useNavigate();
 
+    // Fetch departments when the component mounts
     useEffect(() => {
-        if (employee?.profilePhoto) {
-            setProfilePhoto(employee.profilePhoto);
-        }
-    }, [employee]);
-
-    const handleFieldChange = (field, value) => {
-        setUserData((prevData) => ({ ...prevData, [field]: value }));
-    };
-
-    const handleEditSave = () => {
-        if (isEditing) {
-            const confirmed = window.confirm("Do you want to save the changes?");
-            if (confirmed) {
-                setIsEditing(false);
+        const fetchDepartments = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/api/departments/getDepartments");
+                if (response.ok) {
+                    const departmentList = await response.json();
+                    setDepartments(departmentList);
+                } else {
+                    console.error("Failed to fetch departments");
+                }
+            } catch (error) {
+                console.error("Error fetching departments:", error);
             }
-        } else {
-            setIsEditing(true);
-        }
+        };
+
+        fetchDepartments();
+    }, []);
+
+    // Handles the changes in form fields
+    const handleFieldChange = (field, value) => {
+        setUserData(prevData => ({
+            ...prevData,
+            [field]: value
+        }));
     };
 
+    // Handles photo upload and sets the preview image
     const handlePhotoUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -43,8 +52,56 @@ function EditEmployeePage() {
         }
     };
 
+    // Handles saving or toggling edit mode
+    const handleEditSave = async () => {
+        setPopupMessage({ type: "hiddne", message: "Employee details updated successfully!" });
+
+        if (isEditing) {
+            const confirmed = window.confirm("Do you want to save the changes?");
+            if (confirmed) {
+                try {
+                    // Create FormData object
+                    const formData = new FormData();
+                    
+                    // Append employee data as JSON string
+                    formData.append("employee", JSON.stringify(userData));
+
+                    // Append image if available
+                    if (profilePhoto !== "default-profile-photo.jpg") {
+                        const fileInput = document.querySelector('input[type="file"]');
+                        if (fileInput && fileInput.files[0]) {
+                            formData.append("image", fileInput.files[0]);
+                        }
+                    }
+
+                    // Send the PUT request with FormData
+                    const response = await fetch(
+                        `http://localhost:8080/api/employees/${userData.employeeId}`,
+                        {
+                            method: "PUT",
+                            body: formData,
+                        }
+                    );
+
+                    if (response.ok) {
+                        setIsEditing(false);
+                        setPopupMessage({ type: "success", message: "Employee details updated successfully!" });
+                    } else {
+                        setPopupMessage({ type: "error", message: "Failed to update employee details." });
+                    }
+                } catch (error) {
+                    console.error("Error updating employee:", error);
+                    setPopupMessage({ type: "warning", message: "check the connection " });
+                }
+            }
+        } else {
+            setIsEditing(true);
+        }
+    };
+
+    // Navigate back to the previous page
     const handleBackClick = () => {
-        navigate(-1); // Navigates to the previous page dynamically
+        navigate(-1);
     };
 
     return (
@@ -53,13 +110,23 @@ function EditEmployeePage() {
                 {/* Profile Header */}
                 <div className="profile-header-card">
                     <div className="profile-header">
-                        <img className="profile-photo" src={profilePhoto} alt="Profile" />
+                        <img
+                            className="profile-photo"
+                            src={profilePhoto}
+                            alt="Profile"
+                            style={{ width: "150px", height: "150px", borderRadius: "50%" }}
+                        />
                         <div className="profile-info">
                             <h2>Personalize Your Account</h2>
                             <p>Your profile photo will appear on apps and devices that use your account.</p>
                             <label className="upload-btn">
                                 Change Photo
-                                <input type="file" accept="image/*" onChange={handlePhotoUpload} style={{ display: "none" }} />
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handlePhotoUpload}
+                                    style={{ display: "none" }}
+                                />
                             </label>
                         </div>
                     </div>
@@ -67,22 +134,48 @@ function EditEmployeePage() {
 
                 {/* Profile Information */}
                 <h3>Profile Information</h3>
-                {Object.keys(userData).map((key) => (
-                    <div key={key} className="profile-row">
-                        <label className="field-label">{key}</label>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                className="editable-input"
-                                value={userData[key]}
-                                onChange={(e) => handleFieldChange(key, e.target.value)}
-                                required
-                            />
-                        ) : (
-                            <span className="field-value">{userData[key]}</span>
-                        )}
-                    </div>
-                ))}
+                <div className="profile-info-container">
+                    {[ 
+                        { label: "Full Name", field: "fullName" },
+                        { label: "Address", field: "address" },
+                        { label: "Department", field: "department", type: "select", options: departments },
+                        { label: "Salary", field: "salary" },
+                        { label: "Gender", field: "gender", type: "select", options: ["Male", "Female", "Other"] },
+                        { label: "Phone Number", field: "phoneNumber" },
+                        { label: "Role", field: "role" },
+                        { label: "Shift Start Time", field: "shiftStartTime", type: "time" },
+                        { label: "Shift End Time", field: "shiftEndTime", type: "time" }
+                    ].map(({ label, field, type = "text", options }) => (
+                        <div className="profile-row" key={field}>
+                            <label className="field-label">{label}</label>
+                            {isEditing ? (
+                                type === "select" ? (
+                                    <select
+                                        className="editable-input"
+                                        value={userData[field] || ""}
+                                        onChange={(e) => handleFieldChange(field, e.target.value)}
+                                        required
+                                    >
+                                        <option value="">Select {label}</option>
+                                        {options && options.map((option, index) => (
+                                            <option key={index} value={option.name || option}>{option.name || option}</option>
+                                        ))}
+                                    </select>
+                                ) : (
+                                    <input
+                                        type={type}
+                                        className="editable-input"
+                                        value={userData[field] || ""}
+                                        onChange={(e) => handleFieldChange(field, e.target.value)}
+                                        required
+                                    />
+                                )
+                            ) : (
+                                <span className="field-value">{userData[field]}</span>
+                            )}
+                        </div>
+                    ))}
+                </div>
 
                 {/* Button Group */}
                 <div className="button-group">
@@ -98,6 +191,9 @@ function EditEmployeePage() {
                     </button>
                 </div>
             </div>
+
+            {/* Popup Message */}
+            <PopupMessage type={popupMessage?.type} message={popupMessage?.message} />
         </div>
     );
 }

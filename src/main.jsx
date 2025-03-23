@@ -30,8 +30,8 @@ const router = createBrowserRouter([
   { path: "/addemployee", element: <AddEmployeePage /> },
   { path: "/addDepartment", element: <AddDepartmentPage /> },
   { path: "/DepartmentList", element: <DepartmentListPage /> },
-  { path: "/view-department/:id", element: <ViewDepartmentPage /> }, // Optional Dynamic ID for departments
-  { path: "/edit-employee/:id", element: <EditEmployeePage /> }, // Add route
+  { path: "/view-department/:departmentId", element: <ViewDepartmentPage /> }, // Optional Dynamic ID for departments
+  { path: "/edit-employee/:employeeId", element: <EditEmployeePage /> }, // Add route
 ]);
 
 createRoot(document.getElementById("root")).render(
