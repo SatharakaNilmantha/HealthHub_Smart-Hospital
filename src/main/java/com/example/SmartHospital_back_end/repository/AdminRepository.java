@@ -26,4 +26,12 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
     @Transactional
     @Query(value = "DELETE FROM admin WHERE admin_id = ?1", nativeQuery = true)
     int deleteAdminById(long adminId);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM admin WHERE email = ?1", nativeQuery = true)
+    int deleteAdminByEmail(String email);
+
+    Admin findByEmail(String email);
 }

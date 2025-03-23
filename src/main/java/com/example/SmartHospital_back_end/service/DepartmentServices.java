@@ -9,7 +9,7 @@ public interface DepartmentServices {
     String saveDepartment(DepartmentDto departmentDto);
 
     List<DepartmentDto> getAllDepartments();
-
+    public DepartmentDto getDepartmentById(long departmentId);
     String updateDepartment(long departmentId, DepartmentDto departmentDto);
 
     String deleteDepartmentById(long departmentId);

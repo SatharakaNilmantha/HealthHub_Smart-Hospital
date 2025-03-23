@@ -23,6 +23,7 @@ public class config {
                         .allowedOrigins("http://localhost:5173")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true);
+
             }
         };
     }

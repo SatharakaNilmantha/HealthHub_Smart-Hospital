@@ -4,6 +4,7 @@ import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.AdminDto;
 import com.example.SmartHospital_back_end.entity.Admin;
+import com.example.SmartHospital_back_end.entity.Patient;
 import com.example.SmartHospital_back_end.repository.AdminRepository;
 import com.example.SmartHospital_back_end.service.AdminServices;
 import org.modelmapper.ModelMapper;
@@ -99,6 +100,35 @@ public class AdminService implements AdminServices {
         }
 
     }
+
+    public String deleteAdminByEmail(String email) {
+        try {
+            int deletedRows = adminRepository.deleteAdminByEmail(email);
+            if (deletedRows == 0) {
+                throw new NotFoundException("Admin with email " + email + " not found or couldn't be deleted.");
+            }
+            return "Deleted successfully: " + email;
+        } catch (NotFoundException e) {
+            throw e;
+        }
+    }
+
+    public String loginAdmin(String email, String password) {
+        // Check if patient with the given email exists
+        Admin admin = adminRepository.findByEmail(email);
+        if (admin == null) {
+            throw new NotFoundException("No patient found with this email.");
+        }
+
+        // Validate password
+        if (!admin.getPassword().equals(password)) {
+            throw new RuntimeException("Incorrect password.");
+        }
+
+        // If email and password match
+        return "Login successful!";
+    }
+
 
 
 }

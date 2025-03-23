@@ -19,10 +19,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM employee WHERE employee_id = ?1", nativeQuery = true)
-    int deleteEmployeeById(long employeeId);
+    int DeleteEmployeeById(long employeeId);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE employee SET full_name = ?2, address = ?3, gender = ?4, image = ?5, phone_number = ?6, department = ?7, role = ?8 WHERE employee_id = ?1", nativeQuery = true)
-    int updateEmployeeById(long employeeId, String fullName, String address, String gender, String image, String phoneNumber, String department, String role);
+    @Query(value = "UPDATE employee SET full_name = ?2, address = ?3, gender = ?4, image_path = ?5, phone_number = ?6, department = ?7, role = ?8, salary = ?9, shift_start_time = ?10, shift_end_time = ?11 WHERE employee_id = ?1", nativeQuery = true)
+    int UpdateEmployeeById(long employeeId, String fullName, String address, String gender, String imagePath, String phoneNumber, String department, String role, double salary, String shiftStartTime, String shiftEndTime);
+
 }

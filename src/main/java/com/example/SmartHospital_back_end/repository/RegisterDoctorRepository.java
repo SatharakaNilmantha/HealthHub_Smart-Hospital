@@ -25,4 +25,9 @@ public interface RegisterDoctorRepository extends JpaRepository<RegisterDoctor, 
     @Transactional
     @Query(value = "DELETE FROM register_doctor WHERE doctor_id = ?1", nativeQuery = true)
     int deleteDoctorById(long doctorId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM register_doctor WHERE email = ?1", nativeQuery = true)
+    int deleteDoctorByEmail(String email);
 }

@@ -3,8 +3,8 @@ package com.example.SmartHospital_back_end.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,8 +19,8 @@ public class Department {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false)
-    private String labList;
+    @ElementCollection // Changed from String to List<String>
+    private List<String> labList;
 
     @Column(nullable = false)
     private int noOfDoctors;

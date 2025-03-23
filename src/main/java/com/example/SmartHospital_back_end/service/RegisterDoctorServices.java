@@ -13,4 +13,6 @@ public interface RegisterDoctorServices {
     String updateDoctor(long doctorId, RegisterDoctorDto registerDoctorDto);
 
     String deleteDoctorById(long doctorId);
+
+    String deleteDoctorByEmail(String email);
 }

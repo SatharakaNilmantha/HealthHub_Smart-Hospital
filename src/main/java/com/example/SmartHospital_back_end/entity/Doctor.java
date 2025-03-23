@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,9 +16,6 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long doctorId;
-
-    @Lob
-    private byte[] image; // To store images as byte array
 
     @Column(nullable = false)
     private String fullName;
@@ -49,8 +47,12 @@ public class Doctor {
     @Column(nullable = false)
     private Gender gender;
 
-    // Enum for Gender
+    private String imageUrl; // Store the OneDrive image URL
+
     public enum Gender {
         Male, Female, Other
     }
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Appointment> appointments; // This sets up the cascading delete for appointments
 }

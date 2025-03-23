@@ -16,8 +16,8 @@ public class DoctorDto {
     private String description;
     private double fees;
     private String fullName;
-    private String gender; // Kept as String to allow flexibility in DTO
-    private String image; // Base64 encoded string for easier transmission
+    private String gender;
+    private String imageUrl; // URL for the image stored on OneDrive
     private String phoneNumber;
     private String title;
 }

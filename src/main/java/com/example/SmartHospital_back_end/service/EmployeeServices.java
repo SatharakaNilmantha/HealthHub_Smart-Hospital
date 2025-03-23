@@ -1,17 +1,20 @@
 package com.example.SmartHospital_back_end.service;
 
 import com.example.SmartHospital_back_end.dto.EmployeeDto;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface EmployeeServices {
-    String savedEmployee(EmployeeDto employeeDto);
 
-    List<EmployeeDto> AllEmployee();
+    String saveEmployee(EmployeeDto employeeDto, MultipartFile image) throws IOException;
 
-    String updateEmployee(long employeeId, EmployeeDto employeeDto);
+    List<EmployeeDto> getAllEmployees();
 
     EmployeeDto getEmployeeById(long employeeId);
+
+    String updateEmployee(long employeeId, EmployeeDto employeeDto, MultipartFile image) throws IOException;
 
     String deleteEmployeeById(long employeeId);
 }

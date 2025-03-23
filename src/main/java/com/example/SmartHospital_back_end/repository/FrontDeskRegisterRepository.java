@@ -27,4 +27,9 @@ public interface FrontDeskRegisterRepository extends JpaRepository<FrontDeskRegi
     @Transactional
     @Query(value = "DELETE FROM front_desk_register WHERE front_desk_id = ?1", nativeQuery = true)
     int deleteFrontDeskRegisterById(long frontDeskId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM front_desk_register WHERE email = ?1", nativeQuery = true)
+    int deleteFrontDeskByEmail(String email);
 }

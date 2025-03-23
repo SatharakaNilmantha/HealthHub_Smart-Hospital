@@ -81,4 +81,16 @@ public class RegisterDoctorService implements RegisterDoctorServices {
 
         return "Doctor deleted successfully with ID " + doctorId;
     }
+
+    public String deleteDoctorByEmail(String email) {
+        try {
+            int deletedRows = registerDoctorRepository.deleteDoctorByEmail(email);
+            if (deletedRows == 0) {
+                throw new NotFoundException("Doctor with email " + email + " not found or couldn't be deleted.");
+            }
+            return "Deleted successfully: " + email;
+        } catch (NotFoundException e) {
+            throw e;
+        }
+    }
 }
