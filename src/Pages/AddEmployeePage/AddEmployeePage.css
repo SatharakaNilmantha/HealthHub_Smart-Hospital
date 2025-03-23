@@ -124,7 +124,7 @@
 
 .editable-input:focus {
   outline: none;
-  border-color: #27a6ae;
+  border-color: #000000;
 }
 
 textarea.editable-input {
