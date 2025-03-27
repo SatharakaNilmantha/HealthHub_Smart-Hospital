@@ -4,6 +4,7 @@ import SideNav from '../../components/SideNav/SideNav';
 import './AddDoctors.css';
 import 'react-toastify/dist/ReactToastify.css'; // Importing CSS for Toast notifications
 import PopupMessage from '../../Components/PopupMessage/popupMessage.jsx'; // Importing PopupMessage component
+import user from '../../Images/doctor/user.jpg'
 
 function AddDoctors() {
   const [doctorDetails, setDoctorDetails] = useState({
@@ -35,7 +36,7 @@ function AddDoctors() {
         const employees = response.data;
 
         // Filter employees who are doctors
-        const doctorEmployees = employees.filter(emp => emp.role = 'doctor');
+        const doctorEmployees = employees.filter(emp => emp.role == "doctor");
 
         // Extract departments and remove duplicates
         const departmentList = [...new Set(doctorEmployees.map(emp => emp.department))];
@@ -184,7 +185,7 @@ function AddDoctors() {
               {photo ? (
                 <img className="profile-photo" src={photo} alt="Profile" />
               ) : (
-                <img className="profile-photo" src="https://via.placeholder.com/100" alt="Profile Placeholder" />
+                <img className="profile-photo" src={user} alt="Profile Placeholder" />
               )}
               <div className="profile-info">
                 <h3>Doctor Photo</h3>

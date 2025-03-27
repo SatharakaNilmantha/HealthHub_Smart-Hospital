@@ -4,10 +4,21 @@ import './EditEmployeePage.css';
 import { FaAnglesLeft } from "react-icons/fa6";
 import PopupMessage from "../../Components/PopupMessage/popupMessage.jsx";  // Import the PopupMessage component
 
+import memployee from '../../Images/doctor/memployee.jpg';
+import lemployee from '../../Images/doctor/lemployee.jpg';
+
 function EditEmployeePage() {
     const { state: employee } = useLocation();
+
+    // Set default profile image based on gender
+    const getDefaultProfilePhoto = (gender) => {
+        if (gender === "Male") return memployee;
+        if (gender === "Female") return lemployee;
+        return "default-profile-photo.jpg";
+    };
+
     const [userData, setUserData] = useState(employee || {});
-    const [profilePhoto, setProfilePhoto] = useState(employee?.profilePhoto || "default-profile-photo.jpg");
+    const [profilePhoto, setProfilePhoto] = useState(getDefaultProfilePhoto(employee?.gender)); // Initial photo based on gender
     const [isEditing, setIsEditing] = useState(false);
     const [departments, setDepartments] = useState([]);
     const [popupMessage, setPopupMessage] = useState({ type: "", message: "" });
@@ -32,6 +43,13 @@ function EditEmployeePage() {
         fetchDepartments();
     }, []);
 
+    // Update profile photo when gender or employee data changes
+    useEffect(() => {
+        if (!isEditing) {
+            setProfilePhoto(userData.profilePhoto || getDefaultProfilePhoto(userData.gender));
+        }
+    }, [userData.gender, userData.profilePhoto, isEditing]);
+
     // Handles the changes in form fields
     const handleFieldChange = (field, value) => {
         setUserData(prevData => ({
@@ -54,7 +72,7 @@ function EditEmployeePage() {
 
     // Handles saving or toggling edit mode
     const handleEditSave = async () => {
-        setPopupMessage({ type: "hiddne", message: "Employee details updated successfully!" });
+        setPopupMessage({ type: "hidden", message: "" });
 
         if (isEditing) {
             const confirmed = window.confirm("Do you want to save the changes?");
@@ -91,7 +109,7 @@ function EditEmployeePage() {
                     }
                 } catch (error) {
                     console.error("Error updating employee:", error);
-                    setPopupMessage({ type: "warning", message: "check the connection " });
+                    setPopupMessage({ type: "warning", message: "Check the connection." });
                 }
             }
         } else {
@@ -110,23 +128,13 @@ function EditEmployeePage() {
                 {/* Profile Header */}
                 <div className="profile-header-card">
                     <div className="profile-header">
-                        <img
-                            className="profile-photo"
-                            src={profilePhoto}
-                            alt="Profile"
-                            style={{ width: "150px", height: "150px", borderRadius: "50%" }}
-                        />
+                        <img  className="profile-photo1"  src={profilePhoto}  alt="Profile"  style={{ width: "150px", height: "150px", borderRadius: "50%" }}/>
                         <div className="profile-info">
                             <h2>Personalize Your Account</h2>
                             <p>Your profile photo will appear on apps and devices that use your account.</p>
                             <label className="upload-btn">
                                 Change Photo
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handlePhotoUpload}
-                                    style={{ display: "none" }}
-                                />
+                                <input type="file" accept="image/*" onChange={handlePhotoUpload} style={{ display: "none" }} />
                             </label>
                         </div>
                     </div>

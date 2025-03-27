@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTachometerAlt, faUserMd, faEnvelope, faBuilding, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faTachometerAlt, faUserMd, faUser, faBuilding, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "react-bootstrap";
 import logo from "../../Images/logo/logo-removebg.png";
 import "./SideNav.css";
@@ -20,7 +20,7 @@ function SideNav() {
     setOpenDropdown((prev) => (prev === toggleKey ? null : toggleKey));
   }
 
-  // ✅ Prevents page reload when clicking on the Dashboard link
+  // Prevents page reload when clicking on the Dashboard link
   function handleDashboardClick(e) {
     if (location.pathname === "/dashboard") {
       e.preventDefault(); // Prevent reloading the same page
@@ -40,7 +40,7 @@ function SideNav() {
           <NavLink 
             to="/dashboard" 
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} 
-            onClick={handleDashboardClick} // ✅ Updated event handler
+            onClick={handleDashboardClick} // Updated event handler
           >
             <FontAwesomeIcon icon={faTachometerAlt} className="sidebar-icon" />
             <span>Dashboard</span>
@@ -99,8 +99,8 @@ function SideNav() {
 
         <li>
           <NavLink to="/contact" className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} onClick={handleClick}>
-            <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
-            <span>Contact</span>
+            <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
+            <span>Account</span>
           </NavLink>
         </li>
       </ul>

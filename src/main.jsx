@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   { path: "/dashboard", element: <App /> },
   { path: "/doctors", element: <DoctorsList /> },
   { path: "/adddoctor", element: <AddDoctor /> },
-  { path: "/view-doctor-profile/:id", element: <DoctorProfile /> }, // Dynamic ID
+  { path: "/view-doctor-profile/:doctorId", element: <DoctorProfile /> }, // Dynamic ID
   { path: "/employees", element: <EmployeeListPage /> },
   { path: "/addemployee", element: <AddEmployeePage /> },
   { path: "/addDepartment", element: <AddDepartmentPage /> },

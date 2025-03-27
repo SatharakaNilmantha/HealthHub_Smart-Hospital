@@ -47,7 +47,7 @@ const Login = () => {
         setPopupMessage({ type: "error", message: errorData.message || "Invalid email or password." });
       }
     } catch (error) {
-      PopupMessage({ type: "error", message: "Error connecting to the backend: " + error.message });
+      setPopupMessage({ type: "warning", message: "Please check the network connection." });
     }
   };
 
