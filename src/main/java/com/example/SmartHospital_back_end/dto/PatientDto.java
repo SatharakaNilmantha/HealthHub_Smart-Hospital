@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 @Data
 @AllArgsConstructor
@@ -20,4 +21,5 @@ public class PatientDto {
     private int age;
     private String email;
     private String password;
+    private String currentPassword;
 }

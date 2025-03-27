@@ -23,4 +23,9 @@ public interface PatientRepository extends JpaRepository<Patient , Long> {
     @Transactional
     @Query(value = "UPDATE patient SET full_name = ?2, address = ?3, gender = ?4,  phone_number = ?5, dob = ?6 WHERE patient_id = ?1", nativeQuery = true)
     int updatePatientById(long patientId, String fullName, String address, String gender, String phoneNumber, LocalDate dob);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE patient SET password = ?2 WHERE patient_id = ?1", nativeQuery = true)
+    int updatePatientPassword(long patientId, String password);
 }

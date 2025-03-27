@@ -11,4 +11,6 @@ public interface PatientServices {
     public String updatePatient(long patientId, PatientDto patientDto);
 
     PatientDto loginPatient(String email, String password);
+
+    String updatePatientPassword(long patientId, PatientDto patientDto);
 }
