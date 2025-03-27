@@ -1,9 +1,11 @@
 
 .profile-page {
     max-width: 800px;
-    margin: 200px auto 30px auto;
+    margin: 180px auto 30px auto;
     padding: 20px;
+    display: grid;
 }
+
 
 .profile-details-card {
     background-color: #ffffff;
@@ -38,6 +40,8 @@
     color: #666;
 }
 
+
+
 .upload-btn {
     background-color: #0078d4;
     color: #fff;
@@ -67,8 +71,8 @@
     justify-content: space-between;
     margin-bottom: 12px;
     padding: 8px 0;
-    border-bottom: 1px solid #ddd;
 }
+
 
 .field-label {
     flex: 1;
@@ -88,6 +92,21 @@
     border-radius: 4px;
     font-size: 14px;
 }
+
+
+.password-strength {
+    font-size: 12px;
+    text-align: right;
+}
+
+.password-strength.strong {
+    color: green;
+}
+
+.password-strength.weak {
+    color: red;
+}
+
 
 .action-links {
     gap: 80px;
