@@ -1,107 +1,210 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Calendar from 'react-calendar';
 import { FaAnglesLeft } from "react-icons/fa6";
-import 'react-calendar/dist/Calendar.css';
+import axios from 'axios';
+import PopupMessage from '../../Components/PopupMessage/popupMessage.jsx'; // Import PopupMessage component
 import './AppointmentPage.css';
 
+function ConsultationAppointmentPage() {
+  const location = useLocation();
+  const doctor = location.state || {};
 
-function TreatmentAppointmentPage() {
-    const location = useLocation();
-    const doctor = location.state || {};
-    const tommorow = new Date();
-    tommorow.setDate(tommorow.getDate() + 1); // Ensuring the starting date is tomorrow
-    const twoMonthsLater = new Date();
-    twoMonthsLater.setMonth(tommorow.getMonth() + 2);
+  const [message, setMessage] = useState('');
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
+  const [doctorAppointments, setDoctorAppointments] = useState([]);
+  const [bookedSlots, setBookedSlots] = useState([]);
+  const [appointment, setAppointment] = useState({
+    doctorId: doctor.doctorId || '',
+    patientId: localStorage.getItem('userId') || '',
+    appointmentDateTime: '',
+    type: 'Consultation',
+    state: 'pending',
+  });
 
-    const [selectedDate, setSelectedDate] = useState(tommorow);
-    const [selectedTime, setSelectedTime] = useState(null);
-    const [bookingConfirmation, setBookingConfirmation] = useState("");
+  const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail') || '');
+  const [userId, setUserId] = useState(localStorage.getItem('userId') || '');
 
-    const generateTimeSlotsForDay = (dayOfWeek) => {
-        let start, end, interval = 30;
-        switch (dayOfWeek) {
-            case 0: start = new Date(0, 0, 0, 11, 0); end = new Date(0, 0, 0, 15, 0); break;
-            case 6: start = new Date(0, 0, 0, 9, 0); end = new Date(0, 0, 0, 12, 0); break;
-            default: start = new Date(0, 0, 0, 10, 0); end = new Date(0, 0, 0, 16, 0); break;
+  // Fetch doctor's appointments on component load or when doctorId changes
+  useEffect(() => {
+    if (appointment.doctorId) {
+      const fetchDoctorAppointments = async () => {
+        try { const response = await axios.get(  `http://localhost:8080/api/appointments/getAppointmentsByDoctor/${appointment.doctorId}`);
+          setDoctorAppointments(response.data);
+        } catch (error) {
+          console.error('Error fetching appointments:', error);
         }
+      };
 
-        const times = [];
-        let currentTime = new Date(start);
-        while (currentTime < end) {
-            times.push(currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-            currentTime.setMinutes(currentTime.getMinutes() + interval);
-        }
-        return times;
-    };
+      fetchDoctorAppointments();
+    }
+  }, [appointment.doctorId]);
 
-    const timeSlots = generateTimeSlotsForDay(selectedDate.getDay());
+  // Generate time slots based on the selected day
+  const generateTimeSlotsForDay = (dayOfWeek) => {
+    let start, end;
+    const interval = 15; // 30-minute intervals
 
-    const handleTimeClick = (time) => setSelectedTime(time);
-    const handleDateClick = (date) => {
-        setSelectedDate(date);
-        setSelectedTime(null);
-    };
 
-    const handleBooking = () => {
-        if (selectedDate && selectedTime) {
-            const formattedDate = selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-            setBookingConfirmation({ message: `Treatment appointment booked on ${formattedDate} at ${selectedTime}`, color: 'green' });
-        } else {
-            setBookingConfirmation({ message: "Please select both a date and time.", color: 'red' });
-        }
-    };
+    switch (dayOfWeek) {
+        case 0: // Sunday
+          start = new Date(0, 0, 0, 8, 0);
+          end = new Date(0, 0, 0, 12, 0);
+          break;
+        case 6: // Saturday
+          start = new Date(0, 0, 0, 9, 0);
+          end = new Date(0, 0, 0, 12, 0);
+          break;
+        default: // Monday - Friday
+          start = new Date(0, 0, 0, 7, 0);
+          end = new Date(0, 0, 0, 12, 0);
+          break;
+      }
 
-//---------------------------------------------handle back link using navigate hook---------------------------------//
+    let slots = [];
+    let currentTime = new Date(start);
 
-const navigate = useNavigate(); // Initialize the navigate function
+    while (currentTime <= end) {
+      slots.push(currentTime.toTimeString().slice(0, 5)); // Format HH:MM
+      currentTime.setMinutes(currentTime.getMinutes() + interval);
+    }
 
-const handleBackClick = () => {
-    navigate(-1); // This will navigate to the previous page in the history stack
-};
-    return (
-        <div className="body">
-            <div className="appointment-container">
-                <header className="header">
-                    <h1>consultation Appointment Booking</h1>
-                </header>
+    return slots;
+  };
 
-                <div className="doctor-info">
-                    <img src={doctor.imgSrc} alt={doctor.name} className="doctor-image" />
-                    <div className="doctor-details">
-                        <h2>{doctor.name} <span className="verified-badge">✔</span></h2>
-                        <p>{doctor.specialization} | {doctor.years} Years</p>
-                        <p className="fee">Treatment Fee: <strong>{doctor.fee}</strong></p>
-                    </div>
-                </div>
+  // Handle date selection and filter out booked slots
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    const dayOfWeek = new Date(selectedDate).getDay(); // Get weekday (0 = Sunday, 6 = Saturday)
 
-                <div className="booking-section">
-                    <h3>Booking Slots</h3>
-                    <div className="booking-container">
-                        <Calendar
-                            onChange={handleDateClick}
-                            value={selectedDate}
-                            minDate={tommorow}
-                            maxDate={twoMonthsLater}
-                        />
+    // Extract booked time slots for this date
+    const bookedForDate = doctorAppointments
+      .filter((appt) => appt.appointmentDateTime.startsWith(selectedDate))
+      .map((appt) => new Date(appt.appointmentDateTime).toTimeString().slice(0, 5));
 
-                        <div className="time-selector">
-                            {timeSlots.map((time, index) => (
-                                <div key={index} className={`time ${selectedTime === time ? 'selected' : ''}`} onClick={() => handleTimeClick(time)}>
-                                    {time}
-                                </div>
-                            ))}
-                        </div>
+    setBookedSlots(bookedForDate);
 
-                        <button className="booking-button" onClick={handleBooking}>Book a consultation appointment</button>
-                        <div className="confirmation-message" style={{ color: bookingConfirmation.color }}>{bookingConfirmation.message}</div>
-                    </div>
-                </div>
+    // Generate time slots and remove booked ones
+    const slots = generateTimeSlotsForDay(dayOfWeek).filter((slot) => !bookedForDate.includes(slot));
+    setAvailableTimeSlots(slots);
+    setAppointment({ ...appointment, appointmentDateTime: selectedDate });
+  };
 
-                <button className="back-button" onClick={handleBackClick}><FaAnglesLeft /> Back</button>
-            </div>
+  // Handle time selection
+  const handleTimeChange = (e) => {
+    const selectedTime = e.target.value;
+    // Set the full appointment date-time by combining selected date and time
+    const newDateTime = `${appointment.appointmentDateTime.split('T')[0]}T${selectedTime}:00`;
+
+    setAppointment({
+      ...appointment,
+      appointmentDateTime: newDateTime,
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Show an initial message when the button is clicked
+    setMessage({ type: "hidden", message: "Processing your login..." });
+
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/appointments/saveAppointment',
+        appointment
+      );
+      setMessage({text: response.data + ' ' + new Date(appointment.appointmentDateTime).toLocaleDateString() + ' ' +  (appointment.appointmentDateTime ? new Date(appointment.appointmentDateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) : ''),type: 'success' });
+      
+      // Refresh appointments after booking
+      setDoctorAppointments((prevAppointments) => [...prevAppointments, appointment]);
+      setBookedSlots((prevBookedSlots) => [
+        ...prevBookedSlots,
+        appointment.appointmentDateTime.split('T')[1],
+      ]);
+      setAvailableTimeSlots((prevAvailableSlots) =>
+        prevAvailableSlots.filter(
+          (slot) => slot !== appointment.appointmentDateTime.split('T')[1]
+        )
+      );
+      setTimeout(() => {
+        window.location.reload(); // Reload the page after booking
+      }, 2000); // Wait for 2 seconds to let the toast show
+    } catch (error) {
+      setMessage({
+        text: 'That date and time are already booked.',
+        type: 'error',
+      });
+    }
+  };
+
+  // Calculate the min and max dates (tomorrow to 14 days later)
+  const today = new Date();
+  today.setDate(today.getDate() + 1); // Tomorrow
+  const minDate = today.toISOString().split('T')[0];
+
+  const maxDate = new Date();
+  maxDate.setDate(today.getDate() + 14); // 14 days from tomorrow
+  const maxDateFormatted = maxDate.toISOString().split('T')[0];
+
+  //---------------------------------------------handle back link using navigate hook---------------------------------//
+  
+  const navigate = useNavigate(); // Initialize the navigate function
+  
+  const handleBackClick = () => {
+      navigate(-1); // This will navigate to the previous page in the history stack
+  };
+
+  return (
+    <div className="appointment-form">
+      <h2 className='appointment-title'>Consultation Appointment Details</h2>
+
+      <div className="doctor-info1">
+        <div><img src={doctor.imgSrc} alt={doctor.name} className="doctor-image1" /></div>
+        <div className="doctor-details1">
+          <h2>{doctor.name} <span className="verified-badge">✔</span></h2>
+          <p className="description">{doctor.description}</p>
+          <p className="fees"> Treatment Fee: <strong>${doctor.fees}</strong></p>
         </div>
-    );
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="appointmentDate">Select Date:</label>
+          <input type="date" id="appointmentDate" name="appointmentDate" value={appointment.appointmentDateTime.split('T')[0] || ''} onChange={handleDateChange} min={minDate} max={maxDateFormatted}/>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="appointmentTime">Available Time Slots:</label>
+          <select id="appointmentTime" name="appointmentTime" onChange={handleTimeChange} disabled={availableTimeSlots.length ===0} >
+            {availableTimeSlots.length > 0 ? (
+              availableTimeSlots.map((slot) => (
+                <option key={slot} value={slot}>
+                  {slot}
+                </option>
+              ))
+            ) : (
+              <option>No available slots</option>
+            )}
+          </select>
+        </div>
+
+        <div className="summary">
+          <h3>Appointment Summary:</h3>
+            <div className="state1" >
+            <p> <strong>Appointment Date:</strong> {appointment.appointmentDateTime ? new Date(appointment.appointmentDateTime).toLocaleDateString() : 'Not selected'} </p>
+            <p> <strong>Appointment Time:</strong> {appointment.appointmentDateTime ? new Date(appointment.appointmentDateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) : 'Not selected'}</p>
+            </div>
+       </div>
+
+        <div className="button-group">
+            <button className="back-button" onClick={handleBackClick}><FaAnglesLeft /> Back</button>
+            <button type="submit" className='submit' disabled={availableTimeSlots.length === 0}>Save Appointment</button>
+        </div>
+      </form>
+
+      <PopupMessage type={message.type} message={message.text} /> {/* Popup message component */}
+    </div>
+  );
 }
 
-export default TreatmentAppointmentPage;
+export default ConsultationAppointmentPage;
