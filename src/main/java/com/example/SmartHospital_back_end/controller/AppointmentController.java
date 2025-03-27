@@ -2,6 +2,7 @@ package com.example.SmartHospital_back_end.controller;
 
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
+import com.example.SmartHospital_back_end.dto.AdminDto;
 import com.example.SmartHospital_back_end.dto.AppointmentDto;
 import com.example.SmartHospital_back_end.service.AppointmentServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +19,21 @@ public class AppointmentController {
     @Autowired
     private AppointmentServices appointmentServices;
 
-    // Method to save a new appointment
     @PostMapping("saveAppointment")
     public ResponseEntity<String> saveAppointment(@RequestBody AppointmentDto appointmentDto) {
         try {
-            // Check if an appointment already exists for the same doctor on the same date
+            // Call service to save the appointment
             String response = appointmentServices.saveAppointment(appointmentDto);
             return ResponseEntity.ok(response); // Return 200 OK with success message
         } catch (DuplicateException e) {
             // Handle conflict when same doctor is booked for the same date
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body( e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
-    // Method to get all appointments
+
     @GetMapping("getAppointments")
     public ResponseEntity<?> getAllAppointments() {
         try {
@@ -41,6 +41,16 @@ public class AppointmentController {
             return ResponseEntity.ok(appointmentList); // Return 200 OK with appointment list
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage()); // Return 404 if no appointments found
+        }
+    }
+
+    @GetMapping("getAppointmentsByDoctor/{doctorId}")
+    public ResponseEntity<List<AppointmentDto>> getAppointmentsByDoctor(@PathVariable long doctorId) {
+        try {
+            List<AppointmentDto> appointments = appointmentServices.getAppointmentsByDoctor(doctorId);
+            return ResponseEntity.ok(appointments);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
@@ -55,6 +65,20 @@ public class AppointmentController {
         }
     }
 
+    @PutMapping("{appointmentId}")
+    public ResponseEntity<?> updateAppoitmnt(@PathVariable long appointmentId, @RequestBody AppointmentDto appointmentDto) {
+        try {
+            String updateResponse = appointmentServices.updateAppointment(appointmentId ,appointmentDto);
+            return new ResponseEntity<>(updateResponse, HttpStatus.OK); // Changed status to OK
+        } catch (RuntimeException e) {
+            // If the admin is not found, return a 404 Not Found status
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            // For any unexpected errors, return a 500 Internal Server Error
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     // Method to delete an appointment by ID
     @DeleteMapping("{appointmentId}")
     public ResponseEntity<String> deleteAppointmentById(@PathVariable long appointmentId) {
@@ -65,4 +89,6 @@ public class AppointmentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage()); // Return 404 if not found
         }
     }
+
+
 }

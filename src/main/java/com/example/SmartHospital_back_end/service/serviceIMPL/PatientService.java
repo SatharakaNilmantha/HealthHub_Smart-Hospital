@@ -102,7 +102,7 @@ public class PatientService implements PatientServices {
         }
     }
 
-    public String loginPatient(String email, String password) {
+    public PatientDto loginPatient(String email, String password) {
         // Check if patient with the given email exists
         Patient patient = patientRepository.findByEmail(email);
         if (patient == null) {
@@ -114,10 +114,8 @@ public class PatientService implements PatientServices {
             throw new RuntimeException("Incorrect password.");
         }
 
-        // If email and password match
-        return "Login successful!";
+        // Map patient entity to DTO to return patient details
+        return modelMapper.map(patient, PatientDto.class);
     }
-
-
 
 }

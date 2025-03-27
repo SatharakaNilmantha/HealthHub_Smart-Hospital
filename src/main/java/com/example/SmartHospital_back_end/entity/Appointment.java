@@ -26,5 +26,11 @@ public class Appointment {
     private Doctor doctor;
 
     @Column(nullable = false)
-    private LocalDateTime appointmentDate;
+    private LocalDateTime appointmentDateTime;
+
+    @Column(nullable = false)
+    private String type ;
+
+    @Column(nullable = false)
+    private String state ;
 }

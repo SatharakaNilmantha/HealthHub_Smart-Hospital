@@ -2,6 +2,7 @@ package com.example.SmartHospital_back_end.service;
 
 import com.example.SmartHospital_back_end.dto.AppointmentDto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface AppointmentServices {
@@ -18,4 +19,8 @@ public interface AppointmentServices {
     // Method to delete an appointment by its ID
 
     String deleteAppointmentById(long appointmentId);
+
+    List<AppointmentDto> getAppointmentsByDoctor(long doctorId);
+
+    String updateAppointment(long appointmentId, AppointmentDto appointmentDto);
 }

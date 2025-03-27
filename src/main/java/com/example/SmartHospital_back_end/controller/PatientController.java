@@ -4,7 +4,6 @@ import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.PatientDto;
 import com.example.SmartHospital_back_end.service.PatientServices;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,18 +70,38 @@ public class PatientController {
 
     @PostMapping("/login")
     public ResponseEntity<Object> loginPatient(@RequestParam String email, @RequestParam String password) {
-        String loginMessage = patientServices.loginPatient(email, password);
+        PatientDto patientDto = patientServices.loginPatient(email, password);
 
-        // Return the login message as JSON
-        return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse(loginMessage));
+        // Return the patient details (id and email) as part of the response
+        return ResponseEntity.status(HttpStatus.OK).body(new LoginResponse(patientDto.getPatientId(), patientDto.getEmail(), "Login successful!"));
     }
 
-    // DTO for the response message
-    public static class MessageResponse {
+    // DTO for the login response
+    public static class LoginResponse {
+        private long patientId;
+        private String email;
         private String message;
 
-        public MessageResponse(String message) {
+        public LoginResponse(long patientId, String email, String message) {
+            this.patientId = patientId;
+            this.email = email;
             this.message = message;
+        }
+
+        public long getPatientId() {
+            return patientId;
+        }
+
+        public void setPatientId(long patientId) {
+            this.patientId = patientId;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
         }
 
         public String getMessage() {
