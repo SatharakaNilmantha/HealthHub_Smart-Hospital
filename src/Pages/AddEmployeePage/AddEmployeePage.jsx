@@ -3,6 +3,7 @@ import './AddEmployeePage.css';
 import SideNav from '../../components/SideNav/SideNav';
 import axios from 'axios';
 import PopupMessage from '../../Components/PopupMessage/popupMessage.jsx';
+import user from '../../Images/doctor/user.jpg'
 
 function AddEmployeePage() {
   const [photo, setPhoto] = useState(null);
@@ -99,7 +100,7 @@ function AddEmployeePage() {
               {photo ? (
                 <img className="profile-photo" src={photo} alt="Profile" />
               ) : (
-                <img className="profile-photo" src="https://via.placeholder.com/100" alt="Profile Placeholder" />
+                <img className="profile-photo" src={user} alt="Profile Placeholder" />
               )}
               <div className="profile-info">
                 <h3>Employee Photo</h3>

@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import SideNav from "../../components/SideNav/SideNav.jsx";
 import axios from "axios";
 import "./DoctorsListPage.css";
-import doctor from '../../Images/doctor/doctor.jpg';
+import mdoctor from '../../Images/doctor/mdoctor.jpg';
+import ldoctor from '../../Images/doctor/ldoctor.jpg';
 
 function DoctorsListPage() {
   const [doctors, setDoctors] = useState([]);
@@ -31,8 +32,6 @@ function DoctorsListPage() {
   // Filter doctors based on department and search query
   const filteredDoctors = doctors.filter((doctor) => {
     const matchesDepartment = activeDepartment === "All Department" || doctor.department === activeDepartment;
-    
-    // Ensure that doctor.name and doctor.title are not undefined or null before calling toLowerCase
     const matchesSearchQuery = searchQuery === "" || 
                                (doctor.fullName && doctor.fullName.toLowerCase().includes(searchQuery.toLowerCase())) || 
                                (doctor.title && doctor.title.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -41,15 +40,28 @@ function DoctorsListPage() {
   });
 
   const handleViewProfile = (doctor) => {
-    navigate(`/view-doctor-profile/${doctor.id}`, { state: doctor });
+    navigate(`/view-doctor-profile/${doctor.doctorId}`, { state: doctor });
   };
 
   const handleDepartmentSelect = (department) => {
     setActiveDepartment(department);
   };
 
-  // Fallback image URL (Google default image)
-  const defaultImageUrl = doctor; // You can replace this with a custom default image URL
+  const handleDeleteClick = (doctorId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this doctor profile?");
+    if (confirmDelete) {
+      axios
+        .delete(`http://localhost:8080/api/doctors/${doctorId}`)
+        .then((response) => {
+          alert("Doctor profile deleted successfully!");
+          setDoctors(doctors.filter((doctor) => doctor.doctorId !== doctorId)); // Remove deleted doctor from state
+        })
+        .catch((error) => {
+          console.error("Error deleting doctor:", error);
+          alert("Failed to delete doctor profile.");
+        });
+    }
+  };
 
   return (
     <div className="app-container">
@@ -87,22 +99,30 @@ function DoctorsListPage() {
 
           {/* Display the filtered doctors */}
           <div className="doctors-container">
-            {filteredDoctors.map((doctor, index) => (
-              <div key={index} className="doctor-card">
-                <img
-                  src={doctor.imageUrl || defaultImageUrl}
-                  alt={doctor.fullName || "Doctor"}
-                  className="doctor-image"
-                  onError={(e) => e.target.src = defaultImageUrl} // Fallback to Google favicon if image fails
-                />
-                <h3 className="doctor-name">{doctor.fullName}</h3>
-                <p className="doctor-department">{doctor.title}</p>
-                <div className='buttongroup1'>
-                     <Button className="view-button1" onClick={() => handleViewProfile(doctor)}>View Profile</Button>
-                     <Button className="delete-button1" onClick={() => handleDeleteClick(dept.departmentId)}> Delete Profile</Button>
+            {filteredDoctors.map((doctor, index) => {
+              const defaultImageUrl = doctor.gender === "Female" ? ldoctor : mdoctor;
+
+              return (
+                <div key={index} className="doctor-card">
+                  <img
+                    src={doctor.imageUrl || defaultImageUrl}
+                    alt={doctor.fullName || "Doctor"}
+                    className="doctor-image"
+                    onError={(e) => (e.target.src = defaultImageUrl)} // Fallback to gender-based default image
+                  />
+                  <h3 className="doctor-name">{doctor.fullName}</h3>
+                  <p className="doctor-department">{doctor.title}</p>
+                  <div className="buttongroup1">
+                    <Button className="view-button1" onClick={() => handleViewProfile(doctor)}>
+                      View Profile
+                    </Button>
+                    <Button className="delete-button1" onClick={() => handleDeleteClick(doctor.doctorId)}>
+                      Delete Profile
+                    </Button>
                   </div>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
