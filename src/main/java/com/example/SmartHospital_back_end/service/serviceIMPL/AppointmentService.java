@@ -1,8 +1,11 @@
 package com.example.SmartHospital_back_end.service.serviceIMPL;
 
+import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.AppointmentDto;
+import com.example.SmartHospital_back_end.dto.DepartmentDto;
 import com.example.SmartHospital_back_end.entity.Appointment;
+import com.example.SmartHospital_back_end.entity.Department;
 import com.example.SmartHospital_back_end.entity.Doctor;
 import com.example.SmartHospital_back_end.entity.Patient;
 import com.example.SmartHospital_back_end.repository.AppointmentRepository;
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService implements AppointmentServices {
@@ -32,15 +36,15 @@ public class AppointmentService implements AppointmentServices {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Override
+
     public String saveAppointment(AppointmentDto appointmentDto) {
         long patientId = appointmentDto.getPatientId();
         long doctorId = appointmentDto.getDoctorId();
-        LocalDateTime appointmentDate = appointmentDto.getAppointmentDate();
+        LocalDateTime appointmentDateTime = appointmentDto.getAppointmentDateTime();
 
-        // Check if the patient already has an appointment with this doctor on the same date
-        if (appointmentRepository.existsByPatient_PatientIdAndDoctor_DoctorIdAndAppointmentDate(patientId, doctorId, appointmentDate)) {
-            throw new RuntimeException("You already have an appointment with this doctor on the selected date.");
+        // Check if the doctor already has an appointment at the selected time
+        if (appointmentRepository.existsByDoctor_DoctorIdAndAppointmentDateTime(doctorId, appointmentDateTime)) {
+            throw new DuplicateException("The selected time slot is already booked. Please choose a different time.");
         }
 
         // Check if doctor exists
@@ -54,8 +58,10 @@ public class AppointmentService implements AppointmentServices {
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
         appointmentRepository.save(appointment);
-        return "Appointment booked successfully";
+
+        return "Appointment booked successfully for ";
     }
+
 
 
     public List<AppointmentDto> getAllAppointments() {
@@ -64,7 +70,7 @@ public class AppointmentService implements AppointmentServices {
         return modelMapper.map(appointments, new TypeToken<List<AppointmentDto>>() {}.getType());
     }
 
-    @Override
+
     public AppointmentDto getAppointmentById(long appointmentId) {
         // Fetch appointment by ID
         Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow(() -> new NotFoundException("Appointment not found"));
@@ -72,6 +78,29 @@ public class AppointmentService implements AppointmentServices {
     }
 
 
+    public List<AppointmentDto> getAppointmentsByDoctor(long doctorId) {
+        List<Appointment> appointments = appointmentRepository.findByDoctor_DoctorId(doctorId);
+        return modelMapper.map(appointments, new TypeToken<List<AppointmentDto>>() {}.getType());
+    }
+
+    public String updateAppointment(long appointmentId, AppointmentDto appointmentDto) {
+        if (appointmentRepository.existsById(appointmentId)) {
+            // Perform the update using the repository method
+            int updatedRows = appointmentRepository.UpdateAppointment(
+                    appointmentId,
+                    appointmentDto.getState()
+            );
+            // Check if any rows were updated
+            if (updatedRows > 0) {
+                return "Patient's Appointment successfully with ID " + appointmentId;
+            } else {
+                throw new RuntimeException("Failed to update Patient's Appointment  with ID " + appointmentId);
+            }
+        } else {
+            // If the patient does not exist, throw an exception
+            throw new RuntimeException("Patient's Appointment  not found with ID " + appointmentId);
+        }
+    }
     public String deleteAppointmentById(long appointmentId) {
         // Check if appointment exists
         Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow(() -> new NotFoundException("Appointment not found"));
@@ -80,4 +109,6 @@ public class AppointmentService implements AppointmentServices {
         appointmentRepository.delete(appointment);
         return "Appointment deleted successfully";
     }
+
+
 }
