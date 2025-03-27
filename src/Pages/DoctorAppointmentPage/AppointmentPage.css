@@ -1,149 +1,189 @@
-.body {
-    margin: 50px;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
+
+.appointment-form {
+    background-color: #ffffff;
+    padding: 10px 30px;
+    max-width: 700px;
+    margin: 13px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.307);
+}
+
+.doctor-info1 {
     justify-content: center;
     align-items: center;
-}
-
-.appointment-container {
-    width: 100%;
-    max-width: 800px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-
-.doctor-info {
-    display: flex;
-    align-items: center;
-    background: #f8f9fa;
-    padding: 15px;
+    background: #e4e4e4;
+    padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.doctor-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-}
-
-.doctor-details h2 {
-    font-size: 1.2rem;
-    color: #222;
-    margin: 0;
-}
-
-.verified-badge {
-    color: green;
-    font-size: 1rem;
-    margin-left: 5px;
-}
-
-.fee {
-    font-size: 1rem;
-    color: #555;
-}
-
-
-.booking-section h3 {
-    font-size: 1.2rem;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.react-calendar {
-    width: 100% !important;
-    border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.time-selector {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.time {
-    padding: 8px 15px;
-    border-radius: 8px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.time:hover {
-    background-color: #0074cc;
-    color: white;
-}
-
-.time.selected {
-    background-color: #007bff;
-    color: white;
-    border: none;
-}
-
-.booking-button {
-    padding: 8px 15px;
-    font-size: 0.9rem;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Make the button stretch */
-}
-
-.booking-button:hover {
-    background-color: #218838;
-}
-
-.confirmation-message {
-    margin-top: 5px;
-    font-size: 0.85rem;
-    font-weight: bold;
+    margin: 10px 30px;
     text-align: center;
 }
+.doctor-details1 h2{
+    font-size: 25px;
+}
 
-/* Style for the back button */
+.verified-badge{
+    color: #45a049;
+}
+.description,.fees{
+    color:#333;
+}
+.doctor-image1 {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border:1px #007bff solid;
+}
+
+.appointment-title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+ }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 800;
+  }
+  
+  input[type="number"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  input[type="number"]:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+  
+  /* Style for the back button */
+
+.button-group{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 20px 10px;
+}
+
 .back-button {
-    margin:10px 10px 5px;
-    color: black;
+    color: rgb(3, 22, 162);
     border: none;
     font-size: 16px;
-    cursor: pointer;
-    text-decoration: none;
     font-weight: 800;
-    background-color: #ffffff;
+    cursor: pointer;
+    text-decoration: underline;
+    background-color:white ;
+    text-align: left;
 }
 
 .back-button:hover {
     color: #007bff;
 }
+.submit {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit:hover {
+    background-color: #45a049;
+  }
+  
+  .submit:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
 
+  
+  
+  /* Appointment Summary */
+  .summary {
+    margin-top: 20px;
+  }
+  .state1{
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #fff;
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 10px;
+    gap: 100px;
+    box-shadow: 0 4px 8px rgba(155, 155, 155, 0.473);
+  }
+  .summary h3 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .summary p {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
+  }
+  
 
-@media (max-width: 400px) {
-    .appointment-container {
-        max-width: 90%;
+  /* Message */
+  .message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .message.success {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .message.error {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Time Slot Section */
+  #appointmentTime {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  #appointmentTime button {
+    width: 45%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  #appointmentTime p {
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsiveness */
+  @media screen and (max-width: 600px) {
+    .appointment-form {
+      padding: 15px;
+      width: 100%;
     }
-
-    .time {
-        font-size: 0.8rem;
-    }
-}
+  
+  }
+  

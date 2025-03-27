@@ -30,11 +30,10 @@
   .appointment-card {
     border-radius: 8px;
     box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 85%; /* Controls the maximum width of the card */
+    width: 60%;
     display: flex; /* Ensures items align side by side */
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     gap: 20px;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -45,14 +44,14 @@
   }
   /* Reduce card height */
 .appointment-card {
-  padding: 10px; /* Reduce padding */
+  padding: 26px 20px 0px 50px; /* Reduce padding */
   gap: 10px; /* Reduce space between elements */
 }
 
   /* Doctor image styling */
   .doctor-image {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -61,11 +60,21 @@
     flex: 1; /* Take up remaining space */
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    gap: 10px; /* Add spacing between rows */
+    margin-left: 20px;
+  
   }
   
   .appointment-details .row {
-    display: block; /* Ensure each row is a block element */
+    display: grid; /* Ensure each row is a block element */
+    grid-template-columns: 480px 80px;
+    align-items: center;
+  }
+  .type {
+    background-color: #b7f3da7f;
+    border: 1px solid #0101ca44;
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 100px;
   }
   
   .appointment-details .row h2 {
@@ -78,25 +87,34 @@
     margin: 5px 0;
     line-height: 1.6;
     font-size: 0.95em;
-  }
-  
-  .appointment-details .row p strong {
     color: #2c3e50;
   }
   
+  .row ,.row1 p{
+    color: #2c3e50;
+  }
+ 
+
+  .row1 {
+    display: grid; /* Ensure each row is a block element */
+    grid-template-columns: auto auto auto;
+    align-items: center;
+  }
+  
   /* Button styling */
-  .pay-online,.cancel-appointment {
-    padding: 10px 20px;
+  .cancel-appointment {
+    padding: 8px 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 0.9em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
-  .pay-online {
-    background-color: #3498db;
-    color: #fff;
+  .state {
+    background-color: #fff;
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 40px;
   }
   
   .pay-online:hover {
@@ -110,6 +128,10 @@
   
   .cancel-appointment:hover {
     background-color: #c0392b;
+  }
+
+  .messagenotfound{
+    color: #c0392b;
   }
   
   /* Media Queries for responsiveness */

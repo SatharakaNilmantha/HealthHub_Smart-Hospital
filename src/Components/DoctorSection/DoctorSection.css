@@ -49,6 +49,7 @@
   object-fit: cover;
   margin-bottom: 15px;
   border-radius: 10px;
+  border:1px #17a2b8 solid;
 }
 
 .view-profile-btn {
@@ -65,6 +66,7 @@
 
 
 
+
 .doctor-name {
   font-size: 1.5rem;
   margin: 10px 0;
@@ -74,6 +76,12 @@
 .doctor-role {
   font-size: 1rem;
   color: #777;
+}
+
+.doctor-department {
+  font-size: 1rem;
+  color: #494949;
+  font-weight: bold;
 }
 
 .button-container {
@@ -96,6 +104,7 @@
   color: white;
 }
 
+
 .custom-button.inactive {
   background-color: #fff;
   color: #27a8b0;
@@ -116,10 +125,12 @@
 }
 
 .doctor-info {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column; 
-  gap: 5px; 
+  display: grid;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
   
 }
 
@@ -127,6 +138,7 @@
   margin: 0; 
   padding: 3px 0; 
   color: #333;
+  text-align: left;
 }
 .social-media-icons {
   display: flex;
