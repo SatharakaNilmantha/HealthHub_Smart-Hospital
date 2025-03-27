@@ -2,7 +2,9 @@ package com.example.SmartHospital_back_end.service.serviceIMPL;
 
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
+import com.example.SmartHospital_back_end.dto.AdminDto;
 import com.example.SmartHospital_back_end.dto.PatientDto;
+import com.example.SmartHospital_back_end.entity.Admin;
 import com.example.SmartHospital_back_end.entity.Patient;
 import com.example.SmartHospital_back_end.repository.PatientRepository;
 import com.example.SmartHospital_back_end.service.PatientServices;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientService implements PatientServices {
@@ -101,6 +104,45 @@ public class PatientService implements PatientServices {
             throw new RuntimeException("Patient not found with ID " + patientId);
         }
     }
+
+
+    public String updatePatientPassword(long patientId, PatientDto patientDto) {
+        if (patientDto.getPassword() == null || patientDto.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("New password is required.");
+        }
+        if (patientDto.getCurrentPassword() == null || patientDto.getCurrentPassword().isEmpty()) {
+            throw new IllegalArgumentException("Current password is required.");
+        }
+
+        // Fetch patient from repository
+        Optional<Patient> existingPatient = patientRepository.findById(patientId);
+
+        if (existingPatient.isPresent()) {
+            Patient patient = existingPatient.get();
+
+            // Check if the provided current password matches the stored password
+            if (!patient.getPassword().equals(patientDto.getCurrentPassword())) {
+                throw new IllegalArgumentException("Current password is incorrect.");
+            }
+
+            // Ensure the new password is not the same as the old one
+            if (patient.getPassword().equals(patientDto.getPassword())) {
+                throw new IllegalArgumentException("New password cannot be the same as the current password.");
+            }
+
+            // Update the password
+            int updatedRows = patientRepository.updatePatientPassword(patientId, patientDto.getPassword());
+
+            if (updatedRows > 0) {
+                return "Password updated successfully " ;
+            } else {
+                throw new RuntimeException("Failed to update password for Patient ID " + patientId);
+            }
+        } else {
+            throw new RuntimeException("Patient not found with ID " + patientId);
+        }
+    }
+
 
     public PatientDto loginPatient(String email, String password) {
         // Check if patient with the given email exists

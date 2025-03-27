@@ -2,6 +2,7 @@ package com.example.SmartHospital_back_end.controller;
 
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
+import com.example.SmartHospital_back_end.dto.AdminDto;
 import com.example.SmartHospital_back_end.dto.PatientDto;
 import com.example.SmartHospital_back_end.service.PatientServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,21 @@ public class PatientController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             // For any unexpected errors, return a 500 Internal Server Error
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @PutMapping("changePassword/{patientId}")
+    public ResponseEntity<?> updatePatientPassword(@PathVariable long patientId, @RequestBody PatientDto patientDto) {
+        try {
+            String updateResponse = patientServices.updatePatientPassword(patientId, patientDto);
+            return new ResponseEntity<>(updateResponse, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
             return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

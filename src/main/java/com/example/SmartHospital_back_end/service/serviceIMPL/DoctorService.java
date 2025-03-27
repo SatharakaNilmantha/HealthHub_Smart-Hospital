@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 
@@ -137,15 +138,15 @@ public class DoctorService implements DoctorServices {
             throw new NotFoundException("Doctor with email " + email + " not found.");
         }
 
-        // Check if there are any appointments associated with this doctor
+        // Retrieve and delete all appointments associated with the doctor
         List<Appointment> appointments = appointmentRepository.findByDoctor_DoctorId(doctor.getDoctorId());
         if (!appointments.isEmpty()) {
-            throw new DuplicateException("Doctor has associated appointments and cannot be deleted.");
+            appointmentRepository.deleteAll(appointments);
         }
 
-        // Proceed with doctor deletion if no appointments are found
+        // Proceed with doctor deletion after deleting appointments
         doctorRepository.deleteById(doctor.getDoctorId());
-        return "Doctor deleted successfully.";
+        return "Doctor and associated appointments deleted successfully.";
     }
 
 
