@@ -15,6 +15,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 function NavigationComponent() {
 
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);  // State to track login status
   const navigate = useNavigate();   // Hook to navigate between pages
 
@@ -26,6 +27,7 @@ function NavigationComponent() {
 
   // Handle logout action
   const handleLogout = () => {
+    localStorage.clear();
     localStorage.removeItem('isLoggedIn');   // Remove login status from localStorage
     setIsLoggedIn(false);   // Update state to logged-out
     navigate('/');   // Redirect to home page after logout

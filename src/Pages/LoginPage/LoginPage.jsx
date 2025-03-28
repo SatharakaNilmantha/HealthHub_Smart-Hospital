@@ -9,6 +9,8 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [toastData, setToastData] = useState({ type: '', message: '' }); // State to handle toast message
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission
 

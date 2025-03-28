@@ -4,17 +4,24 @@
     margin: 180px auto 30px auto;
     padding: 20px;
     display: grid;
+   
 }
 
 
 .profile-details-card {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.286);
+    box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.2);  
     padding: 20px;
     margin-bottom: 20px;
     position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.profile-details-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
 
 .profile-header {
     display: flex;

@@ -107,10 +107,17 @@ function TreatmentAppointmentPage() {
     // Show an initial message when the button is clicked
     setMessage({ type: "hidden", message: "Processing your login..." });
 
+
+    // Check if the user is signed in (assuming you store the user info in local storage)
+      if (!userEmail) {
+        setMessage({text: 'You must be logged in to book an appointment!', type: 'warning',});
+        return; // Stop the submission process if the user is not signed in
+      }
+
+
+
     try {
-      const response = await axios.post(
-        'http://localhost:8080/api/appointments/saveAppointment',
-        appointment
+      const response = await axios.post( 'http://localhost:8080/api/appointments/saveAppointment', appointment
       );
       setMessage({text: response.data + ' ' + new Date(appointment.appointmentDateTime).toLocaleDateString() + ' ' +  (appointment.appointmentDateTime ? new Date(appointment.appointmentDateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) : ''),type: 'success' });
       

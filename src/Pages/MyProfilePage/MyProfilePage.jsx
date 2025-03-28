@@ -4,6 +4,7 @@ import "./MyProfilePage.css";
 import HeaderContent from "../../Components/HeaderContent/HeaderContent";
 import PopupMessage from "../../Components/PopupMessage/popupMessage.jsx";
 
+
 function MyProfilePage() {
     const userId = localStorage.getItem("userId") || "";
     const [userData, setUserData] = useState({
@@ -112,13 +113,35 @@ function MyProfilePage() {
         }
     };
 
+
+      // IntersectionObserver for scroll animations
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("scroll-up");
+                observer.unobserve(entry.target); // Stop observing after animation
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+    
+        const animatedElements = document.querySelectorAll(".scroll-animation");
+    
+        animatedElements.forEach((element) => observer.observe(element));
+    
+        return () => observer.disconnect(); // Cleanup observer on unmount
+      }, []);
+
     return (
         <>
             <HeaderContent />
             <PopupMessage type={toastData.type} message={toastData.message} />
 
             <div className="profile-page">
-                <div className="profile-details-card">
+                <div className="profile-details-card scroll-animation duration-1">
                     <h3>Profile Information</h3>
 
                     <div className="profile-row">
@@ -180,7 +203,7 @@ function MyProfilePage() {
                 </div>
 
                 {/* Change Password Section */}
-                <div className="profile-details-card">
+                <div className="profile-details-card scroll-animation duration-1">
                     <h3>Change Password</h3>
 
                     <div className="profile-row">
