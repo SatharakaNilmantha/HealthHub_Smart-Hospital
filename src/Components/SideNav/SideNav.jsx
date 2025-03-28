@@ -98,7 +98,7 @@ function SideNav() {
         </li>
 
         <li>
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} onClick={handleClick}>
+          <NavLink to="/account" className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} onClick={handleClick}>
             <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
             <span>Account</span>
           </NavLink>

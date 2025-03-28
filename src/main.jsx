@@ -15,6 +15,7 @@ import AddDepartmentPage from "./Pages/AddDepartmentPage/AddDepartmentPage.jsx";
 import DepartmentListPage from "./Pages/DepartmentListPage/DepartmentListPage.jsx";
 import ViewDepartmentPage from "./Pages/ViewDepartmentPage/ViewDepartmentPage.jsx";
 import EditEmployeePage from "./Pages/EditEmployeePage/EditEmployeePage.jsx";
+import AccountPage from "./Pages/AccountPage/AccountPage.jsx";
 
 import "./index.css";
 
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
   { path: "/DepartmentList", element: <DepartmentListPage /> },
   { path: "/view-department/:departmentId", element: <ViewDepartmentPage /> }, // Optional Dynamic ID for departments
   { path: "/edit-employee/:employeeId", element: <EditEmployeePage /> }, // Add route
+  { path: "/account", element: <AccountPage /> },
+
+
 ]);
 
 createRoot(document.getElementById("root")).render(

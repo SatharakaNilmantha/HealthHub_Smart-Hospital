@@ -15,7 +15,6 @@ const Login = () => {
 
     setPopupMessage({ type: 'hidden', message: 'Processing the request...' });
 
-
     if (!email.trim() || !password.trim()) {
       setPopupMessage({ type: "error", message: "Please enter both email and password." });
       return;
@@ -37,6 +36,16 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         setPopupMessage({ type: "success", message: data.message });
+
+        // Save the email to localStorage after successful login
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPassword", password);
+
+        // Log the stored email to the console
+        console.log("Email saved to localStorage:", email);
+        console.log("Password saved to localStorage:", password);
+
+
 
         // Delay navigation to the dashboard for 2000ms
         setTimeout(() => {

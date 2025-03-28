@@ -22,6 +22,7 @@ function AddEmployeePage() {
   });
 
   const [popupMessage, setPopupMessage] = useState({ type: '', message: '' });
+  const [roleError, setRoleError] = useState('');
 
   useEffect(() => {
     // Fetch departments from backend
@@ -44,14 +45,29 @@ function AddEmployeePage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+  
     if (name === "salary" && !/^\d*\.?\d*$/.test(value)) return; // Validate salary (only numbers and decimals)
-    setEmployeeDetails({ ...employeeDetails, [name]: value });
+  
+    // Validate role (only lowercase letters and spaces)
+    if (name === "role") {
+      // Convert input to lowercase
+      const lowercaseValue = value.toLowerCase();
+      
+      // Check if the value contains only lowercase letters and spaces
+      if (/[^a-z\s]/.test(lowercaseValue)) return; // Disallow anything that's not lowercase letters or spaces
+  
+      // Update the state with the lowercase value
+      setEmployeeDetails({ ...employeeDetails, [name]: lowercaseValue });
+    } else {
+      setEmployeeDetails({ ...employeeDetails, [name]: value });
+    }
   };
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     setPopupMessage({ type: 'hidden', message: 'Processing the request...' });
 
     const formData = new FormData();
@@ -85,6 +101,9 @@ function AddEmployeePage() {
     }
   };
 
+
+  
+
   return (
     <div className="app-container1">
       <SideNav />
@@ -116,81 +135,41 @@ function AddEmployeePage() {
           <form className="add-employee-form" onSubmit={handleSubmit}>
             <div className="form-row">
               <label className="field-label">Full Name</label>
-              <input 
-                type="text" 
-                className="editable-input" 
-                name="fullName" 
-                value={employeeDetails.fullName} 
-                onChange={handleInputChange} 
-                placeholder="Enter full name" 
-                required 
-              />
+              <input  type="text"  className="editable-input"  name="fullName"  value={employeeDetails.fullName}  onChange={handleInputChange}  placeholder="Enter full name"  required />
             </div>
 
+            {/* Email Selection */}
             <div className="form-row">
               <label className="field-label">Email</label>
-              <input 
-                type="email" 
-                className="editable-input" 
-                name="email" 
-                value={employeeDetails.email} 
-                onChange={handleInputChange} 
-                placeholder="Enter Employee email" 
-                required 
-              />
+              <input  type="email"  className="editable-input"  name="email"  value={employeeDetails.email}  onChange={handleInputChange}  placeholder="Enter Employee email"  required />
             </div>
 
+            {/* Phone Number Selection */}
             <div className="form-row">
               <label className="field-label">Phone Number</label>
-              <input 
-                type="text" 
-                className="editable-input" 
-                name="phoneNumber" 
-                value={employeeDetails.phoneNumber} 
-                onChange={handleInputChange} 
-                placeholder="Enter Employee Phone Number" 
-                required 
-              />
+              <input type="text"  className="editable-input"  name="phoneNumber"  value={employeeDetails.phoneNumber}  onChange={handleInputChange}  placeholder="Enter Employee Phone Number"  required />
             </div>
 
             {/* Department Selection */}
             <div className="form-row">
               <label className="field-label">Department</label>
-              <select 
-                className="editable-input" 
-                name="department" 
-                value={employeeDetails.department} 
-                onChange={handleInputChange} 
-                required
-              >
+              <select className="editable-input" name="department" value={employeeDetails.department} onChange={handleInputChange} required>
                 <option value="">Select a department</option>
                 {departments.map((dept) => (
                   <option key={dept.departmentId} value={dept.name}>{dept.name}</option>
                 ))}
               </select>
             </div>
-
+  
+           {/* Role Input with Validation Message */}
             <div className="form-row">
               <label className="field-label">Role</label>
-              <input 
-                type="text" 
-                className="editable-input" 
-                name="role" 
-                value={employeeDetails.role} 
-                onChange={handleInputChange} 
-                placeholder="Enter role" 
-                required 
-              />
+              <input type="text"  className="editable-input"  name="role"  value={employeeDetails.role}  onChange={handleInputChange}  placeholder="Enter role" required/>
             </div>
 
             <div className="form-row">
               <label className="field-label">Gender</label>
-              <select 
-                className="editable-input" 
-                name="gender" 
-                value={employeeDetails.gender} 
-                onChange={handleInputChange}
-              >
+              <select  className="editable-input"  name="gender"  value={employeeDetails.gender}  onChange={handleInputChange}>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -199,51 +178,22 @@ function AddEmployeePage() {
 
             <div className="form-row">
               <label className="field-label">Address</label>
-              <textarea 
-                className="editable-input" 
-                name="address" 
-                value={employeeDetails.address} 
-                onChange={handleInputChange} 
-                placeholder="Enter address" 
-                required 
-              />
+              <textarea className="editable-input" name="address" value={employeeDetails.address} onChange={handleInputChange} placeholder="Enter address" required />
             </div>
 
             <div className="form-row">
               <label className="field-label">Salary</label>
-              <input 
-                type="text" 
-                className="editable-input" 
-                name="salary" 
-                value={employeeDetails.salary} 
-                onChange={handleInputChange} 
-                placeholder="Enter salary" 
-                required 
-              />
+              <input  type="text"  className="editable-input"  name="salary"  value={employeeDetails.salary}  onChange={handleInputChange}  placeholder="Enter salary"  required  />
             </div>
 
             <div className="form-row">
               <label className="field-label">Shift Start Time</label>
-              <input 
-                type="time" 
-                className="editable-input" 
-                name="shiftStartTime" 
-                value={employeeDetails.shiftStartTime} 
-                onChange={handleInputChange} 
-                required 
-              />
+              <input  type="time"  className="editable-input"  name="shiftStartTime"  value={employeeDetails.shiftStartTime}  onChange={handleInputChange}  required />
             </div>
 
             <div className="form-row">
               <label className="field-label">Shift End Time</label>
-              <input 
-                type="time" 
-                className="editable-input" 
-                name="shiftEndTime" 
-                value={employeeDetails.shiftEndTime} 
-                onChange={handleInputChange} 
-                required 
-              />
+              <input  type="time"  className="editable-input"  name="shiftEndTime"  value={employeeDetails.shiftEndTime}  onChange={handleInputChange}  required />
             </div>
 
             <div className="form-buttons">

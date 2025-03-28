@@ -153,8 +153,8 @@ function EmployeeListPage() {
                   <tr key={employee.employeeId}>
                     <td>{employee.fullName}</td>
                     <td>{employee.role}</td>
-                    <td>{employee.shiftStartTime}</td>
-                    <td>{employee.shiftEndTime}</td>
+                    <td>{employee.shiftStartTime ? new Intl.DateTimeFormat('en-US', { hour: '2-digit',minute: '2-digit',hour12: true,}).format(new Date(`1970-01-01T${employee.shiftStartTime}`)): ''}</td>
+                    <td>{employee.shiftEndTime ? new Intl.DateTimeFormat('en-US', { hour: '2-digit',minute: '2-digit',hour12: true,}).format(new Date(`1970-01-01T${employee.shiftEndTime}`)): ''}</td>
                     <td>{employee.department}</td>
                     <td>
                       <button

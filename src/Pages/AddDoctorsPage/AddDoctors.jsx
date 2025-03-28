@@ -91,7 +91,7 @@ function AddDoctors() {
       const response = await axios.get('http://localhost:8080/api/employees/getAllEmployee');
       const employees = response.data;
 
-      const doctor = employees.find(emp => emp.email === doctorDetails.email && emp.role === 'doctor');
+      const doctor = employees.find(emp => emp.email === doctorDetails.email && emp.role =='doctor');
 
       if (doctor) {
         setIsDoctor(true);
