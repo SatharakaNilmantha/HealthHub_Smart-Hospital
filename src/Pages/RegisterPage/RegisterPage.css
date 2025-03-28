@@ -103,6 +103,16 @@
     border: 1px solid #ccc;
 }
 
+.password-message {
+    font-size: 0.85rem;
+    color: red;
+}
+
+.password-message:contains("✅ Strong Password") {
+    color: green !important;
+}
+
+
 .register-button {
     width: 100%;
     padding: 10px;

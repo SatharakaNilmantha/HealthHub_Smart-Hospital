@@ -105,6 +105,14 @@ function ConsultationAppointmentPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
+      // Check if the user is signed in (assuming you store the user info in local storage)
+      if (!userEmail) {
+        setMessage({text: 'You must be logged in to book an appointment!', type: 'warning',});
+        return; // Stop the submission process if the user is not signed in
+      }
+
+
     // Show an initial message when the button is clicked
     setMessage({ type: "hidden", message: "Processing your login..." });
 
