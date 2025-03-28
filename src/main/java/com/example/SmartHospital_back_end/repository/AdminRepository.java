@@ -1,6 +1,7 @@
 package com.example.SmartHospital_back_end.repository;
 
 import com.example.SmartHospital_back_end.entity.Admin;
+import com.example.SmartHospital_back_end.entity.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,10 +18,6 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
     // Retrieve an admin by ID to check the existing password
     Optional<Admin> findById(Long adminId);
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE admin SET password = ?2 WHERE admin_id = ?1", nativeQuery = true)
-    int updateAdminById(long adminId, String password);
 
     @Modifying
     @Transactional
@@ -34,4 +31,13 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
     int deleteAdminByEmail(String email);
 
     Admin findByEmail(String email);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE admin SET password = ?2 WHERE email = ?1", nativeQuery = true)
+    int updateAdminPassword(String email, String password);
+
+
+
 }

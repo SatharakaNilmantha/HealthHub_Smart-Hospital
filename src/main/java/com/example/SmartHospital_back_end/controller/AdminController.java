@@ -51,20 +51,6 @@ public class AdminController {
         }
     }
 
-    @PutMapping("{adminId}")
-    public ResponseEntity<?> updateAdmin(@PathVariable long adminId, @RequestBody AdminDto adminDto) {
-        try {
-            String updateResponse = adminServices.updateAdmin(adminId ,adminDto);
-            return new ResponseEntity<>(updateResponse, HttpStatus.OK); // Changed status to OK
-        } catch (RuntimeException e) {
-            // If the admin is not found, return a 404 Not Found status
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            // For any unexpected errors, return a 500 Internal Server Error
-            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @DeleteMapping("{adminId}")
     public ResponseEntity<String> deleteAdminById(@PathVariable long adminId)
     {
@@ -82,6 +68,20 @@ public class AdminController {
                     .body("An unexpected error occurred: " + e.getMessage());
         }
 
+    }
+
+    @PutMapping("changePassword/{email}")
+    public ResponseEntity<?> updateAdminPassword(@PathVariable String email, @RequestBody AdminDto adminDto) {
+        try {
+            String updateResponse = adminServices.updateAdminPassword(email, adminDto);
+            return new ResponseEntity<>(updateResponse, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("deleteByEmail/{email}")
