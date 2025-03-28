@@ -4,7 +4,6 @@ import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.AdminDto;
 import com.example.SmartHospital_back_end.entity.Admin;
-import com.example.SmartHospital_back_end.entity.Patient;
 import com.example.SmartHospital_back_end.repository.AdminRepository;
 import com.example.SmartHospital_back_end.service.AdminServices;
 import org.modelmapper.ModelMapper;
@@ -37,7 +36,6 @@ public class AdminService implements AdminServices {
     }
 
 
-
     public List<AdminDto> AllAdmin() {
         List adminList = adminRepository.findAll();
         if (adminList.isEmpty()) {
@@ -47,40 +45,43 @@ public class AdminService implements AdminServices {
     }
 
 
-    public String updateAdmin(long adminId, AdminDto adminDto) {
-
+    public String updateAdminPassword(String email, AdminDto adminDto) {
         if (adminDto.getPassword() == null || adminDto.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Password is required.");
+            throw new IllegalArgumentException("New password is required.");
+        }
+        if (adminDto.getCurrentPassword() == null || adminDto.getCurrentPassword().isEmpty()) {
+            throw new IllegalArgumentException("Current password is required.");
         }
 
-        // Check if the admin exists in the repository
-        Optional<Admin> existingAdmin = adminRepository.findById(adminId);
+        Optional<Admin> existingAdmin = Optional.ofNullable(adminRepository.findByEmail(email));
 
         if (existingAdmin.isPresent()) {
             Admin admin = existingAdmin.get();
 
-            // Check if the new password is the same as the old password
+            // Check if current password is correct
+            if (!admin.getPassword().equals(adminDto.getCurrentPassword())) {
+                throw new IllegalArgumentException("Current password is incorrect.");
+            }
+
+            // Ensure new password is not the same as old one
             if (admin.getPassword().equals(adminDto.getPassword())) {
                 throw new IllegalArgumentException("New password cannot be the same as the current password.");
             }
 
-            // Perform the update using the repository method
-            int updatedRows = adminRepository.updateAdminById(
-                    adminId,
-                    adminDto.getPassword()
-            );
+            // Update the password
+            int updatedRows = adminRepository.updateAdminPassword(email, adminDto.getPassword());
 
-            // Check if any rows were updated
             if (updatedRows > 0) {
-                return "Admin updated successfully with ID " + adminId;
+                return "Password updated successfully";
             } else {
-                throw new RuntimeException("Failed to update Admin with ID " + adminId);
+                throw new RuntimeException("Failed to update password.");
             }
         } else {
-            // If the admin does not exist, throw an exception
-            throw new RuntimeException("Admin not found with ID " + adminId);
+            throw new RuntimeException("Admin not found with email: " + email);
         }
     }
+
+
 
     public String deleteAdminById(long adminId) {
 

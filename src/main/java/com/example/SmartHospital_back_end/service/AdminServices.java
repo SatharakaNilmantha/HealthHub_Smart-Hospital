@@ -2,6 +2,7 @@ package com.example.SmartHospital_back_end.service;
 
 import com.example.SmartHospital_back_end.dto.AdminDto;
 
+
 import java.util.List;
 
 public interface AdminServices {
@@ -10,10 +11,11 @@ public interface AdminServices {
 
     public List<AdminDto> AllAdmin();
 
-    public String updateAdmin(long adminId, AdminDto adminDto);
     public String deleteAdminById(long adminId);
 
     String deleteAdminByEmail(String email);
 
     String loginAdmin(String email, String password);
+
+    public String updateAdminPassword(String email, AdminDto adminDto);
 }
