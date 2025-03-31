@@ -1,81 +1,168 @@
 /* App container styling */
 .app-container {
-    display: flex;
-    height: 100vh;
-    width: 100%;
+  display: flex;
+  width: 100%;
+}
+
+/* Content section */
+.content {
+  flex-grow: 1;
+  margin-left: 250px; /* Sidebar width */
+  padding: 30px;
+  background-color: #f0f0f0; /* Light background */
+  color: #333;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+
+/* Style for the appo-state layout */
+.appo-state {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Search Bar Styles */
+.search-bar input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 600px; /* Max width for the input */
+  box-sizing: border-box;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #000a14;
+}
+
+/* Appointment Counts Section */
+.appointment-counts {
+  font-size: 18px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.appointment-counts p {
+  margin: 5px 10px;
+  font-weight: 500;
+  padding: 5px 10px;
+  
+}
+
+.appointment-counts .completed {
+  color: green;  /* Green for completed appointments */
+  border-radius: 50px;
+  border: 1px green solid;
+}
+
+.appointment-counts .canceled {
+  color: red;    /* Red for canceled appointments */
+  border-radius: 50px;
+  border: 1px red solid;
+}
+
+  
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+
+/* Table Section */
+.action-table1 {
+  margin: 50px auto ;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: scale-up 0.5s ease-in-out;
+}
+
+.action-table1:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.action-table1 h3 {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f0fffc; 
+  border-radius: 8px; 
+  overflow: hidden;
+}
+
+thead {
+  background-color: #31adb3df; 
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  color: #333;
+}
+
+  /* Style for Completed appointments (light green) */
+  .completed {
+    background-color: #d4edda52; /* Light green */
   }
   
-  /* Content section */
+  /* Style for Canceled appointments (light red) */
+  .canceled {
+    background-color: #f6cace5a; /* Light red */
+  }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
   .content {
-    flex-grow: 1;
-    margin-left: 250px; /* Sidebar width */
-    padding: 30px;
-    background-color: #f0f0f0; /* Light background */
-    color: #333;
-    max-width: 100%;
+    margin-left: 0;
+    padding: 15px;
   }
-  .consultation-container {
-    padding: 20px;
-    background-color: #f4f4f4;
-    min-height: 100vh;
-  }
-  
-  .consultation-title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .consultation-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .consultation-table th, 
-  .consultation-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .consultation-table th {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .consultation-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .done-btn, .cancel-btn {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  table {
     font-size: 14px;
-    margin-right: 5px;
   }
-  
-  .done-btn {
-    background-color: #28a745;
-    color: white;
+
+  th, td {
+    padding: 8px;
   }
-  
-  .cancel-btn {
-    background-color: #dc3545;
-    color: white;
+}
+
+/* Animations */
+@keyframes scale-up {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  .done-btn:hover {
-    background-color: #218838;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .cancel-btn:hover {
-    background-color: #c82333;
-  }
-  
+}

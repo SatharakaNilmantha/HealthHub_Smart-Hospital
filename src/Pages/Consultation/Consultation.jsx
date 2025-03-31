@@ -1,72 +1,143 @@
-import React from "react";
-import SideNav from "../../Components/SideNav/SideNav"; // Fixed import path
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // Make sure axios is imported
+import SideNav from "../../Components/SideNav/SideNav";
+import dayjs from "dayjs"; // Make sure dayjs is imported
+import { FaCheck, FaTimes } from 'react-icons/fa';  // Import the required icons
 import "./Consultation.css";
 
-const Consultation = () => {
-  const appointments = [
-    { id: 1, name: "A.B.C. Perera", age: "50 yrs", date: "2025/02/10 - 10:50 am", fees: "1500.00" },
-    { id: 2, name: "W. Wimala", age: "84 yrs", date: "2025/02/10 - 11:00 am", fees: "1500.00" },
-    { id: 3, name: "S. Nanisaki", age: "73 yrs", date: "2025/02/10 - 11:20 am", fees: "1500.00" },
-    { id: 4, name: "E. Evelyn", age: "21 yrs", date: "2025/02/10 - 11:40 am", fees: "1500.00" },
-    { id: 5, name: "W.A. Senatilaka", age: "38 yrs", date: "2025/02/13 - 10:50 am", fees: "1500.00" },
-    { id: 6, name: "R.A. Preem", age: "23 yrs", date: "2025/02/13 - 11:00 am", fees: "1500.00" },
-    { id: 7, name: "C. Welma", age: "23 yrs", date: "2025/02/13 - 11:20 am", fees: "1500.00" },
-    { id: 8, name: "H. Harry", age: "56 yrs", date: "2025/02/13 - 11:40 am", fees: "1500.00" },
-    { id: 9, name: "Z. Malik", age: "45 yrs", date: "2025/02/13 - 11:20 am", fees: "1500.00" }
-  ];
+function Consultation (){
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
+  const [doctorId, setDoctorId] = useState(null);
+  const [appointments, setAppointments] = useState([]);
+  const [patientsDetails, setPatientsDetails] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // New state for the search term
 
-  const handleDone = (id) => {
-    confirm(`Appointment for ${id} marked as Done.`);
-    // Add logic to update the status in the database
+  useEffect(() => {
+    if (userEmail) {
+      axios.get(`http://localhost:8080/api/doctors/getDoctorByEmail/${userEmail}`)
+        .then(response => {
+          setDoctorId(response.data.doctorId);
+        })
+        .catch(error => console.error("Error fetching doctor ID:", error));
+    }
+  }, [userEmail]);
+
+  const fetchAppointments = () => {
+    if (doctorId) {
+      axios.get(`http://localhost:8080/api/appointments/getAppointmentsByDoctor/${doctorId}`)
+        .then(response => {
+          setAppointments(response.data);  
+        })
+        .catch(error => console.error("Error fetching appointments:", error));
+    }
   };
 
-  const handleCancel = (id) => {
-    confirm(`Appointment for ${id} canceled.`);
-    // Add logic to update the status in the database
-  };
+  useEffect(() => {
+    fetchAppointments();  
+  }, [doctorId]);
+
+  useEffect(() => {
+    const patientIds = appointments.map(app => app.patientId);
+    if (patientIds.length > 0) {
+      Promise.all(patientIds.map(id => axios.get(`http://localhost:8080/api/patient/${id}`)))
+        .then(responses => {
+          setPatientsDetails(responses.map(res => res.data));
+        })
+        .catch(error => console.error("Error fetching patient details:", error));
+    }
+  }, [appointments]);
+
+  // Filter only completed and canceled appointments
+  const filteredAppointments = appointments
+    .map(appointment => ({
+      ...appointment,
+      patientData: patientsDetails.find(patient => patient.patientId === appointment.patientId),
+    }))
+    .filter(appointment => 
+      ((appointment.state === "completed" || appointment.state === "canceled") && appointment.type === "Consultation")
+    )
+    .filter(appointment => 
+      // Filter by search term in patient name or appointment date/time
+      appointment.patientData?.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      dayjs(appointment.appointmentDateTime).format("YYYY-MM-DD HH:mm").includes(searchTerm)
+    )
+    .sort((a, b) => dayjs(a.appointmentDateTime).diff(dayjs(b.appointmentDateTime)));
+
+  // Count the number of completed and canceled appointments
+  const completedCount = filteredAppointments.filter(app => app.state === "completed").length;
+  const canceledCount = filteredAppointments.filter(app => app.state === "canceled").length;
 
   return (
-    <div className="consultation-layout">
-      {/* Sidebar Navigation */}
-      <SideNav />
 
-      {/* Main Content */}
+    <>
+    <div className="app-container">
+      <SideNav />
       <div className="content">
-        <h1 className="dashboard-title">Consultation Appointments</h1>
-        <p className="dashboard-description">Manage your upcoming consultation bookings</p>
+
+        <h1 className="dashboard-title">Treatment Sessions</h1>
+        <p className="dashboard-description">Manage your completed and canceled treatment sessions</p>
+
+        <div className="appo-state">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search by Patient Name or Date/Time or Appointment"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+
+          {/* Display Counts */}
+          <div className="appointment-counts">
+          <p className="completed">Completed Appointments: {completedCount}</p>
+          <p className="canceled">Canceled Appointments: {canceledCount}</p>
+          </div>
+        </div>
 
         {/* Table Section */}
-        <div className="action-table">
-          <h3>Latest Consultation Appointments</h3>
+        <div className="action-table1">
+          <h3>Completed and Canceled Appointments</h3>
           <table>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Age</th>
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
                 <th>Appointment Date & Time</th>
-                <th>Fees - Rs.</th>
-                <th>Actions</th>
+                <th>Type</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              {appointments.map((appointment) => (
-                <tr key={appointment.id}>
-                  <td>{appointment.name}</td>
-                  <td>{appointment.age}</td>
-                  <td>{appointment.date}</td>
-                  <td>{appointment.fees}</td>
-                  <td>
-                    <button className="accept-btn" onClick={() => handleDone(appointment.id)}>Done</button>
-                    <button className="cancel-btn" onClick={() => handleCancel(appointment.id)}>Cancel</button>
+              {filteredAppointments.length > 0 ? (
+                filteredAppointments.map(appointment => (
+                  <tr
+                    key={appointment.appointmentId}
+                    className={appointment.state === "completed" ? "completed" : appointment.state === "canceled" ? "canceled" : ""}
+                  >
+                    <td>{appointment.patientData?.fullName || 'N/A'}</td>
+                    <td>{appointment.patientData?.gender || 'N/A'}</td>
+                    <td>{appointment.patientData?.dob || 'N/A'}</td>
+                    <td>{appointment.appointmentDateTime? new Date(appointment.appointmentDateTime).toLocaleDateString() +" " +new Date(appointment.appointmentDateTime).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit", hour12: true,  }) : "N/A"}</td>
+                    <td>{appointment.type}</td>
+                    <td>{appointment.state === "completed" ? ( <FaCheck style={{ color: 'green' }} /> ) : appointment.state === "canceled" ? (<FaTimes style={{ color: 'red' }} /> ) : ( "" )}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="7" style={{ textAlign: "center" }}>
+                    No Completed or Canceled Appointments found.
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
       </div>
     </div>
+   </>
   );
 };
 
 export default Consultation;
+

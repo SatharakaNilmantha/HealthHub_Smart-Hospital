@@ -1,32 +1,50 @@
+/* App container styling */
+.app-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Content section */
+.content {
+  flex-grow: 1;
+  margin-left: 250px; /* Sidebar width */
+  padding: 30px;
+  background-color: #f0f0f0; /* Light background */
+  color: #333;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+/* Da
 /* General Styling */
 .prescription-page {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     padding: 20px;
-    max-width: 680px;
+    max-width: 780px;
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scale-up 0.5s ease-in-out;
   }
+
+
+
   
   /* Header */
   .header {
     text-align: center;
     margin-bottom: 20px;
   }
-  
-  .header h1 {
-    font-size: 2.5rem;
-    color: #27a6ae;
-    margin: 0;
+  .logoimg{
+    width: 350px;
+    height: 150px;
   }
   
-  .header p {
-    font-size: 1.2rem;
-    color: #666;
-    margin: 0;
-  }
-  
+
+
   /* Page Title */
   .page-title {
     text-align: center;
