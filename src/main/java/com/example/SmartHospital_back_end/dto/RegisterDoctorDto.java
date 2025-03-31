@@ -11,4 +11,5 @@ public class RegisterDoctorDto {
     private Long doctorId;
     private String email;
     private String password;
+    private String CurrentPassword;
 }

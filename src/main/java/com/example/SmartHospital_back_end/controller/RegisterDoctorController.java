@@ -2,6 +2,7 @@ package com.example.SmartHospital_back_end.controller;
 
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
+import com.example.SmartHospital_back_end.dto.AdminDto;
 import com.example.SmartHospital_back_end.dto.RegisterDoctorDto;
 import com.example.SmartHospital_back_end.service.RegisterDoctorServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,15 +41,17 @@ public class RegisterDoctorController {
         }
     }
 
-    @PutMapping("{doctorId}")
-    public ResponseEntity<?> updateDoctor(@PathVariable long doctorId, @RequestBody RegisterDoctorDto registerDoctorDto) {
+    @PutMapping("changePassword/{email}")
+    public ResponseEntity<?> updateDoctorPassword(@PathVariable String email, @RequestBody RegisterDoctorDto registerDoctorDto) {
         try {
-            String updateResponse = registerDoctorServices.updateDoctor(doctorId, registerDoctorDto);
-            return ResponseEntity.ok(updateResponse);
+            String updateResponse = registerDoctorServices.updateDoctorPassword(email, registerDoctorDto);
+            return new ResponseEntity<>(updateResponse, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -74,6 +77,39 @@ public class RegisterDoctorController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+
+
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginRegisterDoctor(@RequestBody AdminController.LoginRequest loginRequest) {
+        String loginMessage = registerDoctorServices.loginRegisterDoctor(loginRequest.getEmail(), loginRequest.getPassword());
+
+        // Return the login message as JSON
+        return ResponseEntity.status(HttpStatus.OK).body(new AdminController.MessageResponse(loginMessage));
+    }
+
+    // DTO for the login request
+    public static class LoginRequest {
+        private String email;
+        private String password;
+
+        // Getters and setters
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
         }
     }
 }

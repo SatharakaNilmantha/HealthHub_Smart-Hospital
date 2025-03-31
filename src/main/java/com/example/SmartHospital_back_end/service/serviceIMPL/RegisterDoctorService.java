@@ -45,32 +45,41 @@ public class RegisterDoctorService implements RegisterDoctorServices {
     }
 
 
-    public String updateDoctor(long doctorId, RegisterDoctorDto registerDoctorDto) {
+    public String updateDoctorPassword(String email, RegisterDoctorDto registerDoctorDto) {
         if (registerDoctorDto.getPassword() == null || registerDoctorDto.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Password is required.");
+            throw new IllegalArgumentException("New password is required.");
+        }
+        if (registerDoctorDto.getCurrentPassword() == null || registerDoctorDto.getCurrentPassword().isEmpty()) {
+            throw new IllegalArgumentException("Current password is required.");
         }
 
-        Optional<RegisterDoctor> existingDoctor = registerDoctorRepository.findById(doctorId);
+        Optional<RegisterDoctor> existingRegisterDoctor = Optional.ofNullable(registerDoctorRepository.findByEmail(email));
 
-        if (existingDoctor.isPresent()) {
-            RegisterDoctor doctor = existingDoctor.get();
+        if (existingRegisterDoctor.isPresent()) {
+            RegisterDoctor registerDoctor = existingRegisterDoctor.get();
 
-            if (doctor.getPassword().equals(registerDoctorDto.getPassword())) {
+            // Check if current password is correct
+            if (!registerDoctor.getPassword().equals(registerDoctorDto.getCurrentPassword())) {
+                throw new IllegalArgumentException("Current password is incorrect.");
+            }
+
+            // Ensure new password is not the same as old one
+            if (registerDoctor.getPassword().equals(registerDoctorDto.getPassword())) {
                 throw new IllegalArgumentException("New password cannot be the same as the current password.");
             }
 
-            int updatedRows = registerDoctorRepository.updateDoctorById(doctorId, registerDoctorDto.getPassword());
+            // Update the password
+            int updatedRows = registerDoctorRepository.updateDoctorPassword(email, registerDoctorDto.getPassword());
 
             if (updatedRows > 0) {
-                return "Doctor updated successfully with ID " + doctorId;
+                return "Password updated successfully";
             } else {
-                throw new RuntimeException("Failed to update Doctor with ID " + doctorId);
+                throw new RuntimeException("Failed to update password.");
             }
         } else {
-            throw new RuntimeException("Doctor not found with ID " + doctorId);
+            throw new RuntimeException("Admin not found with email: " + email);
         }
     }
-
 
     public String deleteDoctorById(long doctorId) {
         int deletedRows = registerDoctorRepository.deleteDoctorById(doctorId);
@@ -92,5 +101,22 @@ public class RegisterDoctorService implements RegisterDoctorServices {
         } catch (NotFoundException e) {
             throw e;
         }
+    }
+
+
+    public String loginRegisterDoctor(String email, String password) {
+        // Check if patient with the given email exists
+        RegisterDoctor registerDoctor = registerDoctorRepository.findByEmail(email);
+        if (registerDoctor == null) {
+            throw new NotFoundException("No Doctor found with this email.");
+        }
+
+        // Validate password
+        if (!registerDoctor.getPassword().equals(password)) {
+            throw new RuntimeException("Incorrect password.");
+        }
+
+        // If email and password match
+        return "Login successful!";
     }
 }

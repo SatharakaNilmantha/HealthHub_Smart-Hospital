@@ -20,6 +20,9 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     @Query(value = "SELECT * FROM doctor WHERE doctor_id=?1", nativeQuery = true)
     Doctor getDoctorById(long doctorId);
 
+    @Query(value = "SELECT * FROM doctor WHERE email=?1", nativeQuery = true)
+    Doctor getDoctorByEmail(String email);
+
     @Modifying
     @Transactional
     @Query(value = "UPDATE doctor SET full_name = ?2, address = ?3, gender = ?4, image_url = ?5, phone_number = ?6, degree = ?7, department = ?8, title = ?9, description = ?10, fees = ?11 WHERE doctor_id = ?1", nativeQuery = true)
@@ -37,7 +40,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     // Add a method to find a doctor by email
     @Query("SELECT d FROM Doctor d WHERE d.email = ?1")
     Doctor findByEmail(String email);
-
 
 
 }

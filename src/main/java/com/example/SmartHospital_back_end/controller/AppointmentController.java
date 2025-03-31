@@ -54,6 +54,7 @@ public class AppointmentController {
         }
     }
 
+
     // Method to get an appointment by ID
     @GetMapping("{appointmentId}")
     public ResponseEntity<?> getAppointmentById(@PathVariable long appointmentId) {

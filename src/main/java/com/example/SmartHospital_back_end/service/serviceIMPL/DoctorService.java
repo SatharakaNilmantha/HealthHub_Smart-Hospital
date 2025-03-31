@@ -81,6 +81,21 @@ public class DoctorService implements DoctorServices {
         return doctorDto;
     }
 
+    public DoctorDto getDoctorByEmail(String email) {
+        Doctor doctor = doctorRepository.getDoctorByEmail(email);
+        if (doctor == null) {
+            throw new NotFoundException("Doctor with ID " + email + " not found.");
+        }
+        DoctorDto doctorDto = modelMapper.map(doctor, DoctorDto.class);
+
+        if (doctorDto.getImageUrl() != null) {
+            doctorDto.setImageUrl("/uploads/" + doctorDto.getImageUrl());
+        }
+
+        return doctorDto;
+    }
+
+
     public String updateDoctor(long doctorId, DoctorDto doctorDto, MultipartFile imageFile) throws IOException {
         if (!doctorRepository.existsById(doctorId)) {
             throw new NotFoundException("Doctor not found with ID " + doctorId);
@@ -148,6 +163,9 @@ public class DoctorService implements DoctorServices {
         doctorRepository.deleteById(doctor.getDoctorId());
         return "Doctor and associated appointments deleted successfully.";
     }
+
+
+
 
 
     private String saveImageToOneDrive(MultipartFile image) throws IOException {
