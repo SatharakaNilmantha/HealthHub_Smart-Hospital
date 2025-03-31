@@ -37,7 +37,7 @@ function SideNav() {
       <ul className="sidebar-links">
         <li>
           <NavLink 
-            to="/" 
+            to="/dashboard" 
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} 
             onClick={handleDashboardClick}
           >
