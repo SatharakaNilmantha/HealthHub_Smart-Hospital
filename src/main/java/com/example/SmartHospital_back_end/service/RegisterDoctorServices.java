@@ -10,9 +10,13 @@ public interface RegisterDoctorServices {
 
     List<RegisterDoctorDto> getAllDoctors();
 
-    String updateDoctor(long doctorId, RegisterDoctorDto registerDoctorDto);
 
     String deleteDoctorById(long doctorId);
 
     String deleteDoctorByEmail(String email);
+
+    String loginRegisterDoctor(String email, String password);
+
+
+    String updateDoctorPassword(String email, RegisterDoctorDto registerDoctorDto);
 }

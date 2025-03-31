@@ -54,6 +54,20 @@ public class DoctorController {
         }
     }
 
+
+    // Get Doctor by ID
+    @GetMapping("getDoctorByEmail/{email}")
+    public ResponseEntity<?> getDoctorByEmail(@PathVariable String email) {
+        try {
+            DoctorDto doctor = doctorServices.getDoctorByEmail(email);
+            return ResponseEntity.ok(doctor);
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        }
+    }
+
     // Update Doctor with Image
     @PutMapping("{doctorId}")
     public ResponseEntity<?> updateDoctor(@PathVariable long doctorId,

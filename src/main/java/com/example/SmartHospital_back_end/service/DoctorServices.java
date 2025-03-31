@@ -14,9 +14,13 @@ public interface DoctorServices {
 
     DoctorDto getDoctorById(long doctorId);
 
+    DoctorDto getDoctorByEmail(String email);
+
     String updateDoctor(long doctorId, DoctorDto doctorDto, MultipartFile image) throws IOException;
 
     String deleteDoctorById(long doctorId);
 
     String deleteDoctorByEmail(String email);
+
+
 }

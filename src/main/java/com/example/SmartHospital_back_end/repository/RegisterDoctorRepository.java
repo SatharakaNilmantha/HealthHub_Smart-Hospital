@@ -16,10 +16,7 @@ public interface RegisterDoctorRepository extends JpaRepository<RegisterDoctor, 
 
     Optional<RegisterDoctor> findById(Long doctorId);
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE register_doctor SET password = ?2 WHERE doctor_id = ?1", nativeQuery = true)
-    int updateDoctorById(long doctorId, String password);
+
 
     @Modifying
     @Transactional
@@ -30,4 +27,11 @@ public interface RegisterDoctorRepository extends JpaRepository<RegisterDoctor, 
     @Transactional
     @Query(value = "DELETE FROM register_doctor WHERE email = ?1", nativeQuery = true)
     int deleteDoctorByEmail(String email);
+
+    RegisterDoctor findByEmail(String email);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE register_doctor SET password = ?2 WHERE email = ?1", nativeQuery = true)
+    int updateDoctorPassword(String email, String password);
 }
