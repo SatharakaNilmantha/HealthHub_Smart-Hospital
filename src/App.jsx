@@ -274,17 +274,7 @@ function App() {
                       <tr key={appointment.appointmentId}>
                         <td>{appointment.doctorDetails.fullName}</td>
                         <td>{appointment.patientDetails.fullName}</td>
-                        <td>
-                          {appointment.appointmentDateTime
-                            ? new Date(appointment.appointmentDateTime).toLocaleDateString() +
-                              " " +
-                              new Date(appointment.appointmentDateTime).toLocaleTimeString([], {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                                hour12: true,
-                              })
-                            : "N/A"}
-                        </td>
+                        <td>{appointment.appointmentDateTime? new Date(appointment.appointmentDateTime).toLocaleDateString() +" " +new Date(appointment.appointmentDateTime).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit", hour12: true,  }) : "N/A"}</td>
                         <td>{appointment.type}</td>
                         <td>{appointment.state}</td>
                         <td>
