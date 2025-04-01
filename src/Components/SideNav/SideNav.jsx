@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTachometerAlt, faUser ,faUserDoctor } from "@fortawesome/free-solid-svg-icons";
+import { FaCalendarCheck } from "react-icons/fa";
 import logo from "../../Images/logo/logo-removebg.png";
 import "./SideNav.css";
 
@@ -36,7 +37,7 @@ function SideNav() {
       <ul className="sidebar-links">
         <li>
           <NavLink 
-            to="/" 
+            to="/dashboard" 
             className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} 
             onClick={handleDashboardClick}
           >
@@ -49,6 +50,13 @@ function SideNav() {
           <NavLink to="/doctors" className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} onClick={handleClick}>
             <FontAwesomeIcon icon={faUserDoctor} className="sidebar-icon" />
             <span>Doctors</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/prescriptionlist" className={({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link")} onClick={handleClick}>
+            <FaCalendarCheck icon={faUserDoctor} className="sidebar-icon" />
+            <span>prescription</span>
           </NavLink>
         </li>
 
