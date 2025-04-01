@@ -3,7 +3,10 @@ package com.example.SmartHospital_back_end.service.serviceIMPL;
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
 import com.example.SmartHospital_back_end.dto.FrontDeskRegisterDto;
+import com.example.SmartHospital_back_end.dto.RegisterDoctorDto;
+import com.example.SmartHospital_back_end.entity.Admin;
 import com.example.SmartHospital_back_end.entity.FrontDeskRegister;
+import com.example.SmartHospital_back_end.entity.RegisterDoctor;
 import com.example.SmartHospital_back_end.repository.FrontDeskRegisterRepository;
 import com.example.SmartHospital_back_end.service.FrontDeskRegisterServices;
 import org.modelmapper.ModelMapper;
@@ -98,5 +101,58 @@ public class FrontDeskRegisterService implements FrontDeskRegisterServices {
         } catch (NotFoundException e) {
             throw e;
         }
+    }
+
+    public String updateFrontDeskRegisterPassword(String email, FrontDeskRegisterDto frontDeskRegisterDto) {
+        if (frontDeskRegisterDto.getPassword() == null || frontDeskRegisterDto.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("New password is required.");
+        }
+        if (frontDeskRegisterDto.getCurrentPassword() == null || frontDeskRegisterDto.getCurrentPassword().isEmpty()) {
+            throw new IllegalArgumentException("Current password is required.");
+        }
+
+        Optional<FrontDeskRegister > existingFrontDeskRegister = Optional.ofNullable(frontDeskRegisterRepository.findByEmail(email));
+
+        if (existingFrontDeskRegister.isPresent()) {
+            FrontDeskRegister frontDeskRegister = existingFrontDeskRegister.get();
+
+            // Check if current password is correct
+            if (!frontDeskRegister.getPassword().equals(frontDeskRegisterDto.getCurrentPassword())) {
+                throw new IllegalArgumentException("Current password is incorrect.");
+            }
+
+            // Ensure new password is not the same as old one
+            if (frontDeskRegister.getPassword().equals(frontDeskRegisterDto.getPassword())) {
+                throw new IllegalArgumentException("New password cannot be the same as the current password.");
+            }
+
+            // Update the password
+            int updatedRows = frontDeskRegisterRepository.updateFrontDeskRegisterPassword(email, frontDeskRegisterDto.getPassword());
+
+            if (updatedRows > 0) {
+                return "Password updated successfully";
+            } else {
+                throw new RuntimeException("Failed to update password.");
+            }
+        } else {
+            throw new RuntimeException("Front desk not found with email: " + email);
+        }
+    }
+
+
+    public String loginFrontDesk(String email, String password) {
+        // Check if patient with the given email exists
+        FrontDeskRegister frontDeskRegister = frontDeskRegisterRepository.findByEmail(email);
+        if (frontDeskRegister == null) {
+            throw new NotFoundException("No Front Desk found with this email.");
+        }
+
+        // Validate password
+        if (!frontDeskRegister.getPassword().equals(password)) {
+            throw new RuntimeException("Incorrect password.");
+        }
+
+        // If email and password match
+        return "Login successful!";
     }
 }

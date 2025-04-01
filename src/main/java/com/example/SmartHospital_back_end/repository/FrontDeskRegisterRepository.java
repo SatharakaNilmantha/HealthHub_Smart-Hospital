@@ -1,5 +1,6 @@
 package com.example.SmartHospital_back_end.repository;
 
+import com.example.SmartHospital_back_end.entity.Admin;
 import com.example.SmartHospital_back_end.entity.FrontDeskRegister;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -32,4 +33,12 @@ public interface FrontDeskRegisterRepository extends JpaRepository<FrontDeskRegi
     @Transactional
     @Query(value = "DELETE FROM front_desk_register WHERE email = ?1", nativeQuery = true)
     int deleteFrontDeskByEmail(String email);
+
+    FrontDeskRegister findByEmail(String email);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE front_desk_register SET password = ?2 WHERE email = ?1", nativeQuery = true)
+    int updateFrontDeskRegisterPassword(String email, String password);
 }

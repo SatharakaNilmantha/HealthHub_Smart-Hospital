@@ -16,4 +16,8 @@ public interface FrontDeskRegisterServices {
     String deleteFrontDeskRegisterById(long frontDeskId);
 
     String deleteFrontDeskByEmail(String email);
+
+    String loginFrontDesk(String email, String password);
+
+    String updateFrontDeskRegisterPassword(String email, FrontDeskRegisterDto frontDeskRegisterDto);
 }
