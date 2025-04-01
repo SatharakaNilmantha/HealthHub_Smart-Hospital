@@ -2,6 +2,7 @@ package com.example.SmartHospital_back_end.controller;
 
 import com.example.SmartHospital_back_end.Exception.DuplicateException;
 import com.example.SmartHospital_back_end.Exception.NotFoundException;
+import com.example.SmartHospital_back_end.dto.AppointmentDto;
 import com.example.SmartHospital_back_end.dto.PrescriptionDto;
 import com.example.SmartHospital_back_end.service.PrescriptionServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class PrescriptionController {
     @GetMapping("getPrescription")
     public ResponseEntity<?> getAllPrescription() {
         try {
-            List<PrescriptionDto> adminList = prescriptionServices.AllPrescription();
-            return ResponseEntity.ok(adminList);
+            List<PrescriptionDto> prescriptionList = prescriptionServices.getAllPrescription();
+            return ResponseEntity.ok(prescriptionList);
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
@@ -55,5 +56,31 @@ public class PrescriptionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage()); // Return 404 if not found
         }
     }
+
+    @PutMapping("{prescriptionId}")
+    public ResponseEntity<?> updatePrescription(@PathVariable long prescriptionId, @RequestBody PrescriptionDto prescriptionDto) {
+        try {
+            String updateResponse = prescriptionServices.updatePrescription(prescriptionId ,prescriptionDto);
+            return new ResponseEntity<>(updateResponse, HttpStatus.OK); // Changed status to OK
+        } catch (RuntimeException e) {
+            // If the admin is not found, return a 404 Not Found status
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            // For any unexpected errors, return a 500 Internal Server Error
+            return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Method to delete an appointment by ID
+    @DeleteMapping("{prescriptionId}")
+    public ResponseEntity<String> deletePrescriptionById(@PathVariable long prescriptionId) {
+        try {
+            String response = prescriptionServices.deletePrescriptionById(prescriptionId);
+            return ResponseEntity.ok(response); // Return 200 OK with success message
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage()); // Return 404 if not found
+        }
+    }
+
 
 }

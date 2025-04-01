@@ -11,5 +11,6 @@ public class FrontDeskRegisterDto {
     private Long frontDeskId;
     private String email;
     private String password;
+    private String CurrentPassword;
 
 }

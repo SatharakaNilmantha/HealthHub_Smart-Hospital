@@ -67,7 +67,7 @@ public class AppointmentController {
     }
 
     @PutMapping("{appointmentId}")
-    public ResponseEntity<?> updateAppoitmnt(@PathVariable long appointmentId, @RequestBody AppointmentDto appointmentDto) {
+    public ResponseEntity<?> updateAppointment(@PathVariable long appointmentId, @RequestBody AppointmentDto appointmentDto) {
         try {
             String updateResponse = appointmentServices.updateAppointment(appointmentId ,appointmentDto);
             return new ResponseEntity<>(updateResponse, HttpStatus.OK); // Changed status to OK

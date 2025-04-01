@@ -7,7 +7,12 @@ import java.util.List;
 public interface PrescriptionServices {
     String savePrescription(PrescriptionDto prescriptionDto);
 
-    List<PrescriptionDto> AllPrescription();
 
     PrescriptionDto getPrescriptionById(long prescriptionId);
+
+    String updatePrescription(long prescriptionId, PrescriptionDto prescriptionDto);
+
+    String deletePrescriptionById(long prescriptionId);
+
+    List<PrescriptionDto> getAllPrescription();
 }

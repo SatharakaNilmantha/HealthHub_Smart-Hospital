@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class PrescriptionDto {
 
-
+    private Long prescriptionId;
     private String patientName;
     private String contactNumber;
     private String gender;
