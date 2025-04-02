@@ -167,10 +167,10 @@ const Signup = () => {
         <p className="login-link">
           Already have an account?{" "}
           <a
-            href="/login"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
-              navigate("/login");
+              navigate("/");
             }}
           >
             Login here

@@ -5,6 +5,8 @@ import PopupMessage from "../../Components/PopupMessage/popupMessage.jsx";
 import SideNav from "../../components/SideNav/SideNav";
 import { IoLogOutOutline } from "react-icons/io5";
 
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 function AccountPage() {
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
 
@@ -86,14 +88,28 @@ function AccountPage() {
     };
 
 
+
+    const navigate = useNavigate(); // Initialize useNavigate
+
     const handleLogout = () => {
-        localStorage.clear();
-        sessionStorage.setItem("loggedOut", "true"); // Mark that the user has logged out
-    
-        setToastData({ type: "info", message: "Logged out successfully." });
-    
-        // Redirect to login page and prevent going back to the account page
-        window.location.replace("/login");
+        if (window.confirm("Are you sure you want to log out?")) {
+            // Clear user session data
+            localStorage.removeItem("jwtToken");
+            localStorage.removeItem("userEmail");
+
+            // Redirect to login page
+            navigate("/", { replace: true });
+
+            // Prevent going back to previous page
+            setTimeout(() => {
+                window.history.pushState(null, null, window.location.href);
+            }, 0);
+
+            // Listen for back button and force logout page
+            window.addEventListener("popstate", function () {
+                window.history.pushState(null, null, window.location.href);
+            });
+        }
     };
     
     
@@ -102,8 +118,11 @@ function AccountPage() {
             <div className="app-container">
                 <SideNav />
                 <div className="content">
-                    <p style={{ textAlign: "end", cursor: "pointer"  , color:"red" , fontWeight:"bold"}} onClick={handleLogout}><strong style={{fontSize:"20px"}}><IoLogOutOutline /></strong>Log Out</p>
-                    <div className="profilepage">
+                <p style={{ textAlign: "end", cursor: "pointer", color: "red", fontWeight: "bold" }} onClick={handleLogout}>
+            <strong style={{ fontSize: "20px" }}><IoLogOutOutline /></strong> Log Out
+        </p>                   
+        
+                <div className="profilepage">
                         <h3>Change Password</h3>
                         <form onSubmit={handlePasswordUpdate}>
                             <div className="profile-row1">

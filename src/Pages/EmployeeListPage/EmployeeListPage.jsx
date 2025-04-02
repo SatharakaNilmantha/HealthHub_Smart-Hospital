@@ -153,9 +153,19 @@ function EmployeeListPage() {
                   <tr key={employee.employeeId}>
                     <td>{employee.fullName}</td>
                     <td>{employee.role}</td>
-                    <td>{employee.shiftStartTime ? new Intl.DateTimeFormat('en-US', { hour: '2-digit',minute: '2-digit',hour12: true,}).format(new Date(`1970-01-01T${employee.shiftStartTime}`)): ''}</td>
-                    <td>{employee.shiftEndTime ? new Intl.DateTimeFormat('en-US', { hour: '2-digit',minute: '2-digit',hour12: true,}).format(new Date(`1970-01-01T${employee.shiftEndTime}`)): ''}</td>
-                    <td>{employee.department}</td>
+<td>
+  {employee.shiftStartTime && /^\d{2}:\d{2}(:\d{2})?$/.test(employee.shiftStartTime)
+    ? new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
+        .format(new Date(`1970-01-01T${employee.shiftStartTime}`))
+    : 'N/A'}
+</td>
+<td>
+  {employee.shiftEndTime && /^\d{2}:\d{2}(:\d{2})?$/.test(employee.shiftEndTime)
+    ? new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
+        .format(new Date(`1970-01-01T${employee.shiftEndTime}`))
+    : 'N/A'}
+</td>
+ <td>{employee.department}</td>
                     <td>
                       <button
                         className="delete-btn"
