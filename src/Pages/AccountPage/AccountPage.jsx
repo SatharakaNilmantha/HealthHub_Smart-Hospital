@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import "./AccountPage.css";
 import PopupMessage from "../../Components/PopupMessage/popupMessage.jsx";
@@ -85,17 +86,28 @@ function AccountPage() {
         }
     };
 
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleLogout = () => {
-        localStorage.clear();
-        sessionStorage.setItem("loggedOut", "true"); // Mark that the user has logged out
-    
-        setToastData({ type: "info", message: "Logged out successfully." });
-    
-        // Redirect to login page and prevent going back to the account page
-        window.location.replace("/");
+        if (window.confirm("Are you sure you want to log out?")) {
+            // Clear user session data
+            localStorage.removeItem("jwtToken");
+            localStorage.removeItem("userEmail");
+
+            // Redirect to login page
+            navigate("/", { replace: true });
+
+            // Prevent going back to previous page
+            setTimeout(() => {
+                window.history.pushState(null, null, window.location.href);
+            }, 0);
+
+            // Listen for back button and force logout page
+            window.addEventListener("popstate", function () {
+                window.history.pushState(null, null, window.location.href);
+            });
+        }
     };
-    
     
     return (
         <>

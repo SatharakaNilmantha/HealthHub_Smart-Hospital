@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupMessage from "../../Components/PopupMessage/popupMessage.jsx";
 import "./Login.css"; // Import your CSS file
@@ -9,6 +9,26 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [notification, setPopupMessage] = useState({ type: "", message: "" });
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    // Prevent back navigation after logout
+    window.history.replaceState(null, null, window.location.href);
+    window.addEventListener("popstate", () => {
+      navigate("/", { replace: true });
+    });
+
+    // Clear stored session data (ensuring no access to the previous page)
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("userEmail");
+
+    return () => {
+      window.removeEventListener("popstate", () => {
+        navigate("/", { replace: true });
+      });
+    };
+  }, [navigate]);
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
