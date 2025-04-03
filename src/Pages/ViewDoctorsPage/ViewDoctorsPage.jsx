@@ -28,8 +28,9 @@ function ViewDoctorsPage() {
 
     // Navigate back
     const handleBackClick = () => {
-        navigate(-1);
-    };
+        // Navigate directly to the department list page
+        navigate("/doctors");
+      };
 
     return (
         <div className="profile-details-card">

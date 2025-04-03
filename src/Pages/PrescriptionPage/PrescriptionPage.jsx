@@ -28,6 +28,8 @@ function PrescriptionPage() {
         navigate(-1); // This will go back to the previous page
     };
 
+    
+
     return (
         <>
             <div className="prescription-page">
