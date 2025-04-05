@@ -56,11 +56,14 @@ const Treatment = () => {
     .filter(appointment => 
       ((appointment.state === "completed" || appointment.state === "canceled") && appointment.type === "treatment")
     )
-    .filter(appointment => 
-      // Filter by search term in patient name or appointment date/time
-      appointment.patientData?.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      dayjs(appointment.appointmentDateTime).format("YYYY-MM-DD HH:mm").includes(searchTerm)
-    )
+    .filter(appointment => {
+      // Format appointment date/time to MM/DD/YYYY hh:mm A format
+      const appointmentDateFormatted = dayjs(appointment.appointmentDateTime).format("M/D/YYYY hh:mm A");
+      return (
+        appointment.patientData?.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        appointmentDateFormatted.includes(searchTerm)
+      );
+    })
     .sort((a, b) => dayjs(a.appointmentDateTime).diff(dayjs(b.appointmentDateTime)));
 
   // Count the number of completed and canceled appointments
@@ -68,76 +71,74 @@ const Treatment = () => {
   const canceledCount = filteredAppointments.filter(app => app.state === "canceled").length;
 
   return (
-
     <>
-    <div className="app-container">
-      <SideNav />
-      <div className="content">
+      <div className="app-container">
+        <SideNav />
+        <div className="content">
 
-        <h1 className="dashboard-title">Treatment Sessions</h1>
-        <p className="dashboard-description">Manage your completed and canceled treatment sessions</p>
+          <h1 className="dashboard-title">Treatment Sessions</h1>
+          <p className="dashboard-description">Manage your completed and canceled treatment sessions</p>
 
-        <div className="appo-state">
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search by Patient Name or Date/Time or Appointment"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+          <div className="appo-state">
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Search by Patient Name or Date/Time (MM/DD/YYYY hh:mm A)"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+
+            {/* Display Counts */}
+            <div className="appointment-counts">
+              <p className="completed">Completed Appointments: {completedCount}</p>
+              <p className="canceled">Canceled Appointments: {canceledCount}</p>
+            </div>
           </div>
 
-          {/* Display Counts */}
-          <div className="appointment-counts">
-          <p className="completed">Completed Appointments: {completedCount}</p>
-          <p className="canceled">Canceled Appointments: {canceledCount}</p>
-          </div>
-        </div>
-
-        {/* Table Section */}
-        <div className="action-table1">
-          <h3>Completed and Canceled Appointments</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Patient Name</th>
-                <th>Gender</th>
-                <th>Date of Birth</th>
-                <th>Appointment Date & Time</th>
-                <th>Type</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredAppointments.length > 0 ? (
-                filteredAppointments.map(appointment => (
-                  <tr
-                    key={appointment.appointmentId}
-                    className={appointment.state === "completed" ? "completed" : appointment.state === "canceled" ? "canceled" : ""}
-                  >
-                    <td>{appointment.patientData?.fullName || 'N/A'}</td>
-                    <td>{appointment.patientData?.gender || 'N/A'}</td>
-                    <td>{appointment.patientData?.dob || 'N/A'}</td>
-                    <td>{appointment.appointmentDateTime? new Date(appointment.appointmentDateTime).toLocaleDateString() +" " +new Date(appointment.appointmentDateTime).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit", hour12: true,  }) : "N/A"}</td>
-                    <td>{appointment.type}</td>
-                    <td>{appointment.state === "completed" ? ( <FaCheck style={{ color: 'green' }} /> ) : appointment.state === "canceled" ? (<FaTimes style={{ color: 'red' }} /> ) : ( "" )}</td>
-                  </tr>
-                ))
-              ) : (
+          {/* Table Section */}
+          <div className="action-table1">
+            <h3>Completed and Canceled Appointments</h3>
+            <table>
+              <thead>
                 <tr>
-                  <td colSpan="7" style={{ textAlign: "center" }}>
-                    No Completed or Canceled Appointments found.
-                  </td>
+                  <th>Patient Name</th>
+                  <th>Gender</th>
+                  <th>Date of Birth</th>
+                  <th>Appointment Date & Time</th>
+                  <th>Type</th>
+                  <th>Status</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredAppointments.length > 0 ? (
+                  filteredAppointments.map(appointment => (
+                    <tr
+                      key={appointment.appointmentId}
+                      className={appointment.state === "completed" ? "completed" : appointment.state === "canceled" ? "canceled" : ""}
+                    >
+                      <td>{appointment.patientData?.fullName || 'N/A'}</td>
+                      <td>{appointment.patientData?.gender || 'N/A'}</td>
+                      <td>{appointment.patientData?.dob || 'N/A'}</td>
+                      <td>{appointment.appointmentDateTime ? new Date(appointment.appointmentDateTime).toLocaleDateString() + " " + new Date(appointment.appointmentDateTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true }) : "N/A"}</td>
+                      <td>{appointment.type}</td>
+                      <td>{appointment.state === "completed" ? (<FaCheck style={{ color: 'green' }} />) : appointment.state === "canceled" ? (<FaTimes style={{ color: 'red' }} />) : ("")}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="7" style={{ textAlign: "center" }}>
+                      No Completed or Canceled Appointments found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-   </>
+    </>
   );
 };
 
 export default Treatment;
-

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './App.css';
 import SideNav from "./Components/SideNav/SideNav";
-import { FaCalendarCheck,FaCalendarPlus} from "react-icons/fa"; 
-import { FaCalendarXmark ,FaSackDollar } from "react-icons/fa6";
-
+import { FaCalendarCheck, FaCalendarPlus } from "react-icons/fa";
+import { FaCalendarXmark, FaSackDollar } from "react-icons/fa6";
 import dayjs from "dayjs";
 
 function App() {
@@ -17,12 +16,14 @@ function App() {
   const [canceledCount, setCanceledCount] = useState(0);
   const [totalFeesToday, setTotalFeesToday] = useState(0);
 
+  const today = dayjs().startOf("day");
+
   useEffect(() => {
     if (userEmail) {
       axios.get(`http://localhost:8080/api/doctors/getDoctorByEmail/${userEmail}`)
         .then(response => {
           setDoctorId(response.data.doctorId);
-          setDoctorFees(response.data.fees);  
+          setDoctorFees(response.data.fees);
         })
         .catch(error => console.error("Error fetching doctor ID:", error));
     }
@@ -30,16 +31,18 @@ function App() {
 
   const fetchAppointments = () => {
     if (doctorId) {
-      axios.get(`http://localhost:8080/api/appointments/getAppointmentsByDoctor/${doctorId}`)
+      axios
+        .get(`http://localhost:8080/api/appointments/getAppointmentsByDoctor/${doctorId}`)
         .then(response => {
-          setAppointments(response.data);  
+          const acceptedAppointments = response.data.filter(appointment => appointment.state === "accepted" || appointment.state === "completed" || appointment.state === "canceled");
+          setAppointments(acceptedAppointments);
         })
         .catch(error => console.error("Error fetching appointments:", error));
     }
   };
 
   useEffect(() => {
-    fetchAppointments();  
+    fetchAppointments();
   }, [doctorId]);
 
   useEffect(() => {
@@ -53,51 +56,42 @@ function App() {
     }
   }, [appointments]);
 
-  const today = dayjs().startOf("day");
-
   const acceptedAppointmentsToday = appointments
     .map(appointment => ({
       ...appointment,
       patientData: patientsDetails.find(patient => patient.patientId === appointment.patientId),
     }))
-    .filter(appointment => 
-      dayjs(appointment.appointmentDateTime).isSame(today, "day") && appointment.state !== "canceled" && appointment.state !== "completed"
+    .filter(appointment =>
+      dayjs(appointment.appointmentDateTime).isSame(today, "day") &&
+      appointment.state === "accepted"
     )
     .sort((a, b) => dayjs(a.appointmentDateTime).diff(dayjs(b.appointmentDateTime)));
 
-
-
-  
-
-  const canceledAppointmentsToday = appointments.filter(app => 
-    dayjs(app.appointmentDateTime).isSame(today, "day") && app.state === "canceled"
-  );
-
-  const completedAppointmentsToday = appointments.filter(app => 
-    dayjs(app.appointmentDateTime).isSame(today, "day") && app.state === "completed"
-  );
-
   useEffect(() => {
-    setCompletedCount(completedAppointmentsToday.length);
-    setCanceledCount(canceledAppointmentsToday.length);
+    if (appointments.length > 0 && doctorFees !== null) {
+      const completed = appointments.filter(app =>
+        dayjs(app.appointmentDateTime).isSame(today, "day") && app.state === "completed"
+      );
 
-    const totalFees = completedAppointmentsToday.reduce((total, appointment) => {
-      return total + (doctorFees || 0);
-    }, 0);
+      const canceled = appointments.filter(app =>
+        dayjs(app.appointmentDateTime).isSame(today, "day") && app.state === "canceled"
+      );
 
-    setTotalFeesToday(totalFees);
-  }, [completedAppointmentsToday, canceledAppointmentsToday, doctorFees]);
+      setCompletedCount(completed.length);
+      setCanceledCount(canceled.length);
+      setTotalFeesToday(completed.length * doctorFees);
+    } else {
+      setCompletedCount(0);
+      setCanceledCount(0);
+      setTotalFeesToday(0);
+    }
+  }, [appointments, doctorFees]);
 
   const handleCompleted = async (appointmentId) => {
     if (window.confirm("Are you sure you want to complete this appointment?")) {
       try {
         await axios.put(`http://localhost:8080/api/appointments/${appointmentId}`, { state: "completed" });
-
-        // Remove completed appointment from acceptedAppointmentsToday list
-        setAppointments(prevAppointments =>
-          prevAppointments.filter(app => app.appointmentId !== appointmentId)
-        );
-        fetchAppointments(); 
+        fetchAppointments();
       } catch (error) {
         console.error("Failed to complete appointment:", error);
       }
@@ -108,12 +102,7 @@ function App() {
     if (window.confirm("Are you sure you want to cancel this appointment?")) {
       try {
         await axios.put(`http://localhost:8080/api/appointments/${appointmentId}`, { state: "canceled" });
-
-        // Remove canceled appointment from acceptedAppointmentsToday list
-        setAppointments(prevAppointments =>
-          prevAppointments.filter(app => app.appointmentId !== appointmentId)
-        );
-        fetchAppointments();  
+        fetchAppointments();
       } catch (error) {
         console.error("Failed to cancel appointment:", error);
       }
@@ -125,15 +114,15 @@ function App() {
       <SideNav />
       <div className="content">
         <h1 className="dashboard-title">Welcome to HealthHub Medical Center</h1>
-        <p className="dashboard-description">Efficiently manage and schedule your patients' appointments with ease. Keep track of upcoming visits and ensure seamless care for every patient.</p>
-
+        <p className="dashboard-description">
+          Efficiently manage and schedule your patients' appointments with ease. Keep track of upcoming visits and ensure seamless care for every patient.
+        </p>
 
         {/* Cards Section */}
         <div className="cards-container">
-          {/* Card 1: Active Appointments */}
           <div className="card">
             <div className="card-icon">
-              < FaCalendarPlus size={40} color="#007bff" />
+              <FaCalendarPlus size={40} color="#007bff" />
             </div>
             <div className="card-content">
               <h3>Active Appointments</h3>
@@ -142,10 +131,9 @@ function App() {
             </div>
           </div>
 
-          {/* Card 2: Total Doctors */}
           <div className="card">
             <div className="card-icon">
-              <FaCalendarCheck  size={40} color="#28a745" />
+              <FaCalendarCheck size={40} color="#28a745" />
             </div>
             <div className="card-content">
               <h3>Completed Appointment</h3>
@@ -154,10 +142,9 @@ function App() {
             </div>
           </div>
 
-          {/* Card 3: Registered Patients */}
           <div className="card">
             <div className="card-icon">
-              <FaCalendarXmark   size={38} color="#dc3545" />
+              <FaCalendarXmark size={38} color="#dc3545" />
             </div>
             <div className="card-content">
               <h3>Canceled Appointment</h3>
@@ -166,10 +153,9 @@ function App() {
             </div>
           </div>
 
-          {/* Card 4: Available Departments */}
           <div className="card">
             <div className="card-icon">
-              <FaSackDollar   size={40} color="#ffc107" />
+              <FaSackDollar size={40} color="#ffc107" />
             </div>
             <div className="card-content">
               <h3>Total Fees</h3>
@@ -179,7 +165,7 @@ function App() {
           </div>
         </div>
 
-
+        {/* Table Section */}
         <div className="action-table">
           <h3>Accepted Appointments Today</h3>
           <table>
@@ -201,7 +187,16 @@ function App() {
                     <td>{appointment.patientData?.fullName || 'N/A'}</td>
                     <td>{appointment.patientData?.gender || 'N/A'}</td>
                     <td>{appointment.patientData?.dob || 'N/A'}</td>
-                    <td>{appointment.appointmentDateTime? new Date(appointment.appointmentDateTime).toLocaleDateString() +" " +new Date(appointment.appointmentDateTime).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit", hour12: true,  }) : "N/A"}</td>
+                    <td>
+                      {appointment.appointmentDateTime
+                        ? new Date(appointment.appointmentDateTime).toLocaleDateString() + " " +
+                          new Date(appointment.appointmentDateTime).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                          })
+                        : "N/A"}
+                    </td>
                     <td>{appointment.state}</td>
                     <td>{appointment.type}</td>
                     <td>
@@ -222,7 +217,6 @@ function App() {
                 </tr>
               )}
             </tbody>
-
           </table>
         </div>
       </div>
