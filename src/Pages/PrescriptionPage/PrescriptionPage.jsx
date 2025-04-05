@@ -25,8 +25,9 @@ function PrescriptionPage() {
 
     // Navigate back
     const handleBackClick = () => {
-        navigate(-1); // This will go back to the previous page
+        navigate("/prescriptionlist"); // Navigate to a specific page if required, such as the prescriptions list.
     };
+
 
     return (
         <>
