@@ -42,7 +42,7 @@ function ConsultationAppointmentPage() {
   // Generate time slots based on the selected day
   const generateTimeSlotsForDay = (dayOfWeek) => {
     let start, end;
-    const interval = 15; // 30-minute intervals
+    const interval = 15; // 15-minute intervals
 
 
     switch (dayOfWeek) {
