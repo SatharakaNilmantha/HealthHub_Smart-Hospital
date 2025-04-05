@@ -117,10 +117,11 @@ function EditEmployeePage() {
         }
     };
 
-    // Navigate back to the previous page
+
     const handleBackClick = () => {
-        navigate(-1);
-    };
+        // Navigate directly to the  list page
+        navigate("/employees");
+      };
 
     return (
         <div className="profile-details-card">
