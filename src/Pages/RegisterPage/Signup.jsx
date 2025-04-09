@@ -81,7 +81,7 @@ const Signup = () => {
         
           // Delay the navigation to the login page
           setTimeout(() => {
-            navigate("/login");
+            navigate("/");
           }, 2000); 
         }
         
