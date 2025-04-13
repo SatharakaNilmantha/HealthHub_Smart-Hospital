@@ -1,7 +1,5 @@
 import './App.css'
 
-
-
 import HeaderContent from './Components/HeaderContent/HeaderContent.jsx'
 import BodyContent from './Components/BoadyContent/BodyContent.jsx'
 import DoctorSection from './Components/DoctorSection/DoctorSection.jsx'
@@ -16,15 +14,10 @@ import FooterContent from './Components/FooterContent/FooterContent.jsx'
 import AboveDepartmentSection from './Components/AboveDepartmentSection/AboveDepartmentSection.jsx'
 
 
-
-
-
 function App() {
-
 
   return (
     <>
-    
      <HeaderContent/>
      <BodyContent>
        <div style={{marginTop:'135px'}}><HeroSection/></div>
@@ -38,13 +31,9 @@ function App() {
        <div style={{marginTop:'50px'}}><ContactSection/></div>
       </BodyContent>
      <FooterContent/>
-    
-     
-     
 
     </>
 
   )
 }
-
 export default App
