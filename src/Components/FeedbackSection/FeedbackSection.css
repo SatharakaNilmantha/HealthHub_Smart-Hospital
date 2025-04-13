@@ -1,0 +1,75 @@
+/*-----------------------------Testimonialsection----------------------------------------------------------*/
+.Testimonialsection {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  gap: 20px; /* Add space between grid items */
+}
+
+/* ------ Slide section --------- */
+.slidesections {
+  width: 700px;
+  height: inherit;
+  box-shadow: 0.1px 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+.slidecard {
+  width: auto;
+  display: flex;
+  box-shadow: none;
+}
+
+.cardtitle {
+  display: grid;
+  grid-template-columns: 100px auto;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.pimg {
+  width: 90px;
+  border-radius: 50px;
+}
+
+/* Customize the dots */
+.slick-dots li button:before {
+  font-family: "slick";
+  font-size: 12px; /* Increase the size of the dots */
+  line-height: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  content: "•";
+  text-align: center;
+  color: #27a6ae !important; /* Set default (inactive) dot color to blue */
+  opacity: 0.5; /* Adjust the opacity of inactive dots */
+  transition: color 0.3s, opacity 0.3s, font-size 0.1s; /* Smooth transition for changes */
+}
+
+.slick-dots li.slick-active button:before {
+  font-size: 14px; /* Increase size for the active dot */
+  color: #27a6ae; /* Keep the active dot blue */
+  opacity: 1; /* Fully visible for the active dot */
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 1000px) {
+
+  .Testimonialsection {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack the items in one column */
+    margin: 20px; /* Reduce margin for smaller screens */
+    gap: 10px; /* Reduce the space between items */
+  }
+
+
+}
