@@ -1,0 +1,177 @@
+/* Container styling for department section */
+.department-container {
+  padding: 20px 20px 60px;
+  margin: 0 auto;
+  background-image: url('../../Images/department/department.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Extend the image dynamically */
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title styling */
+.text {
+  text-align: center;
+  position: relative;
+  font-size: 54px;
+  color: #5B8689;
+  margin-top: 20px;
+}
+
+/* Flex container for department items */
+.department-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px;
+}
+
+/* Styling for each department button */
+.department-item {
+  background-color: #ffffff;
+  border: 1px #95dbe0f9 solid;
+  padding: 10px;
+  width: 150px;
+  cursor: pointer;
+  box-shadow: 1px 1px 8px rgba(216, 216, 216, 0.7);
+  transition: background-color 0.5s ease;
+  text-align: center;
+  align-items: center;
+}
+
+/* Hover effect */
+.department-item:hover {
+  background-color: #27a8b0; /* Change background color */
+  color: white; /* Change department name color */
+}
+
+/* Change icon color on hover */
+.department-item:hover svg {
+  color: white;
+}
+
+/* Icon inside button */
+.department-icon {
+  font-size: 50px;
+  margin-bottom: 5px;
+  color: #27a8b0; /* Default icon color */
+}
+
+/* Selected department styles */
+.department-item.selected {
+  background-color: #27a8b0;
+  border: 2px solid #27a8b0;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.department-icon.selected {
+  color: white;
+}
+
+/* Styling for department details */
+.department-details {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 1px 1px 8px rgba(216, 216, 216, 0.7);
+}
+
+/* Grid layout for larger screens */
+.department-description-section {
+  display: grid;
+  grid-template-columns: 500px 500px;
+  align-items: center;
+}
+
+/* Image styling */
+.department-image {
+  text-align: center;
+  width: 450px;
+  max-width: 100%;
+}
+
+/* Department text */
+.department-text h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.department-text p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 60px;
+}
+
+/* Appointment button */
+.appointment-button {
+  background-color: #fefefe;
+  color: #27a8b0;
+  padding: 10px 20px;
+  border: 1px #27a8b0 solid;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.5s ease;
+}
+
+.appointment-button:hover {
+  background-color: #27a8b0;
+  color: white;
+}
+
+/*  RESPONSIVE DESIGN (For Tablets and Small Screens) */
+@media (max-width: 1024px) {
+  .department-description-section {
+    grid-template-columns: 1fr; /* Stack elements */
+    text-align: center;
+  }
+
+  .department-image {
+    width: 80%; /* Reduce image size */
+    margin: 0 auto;
+  }
+}
+
+/*  RESPONSIVE DESIGN (For Mobile Phones) */
+@media (max-width: 768px) {
+  .text {
+    font-size: 36px; /* Reduce font size */
+  }
+
+  .department-list {
+    flex-direction: column; /* Stack department buttons */
+    align-items: center;
+  }
+
+  .department-item {
+    width: 100%; /* Full width for small screens */
+    max-width: 300px; /* Prevent stretching */
+  }
+
+  .department-description-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .department-image {
+    width: 100%; /* Make images responsive */
+  }
+}
+
+/* Tiny Screens (Less than 480px) */
+@media (max-width: 480px) {
+  .text {
+    font-size: 28px;
+  }
+
+  .appointment-button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}

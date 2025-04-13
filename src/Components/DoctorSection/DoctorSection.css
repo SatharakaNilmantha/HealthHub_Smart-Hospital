@@ -1,0 +1,157 @@
+/* Title styling */
+.text {
+  text-align: center;
+  position: relative;
+  font-size: 54px;
+  color: #5B8689;
+  margin-top: 20px;
+}
+
+.doctors-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Ensures exactly 3 columns per row */
+  row-gap: 30px;
+  text-align: right;
+  margin-left: 10px;
+}
+
+
+.doctor-card {
+  text-align: center;
+  max-width: 350px; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+
+.doctor-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-button-container {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  margin-bottom: 15px; 
+}
+
+.doctor-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border:1px #17a2b8 solid;
+}
+
+.view-profile-btn {
+  background-color: #17a2b8; 
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; 
+}
+
+
+
+
+.doctor-name {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.doctor-role {
+  font-size: 1rem;
+  color: #777;
+}
+
+.doctor-department {
+  font-size: 1rem;
+  color: #494949;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+
+}
+
+.custom-button {
+  width: 160px; /* Adjust width */
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.custom-button.active {
+  background-color: #27a8b0; /* Active color */
+  color: white;
+}
+
+
+.custom-button.inactive {
+  background-color: #fff;
+  color: #27a8b0;
+  border: 1px  #27a8b0 solid;
+}
+
+.department-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; 
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.doctor-details {
+  text-align: left;
+}
+
+.doctor-info {
+  display: grid;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  
+}
+
+.doctor-info p {
+  margin: 0; 
+  padding: 3px 0; 
+  color: #333;
+  text-align: left;
+}
+.social-media-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  color: #17a2b8;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #138496;
+}
