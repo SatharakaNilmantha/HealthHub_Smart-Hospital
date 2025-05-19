@@ -1,0 +1,158 @@
+/* App container styling */
+.app-container1 {
+  display: flex;
+  width: 100%;
+ 
+}
+
+/* Content section */
+.content{
+  flex-grow: 1;
+  margin-left: 250px; /* Sidebar width */
+  padding: 30px;
+  background-color: #f0f0f0; /* Light background */
+  color: #333;
+  max-width: 100%;
+  height: 100vh; /* Adjust to full viewport height */
+  overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+.search-bar {
+  margin: 40px 0px 20px 0px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.view-department-container {
+  width: 90%;
+  margin: 0 auto; /* Centers the container horizontally */
+  display: grid;
+  grid-template-rows: auto;
+}
+
+  
+.department-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    row-gap: 30px;
+  }
+  
+  .department-card {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Soft gradient */
+    border-left: 5px solid #27a8b0; /* Highlight effect */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px;
+    width: 300px; /* Fixed size for each card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth effect */
+    animation: fadeInScale 0.5s ease-in-out;
+  }
+  
+  /* Hover Effect */
+  .department-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Title Styling */
+  .department-card h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #27a8b0;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  /* Paragraph Styling */
+  .department-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .buttongroup{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 40px;
+  }
+  /* Button Styling */
+  .department-card button {
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:  0.3s ease, transform 0.2s ease;
+  }
+
+.view-button {
+  background: #27a8b0;
+  transition: 0.3s ease, transform 0.2s ease;
+}
+
+.delete-button {
+  background: #e74c3c; /* Red color */
+  transition: 0.3s ease, transform 0.2s ease;
+}
+
+/* Button Hover for Delete */
+.delete-button:hover {
+  background: #c0392b; /* Darker red on hover */
+}
+
+  
+  /* Button Hover */
+  .view-button:hover  {
+    background: #1f8b94;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .department-list {
+      justify-content: space-around;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .department-card {
+      width: 45%; /* Two cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .department-card {
+      width: 100%; /* One card per row on very small screens */
+    }
+  }
+  @keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.department-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; /* Fixed size for each card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInScale 0.5s ease-in-out;
+}
+
+  

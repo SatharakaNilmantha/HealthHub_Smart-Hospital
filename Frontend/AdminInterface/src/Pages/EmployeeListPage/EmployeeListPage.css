@@ -1,0 +1,162 @@
+/* App container styling */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Content section */
+.content {
+  flex-grow: 1;
+  margin-left: 250px; /* Sidebar width */
+  padding: 30px;
+  background-color: #f0f0f0; /* Light background */
+  color: #333;
+  max-width: 100%;
+}
+
+  /* Header with Dropdown */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .department-dropdown {
+    text-align: right;
+  }
+  
+  .department-dropdown h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .department-dropdown select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f8f9fa;
+    cursor: pointer;
+  }
+  
+  .department-dropdown select:focus {
+    outline: none;
+    border-color: #27a6ae;
+  }
+  
+  /* Employee Table */
+  .employee-table {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scale-up 0.5s ease-in-out;
+  }
+
+.employee-table:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+  
+  .employee-table h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .employee-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .employee-table th,
+  .employee-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .employee-table th {
+    background-color: #27a6ae;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .employee-table td {
+    color: #333;
+  }
+  
+  .delete-btn,
+  .view-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 8px;
+  }
+  
+  .delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #e60000;
+  }
+  
+  .view-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .view-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .view-employee-container {
+      margin-left: 60px; /* Adjusted margin for smaller sidebar */
+      padding: 15px;
+    }
+  
+    .dashboard-title {
+      font-size: 1.5rem;
+    }
+  
+    .department-dropdown h2 {
+      font-size: 1rem;
+    }
+  
+    .department-dropdown select {
+      padding: 6px 10px;
+      font-size: 0.9rem;
+    }
+  
+    .employee-table h2 {
+      font-size: 1.3rem;
+    }
+  
+    .employee-table th,
+    .employee-table td {
+      padding: 10px;
+    }
+  
+    .delete-btn,
+    .view-btn {
+      padding: 5px 10px;
+      font-size: 0.8rem;
+    }
+  }
