@@ -1,0 +1,155 @@
+/* App container styling */
+.app-container1 {
+    display: flex;
+    width: 100%;
+  }
+  
+  /* Content section */
+  .content1 {
+    flex-grow: 1;
+    margin-left: 250px; /* Sidebar width */
+    margin-bottom: 0px !important;
+    padding: 30px;
+    background-color: #f0f0f0; /* Light background */
+    color: #333;
+    max-width: 100%;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+  }
+  
+  /* Header with Dropdown */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+  }
+
+  .department-dropdown h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+.department-dropdown select {
+    border-radius: 5px;
+    height: 35px;
+    width: 200px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.department-dropdown select:focus {
+    outline: none;
+    border-color: #00a4b3;
+}
+
+.doctors-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Style for the search bar */
+
+.search-input1 {
+  width: 100%;
+  padding: 13px;
+  font-size: 16px;
+  border: 1px solid #e3e0e0;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  margin: 40px 0px 30px;
+}
+
+.search-input1:focus {
+  border-color: #282828;
+}
+
+.doctor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Soft gradient */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scale-up 0.5s ease-in-out;
+    width: 95%;
+}
+
+.doctor-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.doctor-image {
+    width: 55%; 
+    height: 180px; 
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.doctor-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.doctor-role {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.doctor-department {
+    font-size: 0.9rem;
+    color: #17a2b8;
+    font-weight: bold;
+}
+
+.buttongroup1{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto ;
+    gap: 40px;
+  }
+
+.view-button1 {
+  background: #27a8b0;
+  transition: 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+
+.delete-button1 {
+  background: #e74c3c; /* Red color */
+  transition: 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+
+/* Button Hover for Delete */
+.delete-button1:hover {
+    background: #c0392b; /* Darker red on hover */
+  }
+  
+    
+    /* Button Hover */
+    .view-button1:hover  {
+      background: #1f8b94;
+    }
+    

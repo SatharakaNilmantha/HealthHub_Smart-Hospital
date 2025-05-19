@@ -1,0 +1,122 @@
+/* PrescriptionPage.css */
+.prescription-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+
+.prescription-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: scale-up 0.5s ease-in-out;
+}
+
+.prescription-content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logoimg {
+  width: 150px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-date {
+  font-size: 16px;
+  color: #555;
+}
+
+.prescription-details {
+  display: grid;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group p {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  padding: 8px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Date Picker Styles */
+.date-picker-container {
+  margin-bottom: 20px;
+}
+
+.date-picker-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.button-group{
+   display: grid;
+   grid-template-columns: auto auto;
+   margin-top: 20px;
+}
+/* Style for the back button */
+.back-button {
+  color: rgb(3, 22, 162);
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: underline;
+  background-color:white ;
+  text-align: left;
+}
+
+.back-button:hover {
+  color: #007bff;
+}
+
+.print-button {
+  background-color: #28a79f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.print-button:hover {
+  background-color: #218875;
+}

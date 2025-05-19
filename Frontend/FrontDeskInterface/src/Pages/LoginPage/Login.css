@@ -1,0 +1,103 @@
+
+
+/* Logo placement in the top-left corner */
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    width: 150px; /* Logo size */
+    height: auto;
+}
+
+/* Centralized login box with clean and professional design */
+.login-box {
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    position: absolute; /* Center the box */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect centering */
+}
+
+/* Title with proper spacing and styling */
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input field groups with consistent layout */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Labels with clear, concise text and emphasis */
+.label {
+    display: block;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Styled input fields with smooth transitions */
+.input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff; /* White background */
+    transition: border-color 0.3s ease;
+}
+
+/* Focused input field with border highlight */
+.input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Professional button styling with hover effect */
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Signup link styled for clarity and user engagement */
+.signup-link {
+    font-size: 14px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
