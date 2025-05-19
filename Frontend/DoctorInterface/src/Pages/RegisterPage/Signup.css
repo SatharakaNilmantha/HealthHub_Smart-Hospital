@@ -1,0 +1,121 @@
+
+
+
+
+/* Logo positioned at top-left */
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    width: 150px; /* Logo size */
+    height: auto;
+}
+
+/* Main signup box centered */
+.signup-box {
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    position: absolute; /* Center the box */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect centering */
+}
+
+/* Title styling */
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input group styling */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Label styling */
+.label {
+    display: block;
+    color: #555;
+    font-weight: 600;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Input fields styling */
+.input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd; /* Simple border */
+    border-radius: 8px;
+    background-color: #fff; /* White background */
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* File input styling */
+.input[type="file"] {
+    padding: 8px;
+}
+
+.signup-error {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  .signup-success {
+    color: green;
+    font-size: 12px;
+    text-align: left;
+  }
+  
+/* Register button styling */
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Login link styling */
+.login-link {
+    font-size: 14px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
