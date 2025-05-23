@@ -8,12 +8,24 @@ A brief description of what your project does and who it's for.
 - Admin interface for managing system
 - [Add more features here]
 
-## 🖼️ Screenshots
 
 
-| Home Interface                                                                           | Admin Interface                                                                                     |
-| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| ![Home](https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5) | ![Admin Interface](https://github.com/user-attachments/assets/89b5a479-7ba7-454d-8d8b-6158ff0e0981) |
+<h2>🖼️ Screenshots</h2>
+
+<table>
+  <tr>
+    <th>Home Interface</th>
+    <th>Admin Interface</th>
+  </tr>
+  <tr>
+    <td valign="top">
+      <img src="https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5" alt="Home" width="100%" />
+    </td>
+    <td valign="top">
+      <img src="https://github.com/user-attachments/assets/89b5a479-7ba7-454d-8d8b-6158ff0e0981" alt="Admin Interface" width="100%" />
+    </td>
+  </tr>
+</table>
 
 ## 🛠️ Installation
 
