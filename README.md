@@ -10,9 +10,9 @@ A brief description of what your project does and who it's for.
 
 ## 🖼️ Screenshots
 
-| Home | Admin Interface |
-|------|------------------|
-| ![Home](https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5) | ![Admin Interface](https://github.com/user-attachments/assets/57ac8e52-a7fe-4c61-8a6a-41107beb1675) |
+
+ ![Home](https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5) ![Admin Interface](https://github.com/user-attachments/assets/89b5a479-7ba7-454d-8d8b-6158ff0e0981)
+
 
 ## 🛠️ Installation
 
