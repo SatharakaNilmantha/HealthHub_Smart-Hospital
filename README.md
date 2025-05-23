@@ -11,8 +11,9 @@ A brief description of what your project does and who it's for.
 ## 🖼️ Screenshots
 
 
- ![Home](https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5) ![Admin Interface](https://github.com/user-attachments/assets/89b5a479-7ba7-454d-8d8b-6158ff0e0981)
-
+| Home Interface                                                                           | Admin Interface                                                                                     |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![Home](https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5) | ![Admin Interface](https://github.com/user-attachments/assets/89b5a479-7ba7-454d-8d8b-6158ff0e0981) |
 
 ## 🛠️ Installation
 
