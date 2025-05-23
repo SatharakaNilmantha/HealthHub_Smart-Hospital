@@ -22,7 +22,7 @@ A brief description of what your project does and who it's for.
       <img src="https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5" alt="Home" width="100%" />
     </td>
     <td valign="top">
-      <img src="https://github.com/user-attachments/assets/89b5a479-7ba7-454d-8d8b-6158ff0e0981" alt="Admin Interface" width="100%" />
+      <img src="https://github.com/user-attachments/assets/5c3cfd01-fa6c-4dbf-81f8-ef41e18012c4" alt="Admin Interface" width="100%" />
     </td>
   </tr>
 </table>
