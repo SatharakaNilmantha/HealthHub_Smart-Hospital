@@ -14,8 +14,9 @@ A brief description of what your project does and who it's for.
 
 <table>
   <tr>
-    <th>Home Interface</th>
+    <th>Patient Interface</th>
     <th>Admin Interface</th>
+    <th>Doctor Interface</th>
   </tr>
   <tr>
     <td valign="top">
@@ -23,6 +24,9 @@ A brief description of what your project does and who it's for.
     </td>
     <td valign="top">
       <img src="https://github.com/user-attachments/assets/5c3cfd01-fa6c-4dbf-81f8-ef41e18012c4" alt="Admin Interface" width="100%" />
+    </td>
+        <td valign="top">
+      <img src="https://github.com/user-attachments/assets/03a77fa4-8101-4e1f-bf33-a0666ae6db4e" alt="Admin Interface" width="100%" />
     </td>
   </tr>
 </table>
