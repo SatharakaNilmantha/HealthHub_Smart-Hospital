@@ -76,8 +76,8 @@ const Consultation = () => {
         <SideNav />
         <div className="content">
 
-          <h1 className="dashboard-title">Treatment Sessions</h1>
-          <p className="dashboard-description">Manage your completed and canceled treatment sessions</p>
+          <h1 className="dashboard-title">Consultation Sessions</h1>
+          <p className="dashboard-description">Manage your completed and canceled Consultation sessions</p>
 
           <div className="appo-state">
             <div className="search-bar">
