@@ -167,29 +167,44 @@ npm start
 <table align="center">
   <tr>
     <td align="center">
-      <img src="https://example.com/pm.jpg" width="100" style="border-radius: 50%;"/><br/>
-      <b>Project Manager</b><br/>
-      John Doe
+      <a href="https://github.com/johndoe" target="_blank">
+        <img src="https://example.com/pm.jpg" width="100" style="border-radius: 50%;" alt="PM"/><br/>
+        <b>John Doe</b>
+      </a><br/>
+      Project Manager (PM)
     </td>
+    
     <td align="center">
-      <img src="https://example.com/dev1.jpg" width="100" style="border-radius: 50%;"/><br/>
-      <b>Frontend Developer</b><br/>
-      Alice Smith
+      <a href="https://github.com/alicesmith" target="_blank">
+        <img src="https://example.com/dev1.jpg" width="100" style="border-radius: 50%;" alt="Frontend Dev"/><br/>
+        <b>Alice Smith</b>
+      </a><br/>
+      Frontend Developer
     </td>
+
     <td align="center">
-      <img src="https://example.com/dev2.jpg" width="100" style="border-radius: 50%;"/><br/>
-      <b>Backend Developer</b><br/>
-      Bob Johnson
+      <a href="https://github.com/bobjohnson" target="_blank">
+        <img src="https://example.com/dev2.jpg" width="100" style="border-radius: 50%;" alt="Backend Dev"/><br/>
+        <b>Bob Johnson</b>
+      </a><br/>
+      Backend Developer
     </td>
+
     <td align="center">
-      <img src="https://example.com/qa.jpg" width="100" style="border-radius: 50%;"/><br/>
-      <b>QA Engineer</b><br/>
-      Carol White
+      <a href="https://github.com/davidgreen" target="_blank">
+        <img src="https://example.com/uiux.jpg" width="100" style="border-radius: 50%;" alt="UI/UX"/><br/>
+        <b>David Green</b>
+      </a><br/>
+      UI/UX Designer & QA
     </td>
+ 
+
     <td align="center">
-      <img src="https://example.com/designer.jpg" width="100" style="border-radius: 50%;"/><br/>
-      <b>UI/UX & Docs</b><br/>
-      David Green
+      <a href="https://github.com/carolwhite" target="_blank">
+        <img src="https://example.com/docs.jpg" width="100" style="border-radius: 50%;" alt="RA"/><br/>
+        <b>Carol White</b>
+      </a><br/>
+      Documentation & Research Assistant
     </td>
   </tr>
 </table>
