@@ -270,12 +270,7 @@ This project is licensed for **educational and academic purposes only**. Unautho
 
 Special thanks to our mentors and faculty for their invaluable support and guidance throughout the development of HELTHHUB Medical Center.
 
-> *Built with ❤️ for a better and smarter healthcare system.*
-> ***💡 If you like this project, don't forget to give it a ⭐ on GitHub! 😊***
+>*Built with ❤️ for a better and smarter healthcare system.*
+>***💡 If you like this project, don't forget to give it a ⭐ on GitHub! 😊***
 
-```
 
----
-
-Let me know if you want this as a downloadable `README.md` file or if you’d like to include screenshots or video demos for the interfaces.
-```
