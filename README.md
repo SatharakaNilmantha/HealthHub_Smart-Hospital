@@ -135,15 +135,23 @@ Smart-Hospital/
 
 ---
 
-## 🧪 Installation
+## 🚀 Installation
 
-### 1️⃣ Backend (Spring Boot)
+Follow these steps to install and set up the project:
+
+### 1️⃣ Clone the repository**
+   ```bash
+   git clone https://github.com/SatharakaNilmantha/HealthHub_Smart-Hospital.git
+   cd HealthHub_Smart-Hospital
+   ```
+
+### 2️⃣ Backend (Spring Boot)
 ```bash
 cd Smart-Hospital-back-end
 # Open in your IDE (IntelliJ/Eclipse) and run the Spring Boot application
 ````
 
-### 2️⃣ Frontend (React Apps)
+### 3️⃣ Frontend (React Apps)
 
 Repeat for each interface:
 
@@ -263,6 +271,7 @@ This project is licensed for **educational and academic purposes only**. Unautho
 Special thanks to our mentors and faculty for their invaluable support and guidance throughout the development of HELTHHUB Medical Center.
 
 > *Built with ❤️ for a better and smarter healthcare system.*
+> ***💡 If you like this project, don't forget to give it a ⭐ on GitHub! 😊***
 
 ```
 
