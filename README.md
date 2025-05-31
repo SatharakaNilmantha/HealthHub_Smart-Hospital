@@ -165,6 +165,7 @@ npm start
 
 <div align="center">
 <table>
+<!-- Row 1 -->
 <tr>
 <!-- Member 1 -->
 <td align="center">
@@ -201,7 +202,10 @@ npm start
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
 </a>
 </td>
+</tr>
 
+<!-- Row 2 -->
+<tr>
 <!-- Member 4 -->
 <td align="center">
 <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N." />
@@ -227,7 +231,6 @@ npm start
 </td>
 </tr> </table>
 </div>
-
 
 ---
 
