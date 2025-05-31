@@ -108,7 +108,7 @@ Smart-Hospital/
 ---
 
 ## 🖼️ Screenshots
-```
+
 <table>
   <tr>
     <th>Patient Interface</th>
@@ -132,7 +132,7 @@ Smart-Hospital/
     
   </tr>
 </table>
-```
+
 ---
 
 ## 🧪 Installation
@@ -164,7 +164,7 @@ npm start
 
 <h2>📚 Roles & Contributors</h2>
 
----
+```
 <table>
   <tr>
     <td align="center" width="30%">
@@ -199,7 +199,7 @@ npm start
     </td>
   </tr>
 </table>
-
+```
 
 ---
 
