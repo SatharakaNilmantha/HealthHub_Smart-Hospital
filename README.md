@@ -164,50 +164,13 @@ npm start
 
 ## 📚 Roles & Contributors
 
-<table align="center">
-  <tr>
-    <td align="center">
-      <a href="https://github.com/johndoe" target="_blank">
-        <img src="https://example.com/pm.jpg" width="100" style="border-radius: 50%;" alt="PM"/><br/>
-        <b>John Doe</b>
-      </a><br/>
-      Project Manager (PM)
-    </td>
-    
-    <td align="center">
-      <a href="https://github.com/alicesmith" target="_blank">
-        <img src="https://example.com/dev1.jpg" width="100" style="border-radius: 50%;" alt="Frontend Dev"/><br/>
-        <b>Alice Smith</b>
-      </a><br/>
-      Frontend Developer
-    </td>
+| ![PM](https://github.com/user-attachments/assets/08d619f7-bb7c-44ad-8c8a-321810f4dbfc=100x100) <br> **WIJESURIYA P.D.D.N.** <br> Project Manager (PM) <br> [GitHub](https://github.com/didula08) 
+| ![FE](https://example.com/dev1.jpg =100x100) <br> **WICKRAMARATHNE W.G.G.Y.** <br> Frontend Developer <br> [GitHub](https://github.com/GeethmaYasashwi) 
+| ![BE](https://example.com/dev2.jpg =100x100) <br> **DE MEL L.M.N.H.** <br> Backend Developer <br> [GitHub](https://github.com/nemasha-deme) 
+| ![UIUX](https://github.com/user-attachments/assets/1301edef-b076-470f-9ff8-4750b97b0540=100x100) <br> **GUNARATHNA A.M.S.N.** <br> UI/UX Designer & QA <br> [GitHub](https://github.com/SatharakaNilmantha) 
+| ![Docs](https://github.com/user-attachments/assets/0961e2b0-6d9d-4c44-8b8f-4d27edf95ec3=100x100) <br> **DE SILVA G.A.S.** <br> Documentation & Research Assistant <br> [GitHub](https://github.com/Ashansanjana) |
+|------------------|----------------------|---------------------|--------------------------------|-----------------------------|
 
-    <td align="center">
-      <a href="https://github.com/bobjohnson" target="_blank">
-        <img src="https://example.com/dev2.jpg" width="100" style="border-radius: 50%;" alt="Backend Dev"/><br/>
-        <b>Bob Johnson</b>
-      </a><br/>
-      Backend Developer
-    </td>
-
-    <td align="center">
-      <a href="https://github.com/davidgreen" target="_blank">
-        <img src="https://example.com/uiux.jpg" width="100" style="border-radius: 50%;" alt="UI/UX"/><br/>
-        <b>David Green</b>
-      </a><br/>
-      UI/UX Designer & QA
-    </td>
- 
-
-    <td align="center">
-      <a href="https://github.com/carolwhite" target="_blank">
-        <img src="https://example.com/docs.jpg" width="100" style="border-radius: 50%;" alt="RA"/><br/>
-        <b>Carol White</b>
-      </a><br/>
-      Documentation & Research Assistant
-    </td>
-  </tr>
-</table>
 
 
 ---
