@@ -163,38 +163,46 @@ npm start
 ---
 <h2>📚 Roles & Contributors</h2>
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 10px;">
+<div style="
+  display: flex; 
+  justify-content: space-around; 
+  align-items: flex-start; 
+  flex-wrap: nowrap; 
+  gap: 20px; 
+  padding: 10px;
+  overflow-x: hidden;
+">
 
-  <div style="flex: 1 1 180px; max-width: 220px; text-align: center;">
-    <img src="https://picsum.photos/200?1" width="180" height="180" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N."><br>
+  <div style="flex: 0 0 18%; text-align: center;">
+    <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N."><br>
     <strong>WIJESURIYA P.D.D.N.</strong><br>
     Project Manager (PM)<br>
     <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
 
-  <div style="flex: 1 1 180px; max-width: 220px; text-align: center;">
-    <img src="https://picsum.photos/200?2" width="180" height="180" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y."><br>
+  <div style="flex: 0 0 18%; text-align: center;">
+    <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y."><br>
     <strong>WICKRAMARATHNE W.G.G.Y.</strong><br>
     Frontend Developer<br>
     <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
 
-  <div style="flex: 1 1 180px; max-width: 220px; text-align: center;">
-    <img src="https://picsum.photos/200?3" width="180" height="180" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H."><br>
+  <div style="flex: 0 0 18%; text-align: center;">
+    <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H."><br>
     <strong>DE MEL L.M.N.H.</strong><br>
     Backend Developer<br>
     <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
 
-  <div style="flex: 1 1 180px; max-width: 220px; text-align: center;">
-    <img src="https://picsum.photos/200?4" width="180" height="180" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N."><br>
+  <div style="flex: 0 0 18%; text-align: center;">
+    <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N."><br>
     <strong>GUNARATHNA A.M.S.N.</strong><br>
     UI/UX Designer & QA<br>
     <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
 
-  <div style="flex: 1 1 180px; max-width: 220px; text-align: center;">
-    <img src="https://picsum.photos/200?5" width="180" height="180" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S."><br>
+  <div style="flex: 0 0 18%; text-align: center;">
+    <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S."><br>
     <strong>DE SILVA G.A.S.</strong><br>
     Documentation & Research Assistant<br>
     <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">GitHub</a>
