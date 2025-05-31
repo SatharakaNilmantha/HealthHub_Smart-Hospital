@@ -42,22 +42,21 @@
 ### 👩‍⚕️ Patient
 - Register & login
 - Book/view appointments
-- View prescriptions & test reports
 - Manage personal profile
 
 ### 👨‍⚕️ Doctor
 - View and manage appointments
 - Diagnose and prescribe
-- Access patient test records and history
 
 ### 🧑‍💼 Receptionist
-- Register new patients
-- Book & reschedule appointments
-- Update contact info
+- View doctor information (name, department, availability)
+- Share doctor’s prescription and diagnosis with the relevant patient
+
 
 ### 🧑‍💼 Admin
 - Manage hospital staff and doctors
 - View real-time statistics
+- Book & reschedule appointments
 - Monitor system logs and performance
 - Full CRUD operations for all modules
 
@@ -102,7 +101,8 @@ Smart-Hospital/
 
 ### 📌 Use Case Diagram  
 > Represents interactions between users and the system  
-![Use Case Diagram](https://github.com/user-attachments/assets/57af8f12-7763-4046-b02c-26d55dcb0536)
+<p align="center"><img src="https://github.com/user-attachments/assets/57af8f12-7763-4046-b02c-26d55dcb0536" alt="Use Case Diagram" width="400"/></p>
+
 
 
 ---
@@ -164,19 +164,42 @@ npm start
 
 ## 📚 Roles & Contributors
 
-| Name             | Role               |
-| ---------------- | ------------------ |
-| \[Your Name]     | Frontend Developer |
-| \[Member 2 Name] | Backend Developer  |
-| \[Member 3 Name] | Database Designer  |
-| \[Member 4 Name] | UI/UX & Testing    |
-| \[Member 5 Name] | Documentation      |
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="https://example.com/pm.jpg" width="100" style="border-radius: 50%;"/><br/>
+      <b>Project Manager</b><br/>
+      John Doe
+    </td>
+    <td align="center">
+      <img src="https://example.com/dev1.jpg" width="100" style="border-radius: 50%;"/><br/>
+      <b>Frontend Developer</b><br/>
+      Alice Smith
+    </td>
+    <td align="center">
+      <img src="https://example.com/dev2.jpg" width="100" style="border-radius: 50%;"/><br/>
+      <b>Backend Developer</b><br/>
+      Bob Johnson
+    </td>
+    <td align="center">
+      <img src="https://example.com/qa.jpg" width="100" style="border-radius: 50%;"/><br/>
+      <b>QA Engineer</b><br/>
+      Carol White
+    </td>
+    <td align="center">
+      <img src="https://example.com/designer.jpg" width="100" style="border-radius: 50%;"/><br/>
+      <b>UI/UX & Docs</b><br/>
+      David Green
+    </td>
+  </tr>
+</table>
+
 
 ---
 
 ## 📘 Academic Details
 
-> This project was developed as part of the **Semester 05 Web Development Project** at **\[Your Institution Name]**, showcasing full-stack development and real-world system design in a healthcare domain.
+> This project was developed as part of the **Semester 06 software Engineering Web Development Project** , showcasing full-stack development and real-world system design in a healthcare domain.
 
 ---
 
