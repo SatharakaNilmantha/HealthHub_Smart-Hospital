@@ -97,8 +97,8 @@ Smart-Hospital/
 
 ### 📌 ER Diagram
 > Shows table relationships in the hospital database  
-![ER Diagram](![Smart Hospital 1update](https://github.com/user-attachments/assets/2962d25e-5bb5-4c2f-b9de-312f14ebae57)
-)
+![ER Diagram](https://github.com/user-attachments/assets/a7f2089d-04f6-47f8-b6cd-9f2d119e1734)
+
 
 ### 📌 Use Case Diagram  
 > Represents interactions between users and the system  
