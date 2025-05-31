@@ -161,12 +161,19 @@ npm start
 > * PatientInterface
 
 ---
-<h2>📚 Roles & Contributors</h2>
+<h2 style="text-align: center;">📚 Roles & Contributors</h2>
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
-
+<div style="
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+">
   <!-- Member 1 -->
-  <div style="width: 200px; text-align: center;">
+  <div>
     <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N.">
     <div style="margin-top: 10px;"><strong>WIJESURIYA P.D.D.N.</strong></div>
     <div>Project Manager (PM)</div>
@@ -176,7 +183,7 @@ npm start
   </div>
 
   <!-- Member 2 -->
-  <div style="width: 200px; text-align: center;">
+  <div>
     <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y.">
     <div style="margin-top: 10px;"><strong>WICKRAMARATHNE W.G.G.Y.</strong></div>
     <div>Frontend Developer</div>
@@ -186,7 +193,7 @@ npm start
   </div>
 
   <!-- Member 3 -->
-  <div style="width: 200px; text-align: center;">
+  <div>
     <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H.">
     <div style="margin-top: 10px;"><strong>DE MEL L.M.N.H.</strong></div>
     <div>Backend Developer</div>
@@ -196,7 +203,7 @@ npm start
   </div>
 
   <!-- Member 4 -->
-  <div style="width: 200px; text-align: center;">
+  <div>
     <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N.">
     <div style="margin-top: 10px;"><strong>GUNARATHNA A.M.S.N.</strong></div>
     <div>UI/UX Designer & QA</div>
@@ -206,7 +213,7 @@ npm start
   </div>
 
   <!-- Member 5 -->
-  <div style="width: 200px; text-align: center;">
+  <div>
     <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S.">
     <div style="margin-top: 10px;"><strong>DE SILVA G.A.S.</strong></div>
     <div>Documentation & RA</div>
@@ -214,8 +221,9 @@ npm start
       <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
     </a>
   </div>
-
 </div>
+
+
 
 ---
 
