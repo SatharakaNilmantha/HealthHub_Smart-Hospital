@@ -164,6 +164,13 @@ npm start
 <h2>📚 Roles & Contributors</h2>
 
 <table style="width: 100%; table-layout: fixed; border-collapse: collapse; text-align: center;">
+  <colgroup>
+    <col style="width: 20%;">
+    <col style="width: 20%;">
+    <col style="width: 20%;">
+    <col style="width: 20%;">
+    <col style="width: 20%;">
+  </colgroup>
   <tr>
     <td style="padding: 10px; vertical-align: top;">
       <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N."><br>
@@ -192,11 +199,12 @@ npm start
     <td style="padding: 10px; vertical-align: top;">
       <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S."><br>
       <strong>DE SILVA G.A.S.</strong><br>
-      Documentation & Research Assistant<br>
+      Documentation & RA<br>
       <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">GitHub</a>
     </td>
   </tr>
 </table>
+
 
 ---
 
