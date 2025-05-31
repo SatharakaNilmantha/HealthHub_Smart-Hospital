@@ -1,8 +1,3 @@
-Here’s a more **advanced and professional README.md** file for your **HELTHHUB MEDICAL CENTER** project. It’s styled, structured, and enriched with badges, clearer installation steps, contribution guidelines, and more details on features and technology stack to give it a production-grade look.
-
----
-
-```markdown
 <p align="center">
   <img src="https://github.com/user-attachments/assets/e4e61133-2981-446d-b7e8-7c08dc66c08b" alt="HELTHHUB Logo" width="180"/>
 </p>
