@@ -162,6 +162,7 @@ npm start
 
 ---
 <h2 style="text-align: center;">📚 Roles & Contributors</h2>
+
 <div align="center">
 <table>
 <tr>
@@ -169,8 +170,8 @@ npm start
 <td align="center">
 <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N." />
 <br/>
-<strong>WIJESURIYA P.D.D.N.</strong><br/>
-Project Manager (PM)
+<small><strong>WIJESURIYA P.D.D.N.</strong></small><br/>
+<small>Project Manager (PM)</small>
 <br/>
 <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
@@ -181,8 +182,8 @@ Project Manager (PM)
 <td align="center">
 <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y." />
 <br/>
-<strong>WICKRAMARATHNE W.G.G.Y.</strong><br/>
-Frontend Developer
+<small><strong>WICKRAMARATHNE W.G.G.Y.</strong></small><br/>
+<small>Frontend Developer</small>
 <br/>
 <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
@@ -193,8 +194,8 @@ Frontend Developer
 <td align="center">
 <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H." />
 <br/>
-<strong>DE MEL L.M.N.H.</strong><br/>
-Backend Developer
+<small><strong>DE MEL L.M.N.H.</strong></small><br/>
+<small>Backend Developer</small>
 <br/>
 <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
@@ -205,8 +206,8 @@ Backend Developer
 <td align="center">
 <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N." />
 <br/>
-<strong>GUNARATHNA A.M.S.N.</strong><br/>
-UI/UX Designer & QA
+<small><strong>GUNARATHNA A.M.S.N.</strong></small><br/>
+<small>UI/UX Designer & QA</small>
 <br/>
 <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
@@ -217,8 +218,8 @@ UI/UX Designer & QA
 <td align="center">
 <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S." />
 <br/>
-<strong>DE SILVA G.A.S.</strong><br/>
-Documentation & RA
+<small><strong>DE SILVA G.A.S.</strong></small><br/>
+<small>Documentation & RA</small>
 <br/>
 <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
@@ -226,6 +227,7 @@ Documentation & RA
 </td>
 </tr> </table>
 </div>
+
 
 ---
 
