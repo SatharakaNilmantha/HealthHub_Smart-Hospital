@@ -162,11 +162,42 @@ npm start
 
 ---
 
-## 📚 Roles & Contributors
+<h2>📚 Roles & Contributors</h2>
 
-| Project Manager (PM) | Frontend Developer | Backend Developer | UI/UX Designer & QA | Documentation & Research Assistant |
-|----------------------|--------------------|-------------------|---------------------|------------------------------------|
-| <img src="https://github.com/user-attachments/assets/e5d17e91-c865-4411-b6a2-754f5e58c30e" width="100" height="100" style="border-radius: 50%;"><br>**WIJESURIYA P.D.D.N.**<br>Project Manager (PM)<br>[GitHub](https://github.com/didula08) | <img src="https://github.com/user-attachments/assets/8c808eed-a500-4c1f-889e-a7ba73bddc8f" width="100" height="100" style="border-radius: 50%;"><br>**WICKRAMARATHNE W.G.G.Y.**<br>Frontend Developer<br>[GitHub](https://github.com/GeethmaYasashwi) | <img src="https://github.com/user-attachments/assets/f56f4185-bf38-430f-9e75-12e2a55d267a" width="100" height="100" style="border-radius: 50%;"><br>**DE MEL L.M.N.H.**<br>Backend Developer<br>[GitHub](https://github.com/nemasha-deme) | <img src="https://github.com/user-attachments/assets/6e96b6c6-843b-473e-a828-662d4a5dd9a3" width="100" height="100" style="border-radius: 50%;"><br>**GUNARATHNA A.M.S.N.**<br>UI/UX Designer & QA<br>[GitHub](https://github.com/SatharakaNilmantha) | <img src="https://github.com/user-attachments/assets/49f70df2-1a6f-4cda-892a-989a3d74530c" width="100" height="100" style="border-radius: 50%;"><br>**DE SILVA G.A.S.**<br>Documentation & Research Assistant<br>[GitHub](https://github.com/Ashansanjana) |
+<table>
+  <tr>
+    <td align="center" width="20%">
+      <img src="https://github.com/user-attachments/assets/e5d17e91-c865-4411-b6a2-754f5e58c30e" width="100" height="100" style="border-radius: 50%; object-fit: cover;"><br>
+      <strong>WIJESURIYA P.D.D.N.</strong><br>
+      Project Manager (PM)<br>
+      <a href="https://github.com/didula08">GitHub</a>
+    </td>
+    <td align="center" width="20%">
+      <img src="https://github.com/user-attachments/assets/8c808eed-a500-4c1f-889e-a7ba73bddc8f" width="100" height="100" style="border-radius: 50%; object-fit: cover;"><br>
+      <strong>WICKRAMARATHNE W.G.G.Y.</strong><br>
+      Frontend Developer<br>
+      <a href="https://github.com/GeethmaYasashwi">GitHub</a>
+    </td>
+    <td align="center" width="20%">
+      <img src="https://github.com/user-attachments/assets/f56f4185-bf38-430f-9e75-12e2a55d267a" width="100" height="100" style="border-radius: 50%; object-fit: cover;"><br>
+      <strong>DE MEL L.M.N.H.</strong><br>
+      Backend Developer<br>
+      <a href="https://github.com/nemasha-deme">GitHub</a>
+    </td>
+    <td align="center" width="20%">
+      <img src="https://github.com/user-attachments/assets/6e96b6c6-843b-473e-a828-662d4a5dd9a3" width="100" height="100" style="border-radius: 50%; object-fit: cover;"><br>
+      <strong>GUNARATHNA A.M.S.N.</strong><br>
+      UI/UX Designer & QA<br>
+      <a href="https://github.com/SatharakaNilmantha">GitHub</a>
+    </td>
+    <td align="center" width="20%">
+      <img src="https://github.com/user-attachments/assets/49f70df2-1a6f-4cda-892a-989a3d74530c" width="100" height="100" style="border-radius: 50%; object-fit: cover;"><br>
+      <strong>DE SILVA G.A.S.</strong><br>
+      Documentation & Research Assistant<br>
+      <a href="https://github.com/Ashansanjana">GitHub</a>
+    </td>
+  </tr>
+</table>
 
 ---
 
