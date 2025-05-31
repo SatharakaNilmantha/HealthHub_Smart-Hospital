@@ -1,5 +1,6 @@
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e4e61133-2981-446d-b7e8-7c08dc66c08b" alt="HELTHHUB Logo" width="180"/>
+![WhatsApp Image 2025-05-31 at 19 29 57_ef799ce9](https://github.com/user-attachments/assets/eb6a1bb3-e426-4614-ab04-1d2080289b39)<p align="center">
+  <img src="![logo-removebg](https://github.com/user-attachments/assets/72347ae2-88fc-4d67-bf1c-0fb37bb03bbf)
+" alt="HELTHHUB Logo" width="180"/>
 </p>
 
 <h1 align="center">🏥 HELTHHUB MEDICAL CENTER</h1>
@@ -97,15 +98,17 @@ Smart-Hospital/
 
 ### 📌 ER Diagram
 > Shows table relationships in the hospital database  
-![ER Diagram](https://github.com/user-attachments/assets/your-er-diagram-link)
+![ER Diagram](![Smart Hospital 1update](https://github.com/user-attachments/assets/2962d25e-5bb5-4c2f-b9de-312f14ebae57)
+)
 
 ### 📌 Use Case Diagram  
 > Represents interactions between users and the system  
-![Use Case Diagram](https://github.com/user-attachments/assets/your-use-case-link)
+![Use Case Diagram](https://github.com/user-attachments/assets/57af8f12-7763-4046-b02c-26d55dcb0536)
+
 
 ---
 
-###🖼️ Screenshots
+## 🖼️ Screenshots
 
 <table>
   <tr>
