@@ -161,9 +161,9 @@ npm start
 > * PatientInterface
 
 ---
-<h2>📚 Roles & Contributors</h2>
+<h2 style="text-align: center;">📚 Roles & Contributors</h2>
 
-<table style="width: 100%; table-layout: fixed; border-collapse: collapse; text-align: center;">
+<table style="width: 100%; table-layout: fixed; border-collapse: collapse; text-align: center; margin: auto;">
   <colgroup>
     <col style="width: 20%;">
     <col style="width: 20%;">
@@ -172,38 +172,68 @@ npm start
     <col style="width: 20%;">
   </colgroup>
   <tr>
+    <!-- Member 1 -->
     <td style="padding: 10px; vertical-align: top;">
-      <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N."><br>
-      <strong>WIJESURIYA P.D.D.N.</strong><br>
-      Project Manager (PM)<br>
-      <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N.">
+        <strong>WIJESURIYA P.D.D.N.</strong>
+        <div>Project Manager (PM)</div>
+        <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+        </a>
+      </div>
     </td>
+
+    <!-- Member 2 -->
     <td style="padding: 10px; vertical-align: top;">
-      <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y."><br>
-      <strong>WICKRAMARATHNE W.G.G.Y.</strong><br>
-      Frontend Developer<br>
-      <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y.">
+        <strong>WICKRAMARATHNE W.G.G.Y.</strong>
+        <div>Frontend Developer</div>
+        <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+        </a>
+      </div>
     </td>
+
+    <!-- Member 3 -->
     <td style="padding: 10px; vertical-align: top;">
-      <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H."><br>
-      <strong>DE MEL L.M.N.H.</strong><br>
-      Backend Developer<br>
-      <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H.">
+        <strong>DE MEL L.M.N.H.</strong>
+        <div>Backend Developer</div>
+        <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+        </a>
+      </div>
     </td>
+
+    <!-- Member 4 -->
     <td style="padding: 10px; vertical-align: top;">
-      <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N."><br>
-      <strong>GUNARATHNA A.M.S.N.</strong><br>
-      UI/UX Designer & QA<br>
-      <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N.">
+        <strong>GUNARATHNA A.M.S.N.</strong>
+        <div>UI/UX Designer & QA</div>
+        <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+        </a>
+      </div>
     </td>
+
+    <!-- Member 5 -->
     <td style="padding: 10px; vertical-align: top;">
-      <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S."><br>
-      <strong>DE SILVA G.A.S.</strong><br>
-      Documentation & RA<br>
-      <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S.">
+        <strong>DE SILVA G.A.S.</strong>
+        <div>Documentation & RA</div>
+        <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+        </a>
+      </div>
     </td>
   </tr>
 </table>
+
 
 
 ---
