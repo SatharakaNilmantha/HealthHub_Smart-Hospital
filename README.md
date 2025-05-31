@@ -162,68 +162,70 @@ npm start
 
 ---
 <h2 style="text-align: center;">📚 Roles & Contributors</h2>
+<div align="center">
+<table>
+<tr>
+<!-- Member 1 -->
+<td align="center">
+<img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N." />
+<br/>
+<strong>WIJESURIYA P.D.D.N.</strong><br/>
+Project Manager (PM)
+<br/>
+<a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
+</a>
+</td>
 
-<div style="
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  text-align: center;
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-">
-  <!-- Member 1 -->
-  <div>
-    <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N.">
-    <div style="margin-top: 10px;"><strong>WIJESURIYA P.D.D.N.</strong></div>
-    <div>Project Manager (PM)</div>
-    <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-    </a>
-  </div>
+<!-- Member 2 -->
+<td align="center">
+<img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y." />
+<br/>
+<strong>WICKRAMARATHNE W.G.G.Y.</strong><br/>
+Frontend Developer
+<br/>
+<a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
+</a>
+</td>
 
-  <!-- Member 2 -->
-  <div>
-    <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y.">
-    <div style="margin-top: 10px;"><strong>WICKRAMARATHNE W.G.G.Y.</strong></div>
-    <div>Frontend Developer</div>
-    <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-    </a>
-  </div>
+<!-- Member 3 -->
+<td align="center">
+<img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H." />
+<br/>
+<strong>DE MEL L.M.N.H.</strong><br/>
+Backend Developer
+<br/>
+<a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
+</a>
+</td>
 
-  <!-- Member 3 -->
-  <div>
-    <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H.">
-    <div style="margin-top: 10px;"><strong>DE MEL L.M.N.H.</strong></div>
-    <div>Backend Developer</div>
-    <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-    </a>
-  </div>
+<!-- Member 4 -->
+<td align="center">
+<img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N." />
+<br/>
+<strong>GUNARATHNA A.M.S.N.</strong><br/>
+UI/UX Designer & QA
+<br/>
+<a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
+</a>
+</td>
 
-  <!-- Member 4 -->
-  <div>
-    <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N.">
-    <div style="margin-top: 10px;"><strong>GUNARATHNA A.M.S.N.</strong></div>
-    <div>UI/UX Designer & QA</div>
-    <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-    </a>
-  </div>
-
-  <!-- Member 5 -->
-  <div>
-    <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S.">
-    <div style="margin-top: 10px;"><strong>DE SILVA G.A.S.</strong></div>
-    <div>Documentation & RA</div>
-    <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-    </a>
-  </div>
+<!-- Member 5 -->
+<td align="center">
+<img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S." />
+<br/>
+<strong>DE SILVA G.A.S.</strong><br/>
+Documentation & RA
+<br/>
+<a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">
+<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
+</a>
+</td>
+</tr> </table>
 </div>
-
-
 
 ---
 
