@@ -165,7 +165,7 @@ npm start
 
 <table style="width: 100%; border-collapse: collapse; text-align: center; margin: auto;">
   <tr>
-```
+---
     <td style="padding: 15px;">
       <div style="text-align: center;">
         <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N.">
@@ -176,7 +176,7 @@ npm start
         </a>
       </div>
     </td>
-```
+---
     <!-- Member 2 -->
     <td style="padding: 15px;">
       <div style="text-align: center;">
@@ -188,7 +188,7 @@ npm start
         </a>
       </div>
     </td>
-```
+---
     <!-- Member 3 -->
     <td style="padding: 15px;">
       <div style="text-align: center;">
@@ -200,7 +200,7 @@ npm start
         </a>
       </div>
     </td>
-```
+---
     <!-- Member 4 -->
     <td style="padding: 15px;">
       <div style="text-align: center;">
@@ -212,7 +212,7 @@ npm start
         </a>
       </div>
     </td>
-```
+---
     <!-- Member 5 -->
     <td style="padding: 15px;">
       <div style="text-align: center;">
