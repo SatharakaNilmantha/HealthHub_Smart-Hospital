@@ -1,6 +1,5 @@
-![WhatsApp Image 2025-05-31 at 19 29 57_ef799ce9](https://github.com/user-attachments/assets/eb6a1bb3-e426-4614-ab04-1d2080289b39)<p align="center">
-  <img src="![logo-removebg](https://github.com/user-attachments/assets/72347ae2-88fc-4d67-bf1c-0fb37bb03bbf)
-" alt="HELTHHUB Logo" width="180"/>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bff7ed00-b9f1-4a6c-8c7e-fbc7bae198b0" alt="HELTHHUB Logo" width="180"/>
 </p>
 
 <h1 align="center">🏥 HELTHHUB MEDICAL CENTER</h1>
