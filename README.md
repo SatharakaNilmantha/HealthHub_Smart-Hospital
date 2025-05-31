@@ -161,74 +161,61 @@ npm start
 > * PatientInterface
 
 ---
-<h2 >📚 Roles & Contributors</h2>
+<h2>📚 Roles & Contributors</h2>
 
-<table style="width: 100%; border-collapse: collapse; text-align: center; margin: auto;">
-  <tr>
----
-    <td style="padding: 15px;">
-      <div style="text-align: center;">
-        <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N.">
-        <div style="margin-top: 10px;"><strong>WIJESURIYA P.D.D.N.</strong></div>
-        <div>Project Manager (PM)</div>
-        <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-        </a>
-      </div>
-    </td>
----
-    <!-- Member 2 -->
-    <td style="padding: 15px;">
-      <div style="text-align: center;">
-        <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y.">
-        <div style="margin-top: 10px;"><strong>WICKRAMARATHNE W.G.G.Y.</strong></div>
-        <div>Frontend Developer</div>
-        <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-        </a>
-      </div>
-    </td>
----
-    <!-- Member 3 -->
-    <td style="padding: 15px;">
-      <div style="text-align: center;">
-        <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H.">
-        <div style="margin-top: 10px;"><strong>DE MEL L.M.N.H.</strong></div>
-        <div>Backend Developer</div>
-        <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-        </a>
-      </div>
-    </td>
----
-    <!-- Member 4 -->
-    <td style="padding: 15px;">
-      <div style="text-align: center;">
-        <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N.">
-        <div style="margin-top: 10px;"><strong>GUNARATHNA A.M.S.N.</strong></div>
-        <div>UI/UX Designer & QA</div>
-        <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-        </a>
-      </div>
-    </td>
----
-    <!-- Member 5 -->
-    <td style="padding: 15px;">
-      <div style="text-align: center;">
-        <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S.">
-        <div style="margin-top: 10px;"><strong>DE SILVA G.A.S.</strong></div>
-        <div>Documentation & RA</div>
-        <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
-        </a>
-      </div>
-    </td>
-  </tr>
-</table>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
 
+  <!-- Member 1 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N.">
+    <div style="margin-top: 10px;"><strong>WIJESURIYA P.D.D.N.</strong></div>
+    <div>Project Manager (PM)</div>
+    <a href="https://github.com/didula08" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+    </a>
+  </div>
 
+  <!-- Member 2 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y.">
+    <div style="margin-top: 10px;"><strong>WICKRAMARATHNE W.G.G.Y.</strong></div>
+    <div>Frontend Developer</div>
+    <a href="https://github.com/GeethmaYasashwi" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+    </a>
+  </div>
 
+  <!-- Member 3 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H.">
+    <div style="margin-top: 10px;"><strong>DE MEL L.M.N.H.</strong></div>
+    <div>Backend Developer</div>
+    <a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+    </a>
+  </div>
+
+  <!-- Member 4 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N.">
+    <div style="margin-top: 10px;"><strong>GUNARATHNA A.M.S.N.</strong></div>
+    <div>UI/UX Designer & QA</div>
+    <a href="https://github.com/SatharakaNilmantha" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+    </a>
+  </div>
+
+  <!-- Member 5 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S.">
+    <div style="margin-top: 10px;"><strong>DE SILVA G.A.S.</strong></div>
+    <div>Documentation & RA</div>
+    <a href="https://github.com/Ashansanjana" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub">
+    </a>
+  </div>
+
+</div>
 
 ---
 
