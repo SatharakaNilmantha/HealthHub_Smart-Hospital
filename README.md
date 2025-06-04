@@ -206,7 +206,7 @@ npm start
 <small><strong>DE MEL L.M.N.H.</strong></small><br/>
 <small>Backend Developer</small>
 <br/>
-<a href="https://github.com/nemasha-deme" target="_blank" rel="noopener noreferrer">
+<a href="https://github.com/nemasha-demel" target="_blank" rel="noopener noreferrer">
 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="24" height="24" alt="GitHub"/>
 </a>
 </td>
