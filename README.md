@@ -177,7 +177,7 @@ npm start
 <tr>
 <!-- Member 1 -->
 <td align="center">
-<img src="https://picsum.photos/200?1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N." />
+<img src="https://github.com/user-attachments/assets/7ab5529c-7fba-437a-9c16-e5b1db3fdb71" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WIJESURIYA P.D.D.N." />
 <br/>
 <small><strong>WIJESURIYA P.D.D.N.</strong></small><br/>
 <small>Project Manager (PM)</small>
@@ -189,7 +189,7 @@ npm start
 
 <!-- Member 2 -->
 <td align="center">
-<img src="https://picsum.photos/200?2" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y." />
+<img src="https://github.com/user-attachments/assets/e6b06138-e16f-463e-861a-d14d2d5832d3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="WICKRAMARATHNE W.G.G.Y." />
 <br/>
 <small><strong>WICKRAMARATHNE W.G.G.Y.</strong></small><br/>
 <small>Frontend Developer</small>
@@ -201,7 +201,7 @@ npm start
 
 <!-- Member 3 -->
 <td align="center">
-<img src="https://picsum.photos/200?3" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H." />
+<img src="https://github.com/user-attachments/assets/50d6bae8-2d59-448a-814d-b4c6a4c0bfa1" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE MEL L.M.N.H." />
 <br/>
 <small><strong>DE MEL L.M.N.H.</strong></small><br/>
 <small>Backend Developer</small>
@@ -216,7 +216,8 @@ npm start
 <tr>
 <!-- Member 4 -->
 <td align="center">
-<img src="https://picsum.photos/200?4" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N." />
+<img src="https://github.com/user-attachments/assets/96b136ba-bd55-462c-b4f0-b2a442eb44d7"
+ width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="GUNARATHNA A.M.S.N." />
 <br/>
 <small><strong>GUNARATHNA A.M.S.N.</strong></small><br/>
 <small>UI/UX Designer & QA</small>
@@ -228,7 +229,7 @@ npm start
 
 <!-- Member 5 -->
 <td align="center">
-<img src="https://picsum.photos/200?5" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S." />
+<img src="https://github.com/user-attachments/assets/dfec3726-3b15-4d60-bfba-dec3b72c0dc8" width="140" height="140" style="border-radius: 50%; object-fit: cover;" alt="DE SILVA G.A.S." />
 <br/>
 <small><strong>DE SILVA G.A.S.</strong></small><br/>
 <small>Documentation & RA</small>
