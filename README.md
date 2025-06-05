@@ -118,18 +118,21 @@ Represents interactions between users and the system
   </tr>
   <tr>
     <td valign="top">
-      <img src="https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5" alt="Home" width="100%" />
+      <img src="https://github.com/user-attachments/assets/9a0e2cd6-f78b-42cb-9524-5e0696f101e5" alt="Patient Interface" width="100%" />
+      <p><a href="https://github.com/SatharakaNilmantha/Smart-Hospital-patient-interface.git" target="_blank">GitHub Repository</a></p>
     </td>
     <td valign="top">
       <img src="https://github.com/user-attachments/assets/5c3cfd01-fa6c-4dbf-81f8-ef41e18012c4" alt="Admin Interface" width="100%" />
+      <p><a href="https://github.com/SatharakaNilmantha/Smart-Hospital-admin-interface-.git" target="_blank">GitHub Repository</a></p>
     </td>
     <td valign="top">
-      <img src="https://github.com/user-attachments/assets/03a77fa4-8101-4e1f-bf33-a0666ae6db4e" alt="Admin Interface" width="100%" />
+      <img src="https://github.com/user-attachments/assets/03a77fa4-8101-4e1f-bf33-a0666ae6db4e" alt="Doctor Interface" width="100%" />
+      <p><a href="https://github.com/SatharakaNilmantha/Smart-Hospital-Doctor-interface.git" target="_blank">GitHub Repository</a></p>
     </td>
     <td valign="top">
       <img src="https://github.com/user-attachments/assets/c6077e59-24c8-4e33-a44f-3aea7d7789bc" alt="Reception Interface" width="100%" />
+      <p><a href="https://github.com/SatharakaNilmantha/Smart-Hospital-FrontDesk-interface.git" target="_blank">GitHub Repository</a></p>
     </td>
-    
   </tr>
 </table>
 
